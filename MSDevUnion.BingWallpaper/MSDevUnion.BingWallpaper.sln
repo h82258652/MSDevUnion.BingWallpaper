@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSDevUnion.BingWallpaper.Services", "MSDevUnion.BingWallpaper.Services\MSDevUnion.BingWallpaper.Services.csproj", "{AD490968-D7C2-4811-A819-E99A197740B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSDevUnion.BingWallpaper.Models", "MSDevUnion.BingWallpaper.Models\MSDevUnion.BingWallpaper.Models.csproj", "{D8A57BC9-06AC-40F5-A94E-028307CBD02E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareKobo.LeanCloudRESTAPI", "SoftwareKobo.LeanCloudRESTAPI\SoftwareKobo.LeanCloudRESTAPI.csproj", "{6A51BF5D-5549-4156-B714-EE53A057D8A8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD490968-D7C2-4811-A819-E99A197740B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD490968-D7C2-4811-A819-E99A197740B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD490968-D7C2-4811-A819-E99A197740B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD490968-D7C2-4811-A819-E99A197740B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8A57BC9-06AC-40F5-A94E-028307CBD02E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8A57BC9-06AC-40F5-A94E-028307CBD02E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8A57BC9-06AC-40F5-A94E-028307CBD02E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8A57BC9-06AC-40F5-A94E-028307CBD02E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A51BF5D-5549-4156-B714-EE53A057D8A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A51BF5D-5549-4156-B714-EE53A057D8A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A51BF5D-5549-4156-B714-EE53A057D8A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A51BF5D-5549-4156-B714-EE53A057D8A8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
