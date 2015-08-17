@@ -1,0 +1,20 @@
+﻿<Page
+    x:Class="MSDevUnion.BingWallpaper.Views.DetailView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MSDevUnion.BingWallpaper.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Label="保存"
+                          Icon="Save" />
+            <AppBarButton Label="分享"
+                          Icon="ReShare" />
+        </CommandBar>
+    </Page.BottomAppBar>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Image></Image>
+    </Grid>
+</Page>

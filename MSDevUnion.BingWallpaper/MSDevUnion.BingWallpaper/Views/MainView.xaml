@@ -1,0 +1,49 @@
+﻿<Page x:Class="MSDevUnion.BingWallpaper.Views.MainView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:MSDevUnion.BingWallpaper.Views"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:controls="using:MSDevUnion.BingWallpaper.Controls"
+      xmlns:conv="using:MSDevUnion.BingWallpaper.Converters"
+      mc:Ignorable="d">
+    <Page.Resources>
+        <conv:StringFormatConverter x:Key="StringFormatConverter" />
+    </Page.Resources>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Label="设置"
+                          Icon="Setting"
+                          Click="BtnSetting_Click"></AppBarButton>
+            <AppBarButton Label="关于"
+                          Icon="Important"
+                          Click="BtnAbout_Click"></AppBarButton>
+        </CommandBar>
+    </Page.BottomAppBar>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
+        <Viewbox Stretch="Fill">
+            <CalendarView></CalendarView>
+        <!--<controls:ThumbnailsView x:Name="thumbnailView"
+                                 SizeChanged="ThumbnailView_SizeChanged" >
+            <controls:ThumbnailsView.CalendarViewDayItemStyle>
+                <Style TargetType="CalendarViewDayItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Border MinWidth="0"
+                                        MinHeight="0"
+                                        MaxWidth="0"
+                                        MaxHeight="0"
+                                        Loaded="ThumbnailItem_Loaded">
+                                    <TextBlock Text="{Binding Path=Date,Converter={StaticResource StringFormatConverter}}"
+                                               TextWrapping="Wrap" />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </controls:ThumbnailsView.CalendarViewDayItemStyle>
+            </controls:ThumbnailsView>-->
+        </Viewbox>
+    </Grid>
+</Page>
