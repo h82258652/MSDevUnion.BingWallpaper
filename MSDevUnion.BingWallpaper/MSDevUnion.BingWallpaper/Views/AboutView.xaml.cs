@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using SoftwareKobo.UniversalToolkit.Helpers;
 
 // “空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=234238 上提供
 
@@ -25,6 +26,20 @@ namespace MSDevUnion.BingWallpaper.Views
         public AboutView()
         {
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            Frame.RegisterNavigateBack();
+
+            base.OnNavigatedTo(e);
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            Frame.UnRegisterNavigateBack();
+
+            base.OnNavigatedFrom(e);
         }
     }
 }

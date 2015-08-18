@@ -1,4 +1,5 @@
 ﻿using MSDevUnion.BingWallpaper.Utils;
+using SoftwareKobo.UniversalToolkit.Helpers;
 using Windows.Phone.UI.Input;
 using Windows.UI.Core;
 using Windows.UI.Xaml.Controls;
@@ -20,56 +21,14 @@ namespace MSDevUnion.BingWallpaper.Views
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            this.RegisterGoBack();
+            Frame.RegisterNavigateBack();            
 
             base.OnNavigatedTo(e);
         }
-
-        private void RegisterGoBack()
-        {
-            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
-
-            SystemNavigationManager.GetForCurrentView().BackRequested += SettingView_BackRequested;
-
-            if (HardwareButtonsHelper.IsPresent)
-            {
-                HardwareButtons.BackPressed += HardwareButtons_BackPressed;
-            }
-        }
-
-        private void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
-        {
-            if (this.Frame.CanGoBack)
-            {
-                e.Handled = true;
-                this.Frame.GoBack();
-            }
-        }
-
-        private void SettingView_BackRequested(object sender, BackRequestedEventArgs e)
-        {
-            if (this.Frame.CanGoBack)
-            {
-                e.Handled = true;
-                this.Frame.GoBack();
-            }
-        }
-
-        private void UnRegisterGoBack()
-        {
-            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
-
-            SystemNavigationManager.GetForCurrentView().BackRequested -= SettingView_BackRequested;
-
-            if (HardwareButtonsHelper.IsPresent)
-            {
-                HardwareButtons.BackPressed -= HardwareButtons_BackPressed;
-            }
-        }
-
+        
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            this.UnRegisterGoBack();
+            Frame.UnRegisterNavigateBack();
 
             base.OnNavigatedFrom(e);
         }

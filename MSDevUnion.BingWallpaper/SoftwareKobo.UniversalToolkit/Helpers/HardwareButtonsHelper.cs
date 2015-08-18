@@ -1,10 +1,10 @@
 ﻿using Windows.Foundation.Metadata;
 
-namespace MSDevUnion.BingWallpaper.Utils
+namespace SoftwareKobo.UniversalToolkit.Helpers
 {
     public static class HardwareButtonsHelper
     {
-        public static bool IsPresent
+        public static bool IsUseable
         {
             get
             {

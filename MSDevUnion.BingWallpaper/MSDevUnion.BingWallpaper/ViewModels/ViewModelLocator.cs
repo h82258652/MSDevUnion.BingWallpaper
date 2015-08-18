@@ -1,44 +1,34 @@
-﻿using GalaSoft.MvvmLight.Ioc;
-using Microsoft.Practices.ServiceLocation;
-using MSDevUnion.BingWallpaper.Services;
+﻿using MSDevUnion.BingWallpaper.Services;
+using SoftwareKobo.UniversalToolkit.Mvvm;
 
 namespace MSDevUnion.BingWallpaper.ViewModels
 {
-    public class ViewModelLocator
+    public class ViewModelLocator : ViewModelLocatorBase
     {
-        static ViewModelLocator()
+        public ViewModelLocator()
         {
-            ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
-
             // Register Services.
-            SimpleIoc.Default.Register<IScreenService, ScreenService>();
-            SimpleIoc.Default.Register<IServiceArea, ServiceArea>();
+            Register<IScreenService, ScreenService>();
+            Register<IServiceArea, ServiceArea>();
 
             // Register ViewModels.
-            SimpleIoc.Default.Register<MainViewModel>();
+            Register<MainViewModel>();
+            Register<SettingViewModel>();
         }
 
         public MainViewModel Main
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<MainViewModel>();
+                return GetInstance<MainViewModel>();
             }
         }
 
-        public DetailViewModel Detail
+        public SettingViewModel Setting
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<DetailViewModel>();
-            }
-        }
-
-        public IServiceArea ServiceArea
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<IServiceArea>();
+                return GetInstance<SettingViewModel>();
             }
         }
     }

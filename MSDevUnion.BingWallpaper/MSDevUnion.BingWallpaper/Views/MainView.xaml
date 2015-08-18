@@ -6,7 +6,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:controls="using:MSDevUnion.BingWallpaper.Controls"
       xmlns:conv="using:MSDevUnion.BingWallpaper.Converters"
-      mc:Ignorable="d">
+      mc:Ignorable="d"
+      DataContext="{Binding Source={StaticResource Locator},Path=Main}">
     <Page.Resources>
         <conv:StringFormatConverter x:Key="StringFormatConverter" />
     </Page.Resources>
@@ -20,30 +21,6 @@
                           Click="BtnAbout_Click"></AppBarButton>
         </CommandBar>
     </Page.BottomAppBar>
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
-        <Viewbox Stretch="Fill">
-            <CalendarView></CalendarView>
-        <!--<controls:ThumbnailsView x:Name="thumbnailView"
-                                 SizeChanged="ThumbnailView_SizeChanged" >
-            <controls:ThumbnailsView.CalendarViewDayItemStyle>
-                <Style TargetType="CalendarViewDayItem">
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate>
-                                <Border MinWidth="0"
-                                        MinHeight="0"
-                                        MaxWidth="0"
-                                        MaxHeight="0"
-                                        Loaded="ThumbnailItem_Loaded">
-                                    <TextBlock Text="{Binding Path=Date,Converter={StaticResource StringFormatConverter}}"
-                                               TextWrapping="Wrap" />
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </controls:ThumbnailsView.CalendarViewDayItemStyle>
-            </controls:ThumbnailsView>-->
-        </Viewbox>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >       
     </Grid>
 </Page>
