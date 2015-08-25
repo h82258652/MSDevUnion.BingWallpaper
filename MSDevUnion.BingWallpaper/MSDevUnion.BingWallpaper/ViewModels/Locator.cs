@@ -3,9 +3,9 @@ using SoftwareKobo.UniversalToolkit.Mvvm;
 
 namespace MSDevUnion.BingWallpaper.ViewModels
 {
-    public class ViewModelLocator : ViewModelLocatorBase
+    public class Locator : ViewModelLocatorBase
     {
-        public ViewModelLocator()
+        public Locator()
         {
             // Register Services.
             Register<IScreenService, ScreenService>();

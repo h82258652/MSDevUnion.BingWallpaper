@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
 
 // “空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=234238 上提供
 
@@ -33,7 +32,7 @@ namespace MSDevUnion.BingWallpaper.Views
         private void ThumbnailView_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             foreach (var item in _thumbnailItems)
-            {                
+            {
                 //item.MaxWidth = thumbnailView.ActualWidth / 7;
                 //item.MaxHeight = thumbnailView.ActualWidth / 7;
             }
@@ -47,6 +46,15 @@ namespace MSDevUnion.BingWallpaper.Views
                 //item.MaxWidth = thumbnailView.ActualWidth / 7;
                 //item.MaxHeight = thumbnailView.ActualWidth / 7;
                 _thumbnailItems.Add(item);
+            }
+        }
+
+        private void DatePicker_Loaded(object sender, RoutedEventArgs e)
+        {
+            DatePicker picker = sender as DatePicker;
+            if (picker != null)
+            {
+                picker.MinYear = new DateTime(2015, 1, 28);
             }
         }
     }

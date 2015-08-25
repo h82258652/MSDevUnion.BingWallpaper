@@ -12,7 +12,7 @@
         <conv:StringFormatConverter x:Key="StringFormatConverter" />
     </Page.Resources>
     <Page.BottomAppBar>
-        <CommandBar>
+        <CommandBar x:Name="appBar">
             <AppBarButton Label="设置"
                           Icon="Setting"
                           Click="BtnSetting_Click"></AppBarButton>
@@ -21,6 +21,67 @@
                           Click="BtnAbout_Click"></AppBarButton>
         </CommandBar>
     </Page.BottomAppBar>
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >       
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="small">
+                    <VisualState.Setters>
+                        <Setter Target="appBar.ClosedDisplayMode"
+                                Value="Minimal" />
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="0" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="normal">
+                    <VisualState.Setters>
+                        <Setter Target="appBar.ClosedDisplayMode"
+                                Value="Compact" />
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="600" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <ListView Padding="0,0,0,10"></ListView>
+        <Grid VerticalAlignment="Bottom"
+              HorizontalAlignment="Center"
+              Height="48">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition  Width="Auto" />
+                <ColumnDefinition  Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0"
+                    Padding="0"
+                    Background="Transparent"
+                    BorderBrush="Transparent">
+                <ContentControl Style="{StaticResource ResourceKey=PerviousYear}"></ContentControl>
+            </Button>
+            <Button Grid.Column="1"
+                    Padding="0"
+                    Background="Transparent"
+                    BorderBrush="Transparent">
+                <ContentControl Style="{StaticResource ResourceKey=PerviousMonth}"></ContentControl>
+            </Button>
+            <DatePicker Grid.Column="2"
+                        DayVisible="False"
+                        Loaded="DatePicker_Loaded" />
+            <Button Grid.Column="3"
+                    Padding="0"
+                    Background="Transparent"
+                    BorderBrush="Transparent">
+                <ContentControl Style="{StaticResource ResourceKey=NextMonth}"></ContentControl>
+            </Button>
+            <Button Grid.Column="4"
+                    Padding="0"
+                    Background="Transparent"
+                    BorderBrush="Transparent" ToolTipService.ToolTip="下一年">
+                <ContentControl Style="{StaticResource ResourceKey=NextYear}"></ContentControl>
+            </Button>
+        </Grid>
     </Grid>
 </Page>

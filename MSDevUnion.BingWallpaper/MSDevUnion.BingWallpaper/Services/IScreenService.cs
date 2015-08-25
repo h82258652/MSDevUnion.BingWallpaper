@@ -4,8 +4,16 @@ namespace MSDevUnion.BingWallpaper.Services
 {
     public interface IScreenService
     {
-        Task<int> GetScreenWidthAsync();
+        int Width
+        {
+            get;
+        }
 
-        Task<int> GetScreenHeightAsync();
+        int Height
+        {
+            get;
+        }
+
+        Task InitAsync();
     }
 }

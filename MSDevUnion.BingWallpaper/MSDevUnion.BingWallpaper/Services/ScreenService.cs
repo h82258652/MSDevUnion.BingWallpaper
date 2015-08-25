@@ -1,27 +1,45 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Windows.UI.Xaml.Controls;
 
 namespace MSDevUnion.BingWallpaper.Services
 {
     public class ScreenService : IScreenService
     {
-        public async Task<int> GetScreenHeightAsync()
+        private static int _width;
+
+        private static int _height;
+
+        private static bool _hadInit;
+
+        public int Height
         {
-            WebView webView = new WebView(WebViewExecutionMode.SeparateThread);
-            string strWidth = await webView.InvokeScriptAsync("eval", new string[] { "window.screen.width.toString()" });
-            int iWidth;
-            int.TryParse(strWidth, out iWidth);
-            return iWidth;
+            get
+            {
+                if (_hadInit == false)
+                {
+                    throw new InvalidOperationException("Not Init");
+                }
+                return _height;
+            }
         }
 
-        public async Task<int> GetScreenWidthAsync()
+        public int Width
         {
-            WebView webView = new WebView(WebViewExecutionMode.SeparateThread);
-            string strHeight = await webView.InvokeScriptAsync("eval", new string[] { "window.screen.height.toString()" });
-            int iHeight;
-            int.TryParse(strHeight, out iHeight);
-            return iHeight;
+            get
+            {
+                if (_hadInit == false)
+                {
+                    throw new InvalidOperationException("Not Init");
+                }
+                return _width;
+            }
+        }
+
+        public async Task InitAsync()
+        {
+            _width = await SoftwareKobo.UniversalToolkit.Helpers.ScreenResolutionHelper.GetWidthAsync();
+            _height = await SoftwareKobo.UniversalToolkit.Helpers.ScreenResolutionHelper.GetHeightAsync();
+            _hadInit = true;
         }
     }
 }

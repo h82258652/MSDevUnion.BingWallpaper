@@ -92,6 +92,12 @@
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <None Include="project.json" />
+    <PRIResource Include="Strings\en-US\Area.resw" />
+    <PRIResource Include="Strings\en-US\Settings.resw" />
+    <PRIResource Include="Strings\zh-CN\Settings.resw" />
+    <PRIResource Include="Strings\zh-CN\Area.resw" />
+    <PRIResource Include="Strings\en-US\AllSaveLocation.resw" />
+    <PRIResource Include="Strings\zh-CN\AllSaveLocation.resw" />
     <PRIResource Include="Strings\en-US\Resources.resw" />
     <PRIResource Include="Strings\zh-CN\Resources.resw" />
   </ItemGroup>
@@ -100,8 +106,12 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\ThumbnailsView.cs" />
+    <Compile Include="Converters\AreaToFlagConverter.cs" />
+    <Compile Include="Converters\AreaToNameConverter.cs" />
     <Compile Include="Converters\StringFormatConverter.cs" />
-    <Compile Include="Datas\ApplicationSetting.cs" />
+    <Compile Include="Converters\WallpaperSizeNameConverter.cs" />
+    <Compile Include="Datas\AppRunningDatas.cs" />
+    <Compile Include="Datas\AppSettings.cs" />
     <Compile Include="LocalizedStrings.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -118,11 +128,12 @@
     <Compile Include="Services\ScreenService.cs" />
     <Compile Include="Services\ServiceArea.cs" />
     <Compile Include="Services\WallpaperSize.cs" />
+    <Compile Include="Services\WallpaperSizeExtensions.cs" />
     <Compile Include="Utils\LocalSettingHelper.cs" />
     <Compile Include="ViewModels\DetailViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\SettingViewModel.cs" />
-    <Compile Include="ViewModels\ViewModelLocator.cs" />
+    <Compile Include="ViewModels\Locator.cs" />
     <Compile Include="Views\AboutView.xaml.cs">
       <DependentUpon>AboutView.xaml</DependentUpon>
     </Compile>
@@ -143,6 +154,16 @@
     <None Include="MSDevUnion.BingWallpaper_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Australia.png" />
+    <Content Include="Assets\Brazil.png" />
+    <Content Include="Assets\Canada.png" />
+    <Content Include="Assets\China.png" />
+    <Content Include="Assets\France.png" />
+    <Content Include="Assets\Germany.png" />
+    <Content Include="Assets\India.png" />
+    <Content Include="Assets\Japan.png" />
+    <Content Include="Assets\United_Kingdom.png" />
+    <Content Include="Assets\United_States.png" />
     <Content Include="LocalizedStrings.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>LocalizedStrings.cs</LastGenOutput>
@@ -163,7 +184,7 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Styles\ThumbnailsViewStyle.xaml">
+    <Page Include="Styles\IconStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -12,10 +12,13 @@ namespace MSDevUnion.BingWallpaper.Services
             "de-DE",
             "en-AU",
             "en-CA",
-            "en-NZ",
-            "en-UK",
+            "en-GB",
+            "en-IN",
             "en-US",
+            "fr-CA",
+            "fr-FR",
             "ja-JP",
+            "pt-BR",
             "zh-CN"
         };
 

@@ -1,6 +1,10 @@
 ﻿using GalaSoft.MvvmLight;
+using MSDevUnion.BingWallpaper.Datas;
 using MSDevUnion.BingWallpaper.Services;
+using SoftwareKobo.UniversalToolkit.Storage;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MSDevUnion.BingWallpaper.ViewModels
 {
@@ -18,15 +22,22 @@ namespace MSDevUnion.BingWallpaper.ViewModels
             get;
         } = new string[]
         {
-            //LocalizedStrings.PictureLibrary,
-            //LocalizedStrings.ChooseEveryTime,
-            //LocalizedStrings.SavedPictures
+            LocalizedStrings.PictureLibrary,
+            LocalizedStrings.ChooseEveryTime,
+            LocalizedStrings.SavedPictures
         };
 
         public string Area
         {
-            get;
-            set;
+            get
+            {
+                return AppSettings.Area;
+            }
+            set
+            {
+                AppSettings.Area = value;
+                RaisePropertyChanged();
+            }
         }
 
         public IReadOnlyList<string> Areas
@@ -41,7 +52,30 @@ namespace MSDevUnion.BingWallpaper.ViewModels
         {
             get
             {
-                return null;
+                return AppSettings.SaveLocation;
+            }
+            set
+            {
+                AppSettings.SaveLocation = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public IList<WallpaperSize> WallpaperSizes
+        {
+            get;
+        } = Enum.GetValues(typeof(WallpaperSize)).Cast<WallpaperSize>().ToList();
+
+        public WallpaperSize WallpaperSize
+        {
+            get
+            {
+                return AppSettings.WallpaperSize;
+            }
+            set
+            {
+                AppSettings.WallpaperSize = value;
+                RaisePropertyChanged();
             }
         }
     }

@@ -1,19 +1,13 @@
-﻿using MSDevUnion.BingWallpaper.Views;
+﻿using MSDevUnion.BingWallpaper.Datas;
+using MSDevUnion.BingWallpaper.Services;
+using MSDevUnion.BingWallpaper.Views;
+using SoftwareKobo.UniversalToolkit.Storage;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 namespace MSDevUnion.BingWallpaper
@@ -33,14 +27,38 @@ namespace MSDevUnion.BingWallpaper
             this.Suspending += OnSuspending;
         }
 
+        internal static int DefaultWidth;
+        internal static int DefaultHeight;
+
+        public async Task InitApplicationParameterAsync()
+        {
+            var screenService = new ScreenService();
+            await screenService.InitAsync();
+            int width = screenService.Width;
+            int height = screenService.Height;
+            if (ApplicationLocalSettings.Exists(nameof(AppSettings.WallpaperSize)) == false)
+            {
+                WallpaperSize wallpaperSize;
+                if (Enum.TryParse($"_{width}x{height}", out wallpaperSize))
+                {
+                    AppSettings.WallpaperSize = wallpaperSize;
+                }
+                else
+                {
+                    AppSettings.WallpaperSize = WallpaperSize._800x600;
+                }
+            }
+            DefaultWidth = width;
+            DefaultHeight = height;
+        }
+
         /// <summary>
         /// 在应用程序由最终用户正常启动时进行调用。
         /// 将在启动应用程序以打开特定文件等情况下使用。
         /// </summary>
         /// <param name="e">有关启动请求和过程的详细信息。</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
-
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
@@ -68,6 +86,9 @@ namespace MSDevUnion.BingWallpaper
                 Window.Current.Content = rootFrame;
             }
 
+#warning 检查是否正确位置
+            await InitApplicationParameterAsync();
+
             if (rootFrame.Content == null)
             {
                 // 当导航堆栈尚未还原时，导航到第一页，
@@ -84,7 +105,7 @@ namespace MSDevUnion.BingWallpaper
         /// </summary>
         ///<param name="sender">导航失败的框架</param>
         ///<param name="e">有关导航失败的详细信息</param>
-        void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
+        private void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
         {
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }

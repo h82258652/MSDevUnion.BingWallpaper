@@ -4,23 +4,88 @@
       xmlns:local="using:MSDevUnion.BingWallpaper.Views"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      mc:Ignorable="d">
+      xmlns:conv="using:MSDevUnion.BingWallpaper.Converters"
+      mc:Ignorable="d"
+      DataContext="{Binding Source={StaticResource Locator},Path=Setting}">
+    <Page.Resources>
+        <conv:WallpaperSizeNameConverter x:Key="WallpaperSizeNameConverter" />
+        <conv:AreaToFlagConverter x:Key="AreaToFlagConverter" />
+        <conv:AreaToNameConverter x:Key="AreaToNameConverter" />
+    </Page.Resources>
     <Page.Transitions>
         <TransitionCollection>
-            <NavigationThemeTransition>
-                <DrillInNavigationTransitionInfo />
-            </NavigationThemeTransition>
+            <EdgeUIThemeTransition Edge="Right" />
         </TransitionCollection>
     </Page.Transitions>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel>
-                <ComboBox Header="壁纸保存位置"
-                          Margin="10"></ComboBox>
-                <ComboBox Header="壁纸大小"
-                          Margin="10"></ComboBox>
-                <ComboBox Header="国家/地区"
-                          Margin="10"></ComboBox>
+                <ComboBox ItemsSource="{Binding Path=AllSaveLocation}"
+                          SelectedItem="{Binding Path=SaveLocation,Mode=TwoWay}"
+                          Margin="10"
+                          Width="200">
+                    <ComboBox.Header>
+                        <TextBlock x:Uid="txtSaveLocation"
+                                   Text="壁纸保存位置">
+                            <TextBlock.Transitions>
+                                <TransitionCollection>
+                                    <EntranceThemeTransition FromHorizontalOffset="100"
+                                                             FromVerticalOffset="0" />
+                                </TransitionCollection>
+                            </TextBlock.Transitions></TextBlock>
+                    </ComboBox.Header>
+                </ComboBox>
+                <ComboBox ItemsSource="{Binding Path=WallpaperSizes}"
+                          SelectedItem="{Binding Path=WallpaperSize,Mode=TwoWay}"
+                          Margin="10"
+                          Width="200">
+                    <ComboBox.Header>
+                        <TextBlock x:Uid="txtWallpaperSize"
+                                   Text="壁纸大小">
+                            <TextBlock.Transitions>
+                                <TransitionCollection>
+                                    <EntranceThemeTransition FromHorizontalOffset="100"
+                                                             FromVerticalOffset="0" />
+                                </TransitionCollection>
+                            </TextBlock.Transitions></TextBlock>
+                    </ComboBox.Header>
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Converter={StaticResource WallpaperSizeNameConverter}}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <ComboBox ItemsSource="{Binding Path=Areas}"
+                          SelectedItem="{Binding Path=Area,Mode=TwoWay}"
+                          Margin="10"
+                          Width="200">
+                    <ComboBox.Header>
+                        <TextBlock x:Uid="txtArea"
+                                   Text="国家/地区">
+                            <TextBlock.Transitions>
+                                <TransitionCollection>
+                                    <EntranceThemeTransition FromHorizontalOffset="100"
+                                                             FromVerticalOffset="0" />
+                                </TransitionCollection>
+                            </TextBlock.Transitions></TextBlock>
+                    </ComboBox.Header>
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding Converter={StaticResource AreaToFlagConverter}}"
+                                       VerticalAlignment="Center"
+                                       Height="25" />
+                                <TextBlock Text="{Binding Converter={StaticResource AreaToNameConverter}}"
+                                           VerticalAlignment="Center"
+                                           Margin="5,0,0,0" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <StackPanel>
+                    <TextBlock Text="" x:Name="tt"></TextBlock>
+                    <Button Content="清空"></Button>
+                </StackPanel>
             </StackPanel>
         </ScrollViewer>
     </Grid>

@@ -5,14 +5,15 @@
              xmlns:vm="using:MSDevUnion.BingWallpaper.ViewModels"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d">
+             mc:Ignorable="d"
+             RequestedTheme="Light">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles/ThumbnailsViewStyle.xaml" />
+                <ResourceDictionary Source="Styles/IconStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <vm:ViewModelLocator x:Key="Locator"
-                                 d:IsDataSource="True" />
+            <vm:Locator x:Key="Locator"
+                        d:IsDataSource="True" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>
