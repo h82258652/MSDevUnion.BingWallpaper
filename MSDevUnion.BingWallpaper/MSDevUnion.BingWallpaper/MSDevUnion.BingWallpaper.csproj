@@ -105,25 +105,41 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ThumbnailFlowPanel.cs" />
     <Compile Include="Controls\ThumbnailsView.cs" />
     <Compile Include="Converters\AreaToFlagConverter.cs" />
     <Compile Include="Converters\AreaToNameConverter.cs" />
     <Compile Include="Converters\StringFormatConverter.cs" />
+    <Compile Include="Converters\ThumbnailUrlConverter.cs" />
     <Compile Include="Converters\WallpaperSizeNameConverter.cs" />
+    <Compile Include="Converters\WallpaperUrlConverter.cs" />
     <Compile Include="Datas\AppRunningDatas.cs" />
     <Compile Include="Datas\AppSettings.cs" />
+    <Compile Include="Extensions\VariableSizedWrapGridExtensions.cs" />
     <Compile Include="LocalizedStrings.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LocalizedStrings.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Archive.cs" />
+    <Compile Include="Models\AVObject.cs" />
+    <Compile Include="Models\BingWallpaperModel.cs" />
+    <Compile Include="Models\CoverStory.cs" />
+    <Compile Include="Models\Hotspot.cs" />
+    <Compile Include="Models\Image.cs" />
+    <Compile Include="Models\LeanCloudPointer.cs" />
+    <Compile Include="Models\LeanCloudResultBase.cs" />
+    <Compile Include="Models\LeanCloudResultCollection.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BingWallpaperService.cs" />
     <Compile Include="Services\IBingWallpaperService.cs" />
     <Compile Include="Services\ILocalSetting.cs" />
     <Compile Include="Services\IRoamingSetting.cs" />
     <Compile Include="Services\IScreenService.cs" />
     <Compile Include="Services\IServiceArea.cs" />
     <Compile Include="Services\LocalSetting.cs" />
+    <Compile Include="Services\PackagedBingWallpaperService.cs" />
     <Compile Include="Services\RoamingSetting.cs" />
     <Compile Include="Services\ScreenService.cs" />
     <Compile Include="Services\ServiceArea.cs" />

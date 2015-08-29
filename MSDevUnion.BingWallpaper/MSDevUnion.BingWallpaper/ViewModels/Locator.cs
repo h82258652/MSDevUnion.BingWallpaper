@@ -8,12 +8,14 @@ namespace MSDevUnion.BingWallpaper.ViewModels
         public Locator()
         {
             // Register Services.
+            Register<IBingWallpaperService, BingWallpaperService>();
             Register<IScreenService, ScreenService>();
             Register<IServiceArea, ServiceArea>();
 
             // Register ViewModels.
             Register<MainViewModel>();
             Register<SettingViewModel>();
+            Register<DetailViewModel>();
         }
 
         public MainViewModel Main
@@ -29,6 +31,14 @@ namespace MSDevUnion.BingWallpaper.ViewModels
             get
             {
                 return GetInstance<SettingViewModel>();
+            }
+        }
+
+        public DetailViewModel Detail
+        {
+            get
+            {
+                return GetInstance<DetailViewModel>();
             }
         }
     }

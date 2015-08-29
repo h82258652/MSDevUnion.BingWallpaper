@@ -120,7 +120,13 @@
   <data name="Default" xml:space="preserve">
     <value>(Default)</value>
   </data>
+  <data name="txtArea.Text" xml:space="preserve">
+    <value>Country/Area</value>
+  </data>
   <data name="txtSaveLocation.Text" xml:space="preserve">
     <value>Wallpaper Save Location</value>
+  </data>
+  <data name="txtWallpaperSize.Text" xml:space="preserve">
+    <value>Wallpaper Size</value>
   </data>
 </root>

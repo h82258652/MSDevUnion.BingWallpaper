@@ -25,6 +25,8 @@ namespace MSDevUnion.BingWallpaper
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            // 下面语句用于测试其他语言。
+             Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "en-US";
         }
 
         internal static int DefaultWidth;
@@ -62,7 +64,7 @@ namespace MSDevUnion.BingWallpaper
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
-                this.DebugSettings.EnableFrameRateCounter = true;
+           //     this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
 

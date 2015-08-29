@@ -1,7 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MSDevUnion.BingWallpaper.Datas;
+using MSDevUnion.BingWallpaper.ViewModels;
+using System;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
 
 // “空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=234238 上提供
 
@@ -12,9 +16,41 @@ namespace MSDevUnion.BingWallpaper.Views
     /// </summary>
     public sealed partial class MainView : Page
     {
+        public MainViewModel ViewModel
+        {
+            get
+            {
+                return (MainViewModel)this.DataContext;
+            }
+        }
+
         public MainView()
         {
             this.InitializeComponent();
+
+            #region 初始化控制板的背景色
+            Color accentColor = ((SolidColorBrush)App.Current.Resources["SystemControlBackgroundAccentBrush"]).Color;
+            accentColor.A = 192;
+            this.grdControl.Background = new SolidColorBrush(accentColor);
+            #endregion
+
+            #region 初始化日期选择器
+            dtpViewingMonth.MinYear = new DateTime(2015, 1, 28);
+            dtpViewingMonth.MaxYear = DateTime.Now;
+            dtpViewingMonth.Date = AppSettings.LastViewDate;
+            #endregion
+
+            this.Loaded += MainView_Loaded;
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+        }
+
+        private void MainView_Loaded(object sender, RoutedEventArgs e)
+        {
+            ViewModel.LoadBingWallpapers();
         }
 
         private void BtnSetting_Click(object sender, RoutedEventArgs e)
@@ -27,35 +63,37 @@ namespace MSDevUnion.BingWallpaper.Views
             Frame.Navigate(typeof(AboutView));
         }
 
-        private List<FrameworkElement> _thumbnailItems = new List<FrameworkElement>();
-
-        private void ThumbnailView_SizeChanged(object sender, SizeChangedEventArgs e)
+        private void BtnNextYear_Click(object sender, RoutedEventArgs e)
         {
-            foreach (var item in _thumbnailItems)
-            {
-                //item.MaxWidth = thumbnailView.ActualWidth / 7;
-                //item.MaxHeight = thumbnailView.ActualWidth / 7;
-            }
+            var currentViewingMonth = dtpViewingMonth.Date;
+            var newViewingMonth = currentViewingMonth.AddYears(1);
+            dtpViewingMonth.Date = newViewingMonth;
+            AppSettings.LastViewDate = newViewingMonth;
+            ViewModel.LoadBingWallpapers();
         }
 
-        private void ThumbnailItem_Loaded(object sender, RoutedEventArgs e)
+        private void BtnNextMonth_Click(object sender, RoutedEventArgs e)
         {
-            var item = sender as FrameworkElement;
-            if (item != null)
-            {
-                //item.MaxWidth = thumbnailView.ActualWidth / 7;
-                //item.MaxHeight = thumbnailView.ActualWidth / 7;
-                _thumbnailItems.Add(item);
-            }
+            var currentViewingMonth = dtpViewingMonth.Date;
         }
 
-        private void DatePicker_Loaded(object sender, RoutedEventArgs e)
+        private void BtnPreviousMonth_Click(object sender, RoutedEventArgs e)
         {
-            DatePicker picker = sender as DatePicker;
-            if (picker != null)
-            {
-                picker.MinYear = new DateTime(2015, 1, 28);
-            }
+        }
+
+        private void BtnPreviousYear_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void DtpViewingMonth_DateChanged(object sender, DatePickerValueChangedEventArgs e)
+        {
+        }
+
+        private void GridView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var rr = e.ClickedItem;
+
+            Frame.Navigate(typeof(DetailView), rr);
         }
     }
 }

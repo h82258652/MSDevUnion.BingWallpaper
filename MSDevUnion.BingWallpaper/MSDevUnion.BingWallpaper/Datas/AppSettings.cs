@@ -75,23 +75,24 @@ namespace MSDevUnion.BingWallpaper.Datas
         {
             get
             {
+                DateTimeOffset returnValue;
                 if (ApplicationRoamingSettings.Exists(nameof(LastViewDate)))
                 {
-                    return ApplicationRoamingSettings.Read<DateTimeOffset>(nameof(LastViewDate));
+                    returnValue = ApplicationRoamingSettings.Read<DateTimeOffset>(nameof(LastViewDate));
                 }
                 else
                 {
                     var now = DateTimeOffset.Now;
-                    var minServiceDate = (DateTimeOffset)(new DateTime(2015, 1, 28));
-                    if (now.CompareTo(minServiceDate) > 0)
-                    {
-                        return now;
-                    }
-                    else
-                    {
-                        return minServiceDate;
-                    }
                 }
+                if (returnValue <= new DateTime(2015, 1, 28))
+                {
+                    returnValue = new DateTime(2015, 1, 28);
+                }
+                else if(returnValue >= DateTimeOffset.Now)
+                {
+                    returnValue = DateTimeOffset.Now;
+                }
+                return returnValue;
             }
             set
             {
