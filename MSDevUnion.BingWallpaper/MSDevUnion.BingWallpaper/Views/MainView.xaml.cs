@@ -1,5 +1,7 @@
-﻿using MSDevUnion.BingWallpaper.Datas;
+﻿using MSDevUnion.BingWallpaper.Controls;
+using MSDevUnion.BingWallpaper.Datas;
 using MSDevUnion.BingWallpaper.ViewModels;
+using SoftwareKobo.UniversalToolkit.Extensions;
 using System;
 using Windows.UI;
 using Windows.UI.Xaml;
@@ -27,9 +29,10 @@ namespace MSDevUnion.BingWallpaper.Views
         public MainView()
         {
             this.InitializeComponent();
+            this.NavigationCacheMode = NavigationCacheMode.Required;
 
             #region 初始化控制板的背景色
-            Color accentColor = ((SolidColorBrush)App.Current.Resources["SystemControlBackgroundAccentBrush"]).Color;
+            Color accentColor = ColorExtensions.AccentColor;
             accentColor.A = 192;
             this.grdControl.Background = new SolidColorBrush(accentColor);
             #endregion
@@ -39,28 +42,32 @@ namespace MSDevUnion.BingWallpaper.Views
             dtpViewingMonth.MaxYear = DateTime.Now;
             dtpViewingMonth.Date = AppSettings.LastViewDate;
             #endregion
-
-            this.Loaded += MainView_Loaded;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            LoadBingWallpapers();
+
             base.OnNavigatedTo(e);
         }
 
-        private void MainView_Loaded(object sender, RoutedEventArgs e)
+        private async void LoadBingWallpapers()
         {
-            ViewModel.LoadBingWallpapers();
-        }
-
-        private void BtnSetting_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(SettingView));
-        }
-
-        private void BtnAbout_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(AboutView));
+            await ViewModel.LoadBingWallpapers();
+            var bingWallpapers = ViewModel.ViewingBingWallpapers;
+            //for (int i = 0; i < bingWallpapers.Count; i++)
+            //{
+            //    Thumbnail thumbnail = new Thumbnail() { DataContext = bingWallpapers[i] };
+            //    if (i==0)
+            //    {
+            //       VariableSizedWrapGrid.SetColumnSpan(thumbnail, 2);
+            //    }
+            //    else
+            //    {
+            //        VariableSizedWrapGrid.SetColumnSpan(thumbnail, 1);
+            //    }
+            //    grid.Children.Add(thumbnail);
+            //}
         }
 
         private void BtnNextYear_Click(object sender, RoutedEventArgs e)
@@ -87,13 +94,6 @@ namespace MSDevUnion.BingWallpaper.Views
 
         private void DtpViewingMonth_DateChanged(object sender, DatePickerValueChangedEventArgs e)
         {
-        }
-
-        private void GridView_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            var rr = e.ClickedItem;
-
-            Frame.Navigate(typeof(DetailView), rr);
         }
     }
 }

@@ -4,6 +4,7 @@ using MSDevUnion.BingWallpaper.Services;
 using SoftwareKobo.UniversalToolkit.Mvvm;
 using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace MSDevUnion.BingWallpaper.ViewModels
 {
@@ -100,7 +101,7 @@ namespace MSDevUnion.BingWallpaper.ViewModels
             }
         }
 
-        public async void LoadBingWallpapers()
+        public async Task LoadBingWallpapers()
         {
             string market = AppSettings.Area;
             int year = ViewingDate.Year;

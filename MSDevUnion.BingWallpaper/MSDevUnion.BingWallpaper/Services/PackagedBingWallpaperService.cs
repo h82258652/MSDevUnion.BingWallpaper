@@ -3,6 +3,7 @@ using MSDevUnion.BingWallpaper.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace MSDevUnion.BingWallpaper.Services
@@ -49,6 +50,12 @@ namespace MSDevUnion.BingWallpaper.Services
                         }
 
                         bingWallpapers.Add(bingWallpaper);
+                    }
+
+                    var first = bingWallpapers.FirstOrDefault();
+                    if (first != null)
+                    {
+                        first.IsFirst = true;
                     }
 
                     return new ObservableCollection<BingWallpaperModel>(bingWallpapers);

@@ -1,0 +1,102 @@
+﻿<Page x:Class="BingoWallpaper.Views.SettingView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:BingoWallpaper.Views"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:conv="using:BingoWallpaper.Converters"
+      mc:Ignorable="d"
+      DataContext="{Binding Source={StaticResource ResourceKey=Locator},Path=Setting}">
+    <Page.Transitions>
+        <TransitionCollection>
+            <EdgeUIThemeTransition Edge="Right" />
+        </TransitionCollection>
+    </Page.Transitions>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel Orientation="Vertical">
+                <!--#region 壁纸保存位置-->
+                <ComboBox ItemsSource="{Binding Path=SaveLocations}"
+                          SelectedItem="{Binding Path=SaveLocation,Mode=TwoWay}"
+                          Margin="10"
+                          Width="200">
+                    <ComboBox.Header>
+                        <TextBlock x:Uid="/Setting/SaveLocation"
+                                   Text="壁纸保存位置">
+                            <TextBlock.Transitions>
+                                <TransitionCollection>
+                                    <EntranceThemeTransition FromHorizontalOffset="100"
+                                                             FromVerticalOffset="0" />
+                                </TransitionCollection>
+                            </TextBlock.Transitions></TextBlock>
+                    </ComboBox.Header>
+                </ComboBox>
+                <!--#endregion-->
+                <!--#region 壁纸大小-->
+                <ComboBox ItemsSource="{Binding Path=WallpaperSizes}"
+                          SelectedItem="{Binding Path=WallpaperSize,Mode=TwoWay}"
+                          Margin="10"
+                          Width="200">
+                    <ComboBox.Header>
+                        <TextBlock x:Uid="/Setting/WallpaperSize"
+                                   Text="壁纸大小">
+                            <TextBlock.Transitions>
+                                <TransitionCollection>
+                                    <EntranceThemeTransition FromHorizontalOffset="100"
+                                                             FromVerticalOffset="0" />
+                                </TransitionCollection>
+                            </TextBlock.Transitions></TextBlock>
+                    </ComboBox.Header>
+                </ComboBox>
+                <!--#endregion-->
+                <!--#region 国家/地区-->
+                <ComboBox ItemsSource="{Binding Path=Areas}"
+                          SelectedItem="{Binding Path=Area,Mode=TwoWay}"
+                          Margin="10"
+                          Width="200">
+                    <ComboBox.Header>
+                        <TextBlock x:Uid="/Setting/Area"
+                                   Text="国家/地区">
+                            <TextBlock.Transitions>
+                                <TransitionCollection>
+                                    <EntranceThemeTransition FromHorizontalOffset="100"
+                                                             FromVerticalOffset="0" />
+                                </TransitionCollection>
+                            </TextBlock.Transitions></TextBlock>
+                    </ComboBox.Header>
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel.Resources>
+                                    <conv:AreaToFlagConverter x:Key="AreaToFlagConverter" />
+                                    <conv:AreaToNameConverter x:Key="AreaToNameConverter" />
+                                </StackPanel.Resources>
+                                <Image Source="{Binding Converter={StaticResource AreaToFlagConverter}}"
+                                       VerticalAlignment="Center"
+                                       Height="25" />
+                                <TextBlock Text="{Binding Converter={StaticResource AreaToNameConverter}}"
+                                           VerticalAlignment="Center"
+                                           Margin="5,0,0,0" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <!--#endregion-->
+                <StackPanel Orientation="Horizontal"
+                            Margin="10">
+                    <Button VerticalAlignment="Center"
+                            Padding="10,5,10,5"
+                            Click="BtnCleanupCachedImage_Click"
+                            Content="清空图片缓存"
+                            ToolTipService.ToolTip="清空图片缓存" />
+                    <TextBlock VerticalAlignment="Center"
+                               Margin="5,0,0,0"
+                               Text="已缓存：" />
+                    <TextBlock VerticalAlignment="Center"
+                               x:Name="txtCachedSize"
+                               Text="正在计算……" />
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

@@ -1,0 +1,17 @@
+﻿<toolkit:Bootstrapper x:Class="BingoWallpaper.App"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:local="using:BingoWallpaper"
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:toolkit="using:SoftwareKobo.UniversalToolkit"
+                      xmlns:vm="using:BingoWallpaper.ViewModels"
+                      mc:Ignorable="d"
+                      RequestedTheme="Light">
+    <toolkit:Bootstrapper.Resources>
+        <ResourceDictionary>
+            <vm:ViewModelLocator x:Key="Locator"
+                                 d:IsDataSource="True"></vm:ViewModelLocator>
+        </ResourceDictionary>
+    </toolkit:Bootstrapper.Resources>
+</toolkit:Bootstrapper>

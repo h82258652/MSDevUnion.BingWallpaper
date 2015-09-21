@@ -1,0 +1,90 @@
+﻿<Page x:Class="BingoWallpaper.Views.DetailView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:BingoWallpaper.Views"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:conv="using:BingoWallpaper.Converters"
+      xmlns:storage="using:SoftwareKobo.UniversalToolkit.Storage"
+      mc:Ignorable="d"
+      DataContext="{Binding Source={StaticResource ResourceKey=Locator},Path=Detail}">
+    <Page.Transitions>
+        <TransitionCollection>
+            <NavigationThemeTransition>
+                <ContinuumNavigationTransitionInfo />
+            </NavigationThemeTransition>
+        </TransitionCollection>
+    </Page.Transitions>
+    <Page.Resources>
+        <conv:WallpaperUrlConverter x:Key="WallpaperUrlConverter" />
+    </Page.Resources>
+    <Page.BottomAppBar>
+        <CommandBar x:Name="AppBar"
+                    Background="{ThemeResource SystemControlBackgroundAccentBrush}"
+                    IsSticky="True">
+            <AppBarButton Icon="Save"
+                          Click="BtnSave_Click"
+                          x:Uid="/Detail/Save"
+                          Label="保存"
+                          ToolTipService.ToolTip="保存" />
+            <AppBarSeparator />
+            <AppBarButton Click="BtnSetWallpaper_Click"
+                          x:Uid="/Detail/SetWallpaper"
+                          Label="设置为壁纸"
+                          ToolTipService.ToolTip="设置为壁纸">
+                <AppBarButton.Icon>
+                    <FontIcon FontFamily="Segoe MDL2 Assets"
+                              Glyph="&#xE771;"></FontIcon>
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <AppBarButton Icon="SetLockScreen"
+                          Click="BtnSetLockScreen_Click"
+                          x:Uid="/Detail/SetLookScreen"
+                          Label="设置为锁屏"
+                          ToolTipService.ToolTip="设置为锁屏" />
+            <AppBarButton Icon="ReShare"
+                          Click="BtnShare_Click"
+                          x:Uid="/Detail/Share"
+                          Label="分享"
+                          ToolTipService.ToolTip="分享" />
+        </CommandBar>
+    </Page.BottomAppBar>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid>
+            <ScrollViewer x:Name="ScrollViewer"
+                          HorizontalScrollBarVisibility="Auto"
+                          VerticalScrollBarVisibility="Auto">
+                <Image Stretch="None">
+                    <Image.Source>
+                        <storage:StorageCachedImage x:Name="image"
+                                                    UriSource="{Binding Path=Wallpaper,Converter={StaticResource ResourceKey=WallpaperUrlConverter}}"
+                                                    IsAutoRetry="True" />
+                    </Image.Source>
+                </Image>
+            </ScrollViewer>
+            <ProgressRing x:Name="LoadingRing"
+                          IsActive="{Binding ElementName=image,Path=IsLoading}"
+                          RenderTransformOrigin="0.5,0.5">
+                <ProgressRing.RenderTransform>
+                    <ScaleTransform ScaleX="5"
+                                    ScaleY="5" />
+                </ProgressRing.RenderTransform>
+            </ProgressRing>
+        </Grid>
+        <Grid VerticalAlignment="Top"
+              Height="40">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0.5,0"
+                                     EndPoint="0.5,1">
+                    <GradientStop Offset="0"
+                                  Color="#80000000" />
+                    <GradientStop Offset="1"
+                                  Color="#00000000" />
+                </LinearGradientBrush>
+            </Grid.Background>
+            <TextBlock Text="{Binding Path=Wallpaper.Archive.Info}"
+                       Foreground="White"
+                       Margin="5" />
+        </Grid>
+    </Grid>
+</Page>

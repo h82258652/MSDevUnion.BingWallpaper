@@ -9,7 +9,6 @@ namespace MSDevUnion.BingWallpaper.ViewModels
         {
             // Register Services.
             Register<IBingWallpaperService, BingWallpaperService>();
-            Register<IScreenService, ScreenService>();
             Register<IServiceArea, ServiceArea>();
 
             // Register ViewModels.

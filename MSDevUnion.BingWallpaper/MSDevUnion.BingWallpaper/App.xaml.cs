@@ -1,11 +1,14 @@
 ﻿using MSDevUnion.BingWallpaper.Datas;
 using MSDevUnion.BingWallpaper.Services;
 using MSDevUnion.BingWallpaper.Views;
+using SoftwareKobo.UniversalToolkit.Extensions;
 using SoftwareKobo.UniversalToolkit.Storage;
+using SoftwareKobo.UniversalToolkit.Utils;
 using System;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -26,32 +29,28 @@ namespace MSDevUnion.BingWallpaper
             this.InitializeComponent();
             this.Suspending += OnSuspending;
             // 下面语句用于测试其他语言。
-             Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "en-US";
+            Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "";
         }
 
-        internal static int DefaultWidth;
-        internal static int DefaultHeight;
-
-        public async Task InitApplicationParameterAsync()
+        public void InitApplicationParameter()
         {
-            var screenService = new ScreenService();
-            await screenService.InitAsync();
-            int width = screenService.Width;
-            int height = screenService.Height;
-            if (ApplicationLocalSettings.Exists(nameof(AppSettings.WallpaperSize)) == false)
-            {
-                WallpaperSize wallpaperSize;
-                if (Enum.TryParse($"_{width}x{height}", out wallpaperSize))
-                {
-                    AppSettings.WallpaperSize = wallpaperSize;
-                }
-                else
-                {
-                    AppSettings.WallpaperSize = WallpaperSize._800x600;
-                }
-            }
-            DefaultWidth = width;
-            DefaultHeight = height;
+            var titleBar = ApplicationView.GetForCurrentView().TitleBar;
+            var accentColor = ColorExtensions.AccentColor;
+            titleBar.BackgroundColor = accentColor;
+            titleBar.ButtonBackgroundColor = accentColor;
+            
+            //if (ApplicationLocalSettings.Exists(nameof(AppSettings.WallpaperSize)) == false)
+            //{
+            //    WallpaperSize wallpaperSize;
+            //    if (Enum.TryParse($"_{ScreenResolution.Width}x{ScreenResolution.Height}", out wallpaperSize))
+            //    {
+            //        AppSettings.WallpaperSize = wallpaperSize;
+            //    }
+            //    else
+            //    {
+            //        AppSettings.WallpaperSize = WallpaperSize._800x600;
+            //    }
+            //}
         }
 
         /// <summary>
@@ -89,7 +88,7 @@ namespace MSDevUnion.BingWallpaper
             }
 
 #warning 检查是否正确位置
-            await InitApplicationParameterAsync();
+            InitApplicationParameter();
 
             if (rootFrame.Content == null)
             {

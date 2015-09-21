@@ -7,24 +7,38 @@
       xmlns:controls="using:MSDevUnion.BingWallpaper.Controls"
       xmlns:conv="using:MSDevUnion.BingWallpaper.Converters"
       xmlns:extensions="using:MSDevUnion.BingWallpaper.Extensions"
+      xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+      xmlns:core="using:Microsoft.Xaml.Interactions.Core"
       mc:Ignorable="d"
       DataContext="{Binding Source={StaticResource Locator},Path=Main}">
     <Page.Resources>
         <conv:StringFormatConverter x:Key="StringFormatConverter" />
         <conv:ThumbnailUrlConverter x:Key="ThumbnailUrlConverter" />
+        <conv:ThumbnailColumnConverter x:Key="ThumbnailColumnConverter" />
     </Page.Resources>
     <Page.BottomAppBar>
         <CommandBar x:Name="appBar"
                     Background="{ThemeResource SystemControlBackgroundAccentBrush}">
             <AppBarButton Label="设置"
-                          Icon="Setting"
-                          Click="BtnSetting_Click"></AppBarButton>
+                          Icon="Setting">
+                <interactivity:Interaction.Behaviors>
+                    <core:EventTriggerBehavior EventName="Click">
+                        <core:NavigateToPageAction TargetPage="MSDevUnion.BingWallpaper.Views.SettingView" />
+                    </core:EventTriggerBehavior>
+                </interactivity:Interaction.Behaviors>
+            </AppBarButton>
             <AppBarButton Label="关于"
-                          Icon="Important"
-                          Click="BtnAbout_Click"></AppBarButton>
+                          Icon="Important">
+                <interactivity:Interaction.Behaviors>
+                    <core:EventTriggerBehavior EventName="Click">
+                        <core:NavigateToPageAction TargetPage="MSDevUnion.BingWallpaper.Views.AboutView" />
+                    </core:EventTriggerBehavior>
+                </interactivity:Interaction.Behaviors>
+            </AppBarButton>
         </CommandBar>
     </Page.BottomAppBar>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <!--#region AppBar Visual State-->
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState x:Name="small">
@@ -47,114 +61,89 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <!--<ListView ItemsSource="{Binding Path=ViewingBingWallpapers}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Image Source="{Binding Path=UrlBase,Converter={StaticResource ResourceKey=ThumbnailUrlConverter}}" ></Image>
-                                            </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <controls:ThumbnailFlowPanel />
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
-        </ListView>-->
-        <ScrollViewer x:Name="scrollViewer"
-                      VerticalScrollBarVisibility="Auto"
-                      HorizontalScrollBarVisibility="Disabled">
-            <ItemsControl ItemsSource="{Binding Path=ViewingBingWallpapers}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Margin="5">
-                            <Image Source="{Binding Converter={StaticResource ResourceKey=ThumbnailUrlConverter}}"
-                                   Stretch="None"></Image>
-                        </Grid>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VariableSizedWrapGrid Orientation="Horizontal" HorizontalAlignment="Center"></VariableSizedWrapGrid>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-            </ItemsControl>
-        </ScrollViewer>
-        <!--<VariableSizedWrapGrid x:Name="vswgBingWallpapers" extensions:VariableSizedWrapGridExtensions.ItemsSource="{Binding Path=ViewingBingWallpapers}">
-            <extensions:VariableSizedWrapGridExtensions.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Image Source="{Binding Converter={StaticResource ResourceKey=ThumbnailUrlConverter}}" Stretch="None"></Image>
-                    </Grid>
-                </DataTemplate>
-            </extensions:VariableSizedWrapGridExtensions.ItemTemplate>
-        </VariableSizedWrapGrid>-->
-        <!--<Grid Margin="10">
-            <GridView Padding="0,0,0,30"
-                      ItemsSource="{Binding Path=ViewingBingWallpapers}"
-                      IsItemClickEnabled="True"
-                      ItemClick="GridView_ItemClick">
-                <GridView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Image Source="{Binding Converter={StaticResource ResourceKey=ThumbnailUrlConverter}}"
-                                   Stretch="None"></Image>
-                        </Grid>
-                    </DataTemplate>
-                </GridView.ItemTemplate>
-                <GridView.ItemContainerStyle>
-                    <Style TargetType="GridViewItem">
-                        <Setter Property="Margin"
-                                Value="5"></Setter>
-                    </Style>
-                </GridView.ItemContainerStyle>
-            </GridView>
-        </Grid>-->
-        <Grid x:Name="grdControl"
-              VerticalAlignment="Bottom"
-              HorizontalAlignment="Center"
-              Height="48"
-              CornerRadius="10,10,0,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition  Width="Auto" />
-                <ColumnDefinition  Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <Button Grid.Column="0"
-                    Padding="0"
-                    Background="Transparent"
-                    BorderBrush="Transparent"
-                    Click="BtnPreviousYear_Click">
-                <ContentControl Style="{StaticResource ResourceKey=PerviousYear}"></ContentControl>
-            </Button>
-            <Button Grid.Column="1"
-                    Padding="0"
-                    Background="Transparent"
-                    BorderBrush="Transparent"
-                    Click="BtnPreviousMonth_Click">
-                <ContentControl Style="{StaticResource ResourceKey=PerviousMonth}"></ContentControl>
-            </Button>
-            <DatePicker Grid.Column="2"
-                        DayVisible="False"
-                        x:Name="dtpViewingMonth"
-                        DateChanged="DtpViewingMonth_DateChanged" />
-            <Button Grid.Column="3"
-                    Padding="0"
-                    Background="Transparent"
-                    BorderBrush="Transparent"
-                    Click="BtnNextMonth_Click">
-                <ContentControl Style="{StaticResource ResourceKey=NextMonth}"></ContentControl>
-            </Button>
-            <Button Grid.Column="4"
-                    Padding="0"
-                    Background="Transparent"
-                    BorderBrush="Transparent"
-                    Click="BtnNextYear_Click"
-                    ToolTipService.ToolTip="下一年">
-                <ContentControl Style="{StaticResource ResourceKey=NextYear}"></ContentControl>
-            </Button>
+        <!--#endregion-->
+        <Grid>
+            <Grid.Background>
+                <ImageBrush>
+                    <ImageBrush.ImageSource>
+                        <BitmapImage x:Name="backgroundImage" />
+                    </ImageBrush.ImageSource>
+                </ImageBrush>
+            </Grid.Background>
+            <ScrollViewer x:Name="scrollViewer"
+                          VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Disabled">
+                <!--<VariableSizedWrapGrid x:Name="grid"
+                                       Orientation="Horizontal"
+                                       HorizontalAlignment="Center"
+                                       Margin="5"
+                                       ItemWidth="150"></VariableSizedWrapGrid>-->
+                <ItemsControl ItemsSource="{Binding Path=ViewingBingWallpapers}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <controls:Thumbnail></controls:Thumbnail>
+                            <!--<Grid Margin="5"
+                                  VariableSizedWrapGrid.ColumnSpan="{Binding Path=IsFirst,Converter={StaticResource ResourceKey=ThumbnailColumnConverter}}">
+                                <Image Source="{Binding Converter={StaticResource ResourceKey=ThumbnailUrlConverter}}"
+                                       Stretch="None"></Image>
+                            </Grid>-->
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VariableSizedWrapGrid Orientation="Horizontal"
+                                                   HorizontalAlignment="Center"
+                                                   ItemWidth="160" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </ScrollViewer>
+            <Grid x:Name="grdControl"
+                  VerticalAlignment="Bottom"
+                  HorizontalAlignment="Center"
+                  Height="48"
+                  CornerRadius="10,10,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition  Width="Auto" />
+                    <ColumnDefinition  Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0"
+                        Padding="0"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        Click="BtnPreviousYear_Click">
+                    <ContentControl Style="{StaticResource ResourceKey=PerviousYear}"></ContentControl>
+                </Button>
+                <Button Grid.Column="1"
+                        Padding="0"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        Click="BtnPreviousMonth_Click">
+                    <ContentControl Style="{StaticResource ResourceKey=PerviousMonth}"></ContentControl>
+                </Button>
+                <DatePicker Grid.Column="2"
+                            DayVisible="False"
+                            x:Name="dtpViewingMonth"
+                            DateChanged="DtpViewingMonth_DateChanged" />
+                <Button Grid.Column="3"
+                        Padding="0"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        Click="BtnNextMonth_Click">
+                    <ContentControl Style="{StaticResource ResourceKey=NextMonth}"></ContentControl>
+                </Button>
+                <Button Grid.Column="4"
+                        Padding="0"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        Click="BtnNextYear_Click"
+                        ToolTipService.ToolTip="下一年">
+                    <ContentControl Style="{StaticResource ResourceKey=NextYear}"></ContentControl>
+                </Button>
+            </Grid>
         </Grid>
     </Grid>
 </Page>

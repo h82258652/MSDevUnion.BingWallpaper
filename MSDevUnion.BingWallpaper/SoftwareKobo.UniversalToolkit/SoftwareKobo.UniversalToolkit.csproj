@@ -113,10 +113,20 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppStartInfo.cs" />
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Controls\ExtendedSplashScreen.xaml.cs">
+      <DependentUpon>ExtendedSplashScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ExtendedSplashScreenContent.cs" />
+    <Compile Include="Converters\BooleanInverseConverter.cs" />
+    <Compile Include="Converters\StringFormatConverter.cs" />
+    <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Extensions\HttpClientExtensions.cs" />
+    <Compile Include="Extensions\PackageExtensions.cs" />
+    <Compile Include="Extensions\VisualTreeHelperExtensions.cs" />
     <Compile Include="Helpers\HardwareButtonsHelper.cs" />
     <Compile Include="Helpers\NavigationBackHelper.cs" />
-    <Compile Include="Helpers\ScreenResolutionHelper.cs" />
     <Compile Include="Mvvm\BindableBase.cs" />
     <Compile Include="Mvvm\DelegateCommand.cs" />
     <Compile Include="Mvvm\DelegateCommandGeneric.cs" />
@@ -129,14 +139,29 @@
     <Compile Include="Storage\ApplicationRoamingSettings.cs" />
     <Compile Include="Storage\ApplicationSettings.cs" />
     <Compile Include="Storage\ApplicationTempSettings.cs" />
+    <Compile Include="Storage\ImageLoadFailedEventArgs.cs" />
     <Compile Include="Storage\ISettings.cs" />
+    <Compile Include="Storage\IsolatedStorageFileExtensions.cs" />
     <Compile Include="Storage\SettingsStrategy.cs" />
+    <Compile Include="Storage\StorageCachedImage.cs" />
+    <Compile Include="Utils\AppxManifest\ApplicationManifest.cs" />
+    <Compile Include="Utils\AppxManifest\DefaultTileManifest.cs" />
+    <Compile Include="Utils\AppxManifest\ManifestBase.cs" />
+    <Compile Include="Utils\AppxManifest\PackageManifest.cs" />
+    <Compile Include="Utils\AppxManifest\SplashScreenManifest.cs" />
+    <Compile Include="Utils\AppxManifest\VisualElementsManifest.cs" />
     <Content Include="Properties\SoftwareKobo.UniversalToolkit.rd.xml" />
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="WindowsMobile, Version=10.0.10240.0">
       <Name>Windows Mobile Extensions for the UWP</Name>
     </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Controls\ExtendedSplashScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

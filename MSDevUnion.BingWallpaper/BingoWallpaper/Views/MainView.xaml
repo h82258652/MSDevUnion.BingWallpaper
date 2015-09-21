@@ -1,0 +1,134 @@
+﻿<Page x:Class="BingoWallpaper.Views.MainView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:BingoWallpaper.Views"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+      xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+      xmlns:media="using:Microsoft.Xaml.Interactions.Media"
+      xmlns:conv="using:SoftwareKobo.UniversalToolkit.Converters"
+      xmlns:storage="using:SoftwareKobo.UniversalToolkit.Storage"
+      xmlns:controls="using:BingoWallpaper.Controls"
+      mc:Ignorable="d"
+      DataContext="{Binding Source={StaticResource ResourceKey=Locator},Path=Main}">
+    <Page.BottomAppBar>
+        <AppBar x:Name="AppBar"
+                ClosedDisplayMode="Compact"
+                Background="{ThemeResource SystemControlBackgroundAccentBrush}">
+            <Grid>
+                <Grid.Resources>
+                    <conv:StringFormatConverter x:Key="ViewMonthConverter" />
+                    <conv:BooleanInverseConverter x:Key="BooleanInverseConverter" />
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0"
+                           Margin="5"
+                           FontSize="{ThemeResource TextStyleExtraLargeFontSize}"
+                           Text="{Binding Path=ViewMonth,Converter={StaticResource ResourceKey=ViewMonthConverter},ConverterParameter='{}{0:yyyy-M}'}"></TextBlock>
+                <AppBarButton Grid.Column="1"
+                              IsCompact="{Binding ElementName=AppBar,Path=IsOpen,Converter={StaticResource ResourceKey=BooleanInverseConverter}}"
+                              Icon="Setting"
+                              x:Uid="/Main/Setting"
+                              Label="设置"
+                              ToolTipService.ToolTip="设置">
+                    <interactivity:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="Click">
+                            <core:NavigateToPageAction TargetPage="BingoWallpaper.Views.SettingView" />
+                        </core:EventTriggerBehavior>
+                    </interactivity:Interaction.Behaviors>
+                </AppBarButton>
+                <AppBarButton Grid.Column="2"
+                              IsCompact="{Binding ElementName=AppBar,Path=IsOpen,Converter={StaticResource ResourceKey=BooleanInverseConverter}}"
+                              x:Uid="/Main/About"
+                              Label="关于"
+                              ToolTipService.ToolTip="关于">
+                    <AppBarButton.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets"
+                                  Glyph="&#xE946;" />
+                    </AppBarButton.Icon>
+                    <interactivity:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="Click">
+                            <core:NavigateToPageAction TargetPage="BingoWallpaper.Views.AboutView" />
+                        </core:EventTriggerBehavior>
+                    </interactivity:Interaction.Behaviors>
+                </AppBarButton>
+            </Grid>
+        </AppBar>
+    </Page.BottomAppBar>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid>
+            <Image x:Name="backgroundBrush"
+                   Stretch="UniformToFill"
+                   Opacity="0.5">
+                <Image.Resources>
+                    <Storyboard x:Name="backgroundStoryboard">
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="backgroundBrush"
+                                                       Storyboard.TargetProperty="Opacity">
+                            <EasingDoubleKeyFrame KeyTime="0:0:0"
+                                                  Value="0" />
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.15"
+                                                  Value="0.5" />
+                        </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                </Image.Resources>
+                <Image.Source>
+                    <storage:StorageCachedImage UriSource="{Binding Path=BackgroundImage}"
+                                                IsAutoRetry="True"
+                                                ImageOpened="BackgroundImage_Loaded"></storage:StorageCachedImage>
+                </Image.Source>
+            </Image>
+            <!--#endregion-->
+            <GridView ScrollViewer.VerticalScrollBarVisibility="Auto"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                      ItemsSource="{Binding Path=Wallpapers}"
+                      ItemClick="GridView_ItemClick"
+                      IsItemClickEnabled="True">
+                <GridView.ItemContainerStyle>
+                    <Style TargetType="GridViewItem">
+                        <Setter Property="Margin"
+                                Value="5" />
+                    </Style>
+                </GridView.ItemContainerStyle>
+                <GridView.ItemTemplate>
+                    <DataTemplate>
+                        <controls:Thumbnail />
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+                <GridView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VariableSizedWrapGrid Orientation="Horizontal"
+                                               HorizontalAlignment="Center"
+                                               Margin="0,10,0,0"
+                                               ItemWidth="160"
+                                               ItemHeight="160" />
+                    </ItemsPanelTemplate>
+                </GridView.ItemsPanel>
+            </GridView>
+            <Border HorizontalAlignment="Left"
+                    VerticalAlignment="Center">
+                <SymbolIcon Symbol="Forward"></SymbolIcon>
+            </Border>
+            <!--<Button HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Content="&#xE760;"
+                    Command="{Binding Path=NextMonthCommand}"
+                    FontFamily="Segoe MDL2 Assets"></Button>-->
+            <Border HorizontalAlignment="Right"
+                    VerticalAlignment="Center">
+                <FontIcon FontFamily="Segoe MDL2 Assets"
+                          Glyph="&#xE760;"
+                          RenderTransformOrigin="0.5,0.5">
+                    <FontIcon.RenderTransform>
+                        <ScaleTransform ScaleX="3"
+                                        ScaleY="3" />
+                    </FontIcon.RenderTransform>
+                </FontIcon>
+            </Border>
+        </Grid>
+    </Grid>
+</Page>

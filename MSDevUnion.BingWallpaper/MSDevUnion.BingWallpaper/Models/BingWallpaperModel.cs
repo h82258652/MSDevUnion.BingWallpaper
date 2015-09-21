@@ -25,5 +25,11 @@
             get;
             set;
         }
+
+        public bool IsFirst
+        {
+            get;
+            set;
+        }
     }
 }
