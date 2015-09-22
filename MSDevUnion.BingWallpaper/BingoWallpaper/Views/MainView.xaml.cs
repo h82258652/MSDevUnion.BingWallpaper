@@ -1,4 +1,7 @@
-﻿using BingoWallpaper.ViewModels;
+﻿using BingoWallpaper.Datas;
+using BingoWallpaper.ViewModels;
+using System.Collections.Generic;
+using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -23,17 +26,34 @@ namespace BingoWallpaper.Views
             }
         }
 
+        private static string _lastViewArea;
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            if (string.Equals(_lastViewArea, AppSetting.Area) == false)
+            {
+                ViewModel.LoadWallpaper();
+            }
+
             base.OnNavigatedTo(e);
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            _lastViewArea = AppSetting.Area;
+
+            base.OnNavigatedFrom(e);
         }
 
         private void BackgroundImage_Loaded(object sender, RoutedEventArgs e)
         {
-            this.backgroundStoryboard.Begin();
+            if (Frame.ForwardStack.Count == 0)
+            {
+                this.backgroundStoryboard.Begin();
+            }
         }
 
-        private void GridView_ItemClick(object sender, ItemClickEventArgs e)
+        private void Wallpaper_Click(object sender, ItemClickEventArgs e)
         {
             this.Frame.Navigate(typeof(DetailView), e.ClickedItem);
         }

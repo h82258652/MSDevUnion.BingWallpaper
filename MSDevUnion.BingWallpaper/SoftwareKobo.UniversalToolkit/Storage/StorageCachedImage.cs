@@ -2,6 +2,7 @@
 using System.IO;
 using System.IO.IsolatedStorage;
 using System.Net;
+using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml;
@@ -164,10 +165,16 @@ namespace SoftwareKobo.UniversalToolkit.Storage
                                 var filePath = GetFilePath(uri);
                                 if (isolatedStorage.FileExists(filePath))
                                 {
-                                    // 使用本地缓存。
-                                    using (var cachedImageStream = isolatedStorage.OpenFile(filePath, FileMode.Open, FileAccess.Read))
+                                    // 使用本地缓存。                                    
+                                    using (var cachedImageStream = isolatedStorage.OpenFile(filePath, FileMode.Open, FileAccess.Read, FileShare.Read))
                                     {
-                                        await obj.SetSourceAsync(cachedImageStream.AsRandomAccessStream());
+                                        try
+                                        {
+                                            await obj.SetSourceAsync(cachedImageStream.AsRandomAccessStream());
+                                        }
+                                        catch (TaskCanceledException)
+                                        {
+                                        }
                                     }
                                 }
                                 else

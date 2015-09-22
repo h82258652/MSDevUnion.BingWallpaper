@@ -2,7 +2,6 @@
 using BingoWallpaper.Services;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using System;
 
 namespace BingoWallpaper.Datas
 {

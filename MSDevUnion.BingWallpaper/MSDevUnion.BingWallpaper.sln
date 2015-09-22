@@ -19,7 +19,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AVOSCloud", "AVOSCloud\AVOS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingoWallpaper.BackgroundTask", "BingoWallpaper.BackgroundTask\BingoWallpaper.BackgroundTask.csproj", "{F4FD2F70-F1AA-48D0-A1C8-5C70BEA2B3A2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingoWallpaper.Models", "BingoWallpaper.Models\BingoWallpaper.Models.csproj", "{17729BC7-8098-462B-AB18-D2A034DB658B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingoWallpaper.Services", "BingoWallpaper.Services\BingoWallpaper.Services.csproj", "{7D58C672-8C4A-4FC1-9B2F-ECB974937BF6}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "BingoWallpaper.Shared", "BingoWallpaper.Shared\BingoWallpaper.Shared.shproj", "{05DFD84B-F846-4BD5-BDD4-54B8E0C311FE}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		BingoWallpaper.Shared\BingoWallpaper.Shared.projitems*{05dfd84b-f846-4bd5-bdd4-54b8e0c311fe}*SharedItemsImports = 13
+		BingoWallpaper.Shared\BingoWallpaper.Shared.projitems*{1283fa27-488e-453a-9c14-e9848027b4d1}*SharedItemsImports = 4
+		BingoWallpaper.Shared\BingoWallpaper.Shared.projitems*{f4fd2f70-f1aa-48d0-a1c8-5c70bea2b3a2}*SharedItemsImports = 4
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|ARM = Debug|ARM
@@ -173,6 +184,38 @@ Global
 		{F4FD2F70-F1AA-48D0-A1C8-5C70BEA2B3A2}.Release|x64.Build.0 = Release|x64
 		{F4FD2F70-F1AA-48D0-A1C8-5C70BEA2B3A2}.Release|x86.ActiveCfg = Release|x86
 		{F4FD2F70-F1AA-48D0-A1C8-5C70BEA2B3A2}.Release|x86.Build.0 = Release|x86
+		{17729BC7-8098-462B-AB18-D2A034DB658B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17729BC7-8098-462B-AB18-D2A034DB658B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17729BC7-8098-462B-AB18-D2A034DB658B}.Debug|ARM.ActiveCfg = Debug|ARM
+		{17729BC7-8098-462B-AB18-D2A034DB658B}.Debug|ARM.Build.0 = Debug|ARM
+		{17729BC7-8098-462B-AB18-D2A034DB658B}.Debug|x64.ActiveCfg = Debug|x64
+		{17729BC7-8098-462B-AB18-D2A034DB658B}.Debug|x64.Build.0 = Debug|x64
+		{17729BC7-8098-462B-AB18-D2A034DB658B}.Debug|x86.ActiveCfg = Debug|x86
+		{17729BC7-8098-462B-AB18-D2A034DB658B}.Debug|x86.Build.0 = Debug|x86
+		{17729BC7-8098-462B-AB18-D2A034DB658B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17729BC7-8098-462B-AB18-D2A034DB658B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17729BC7-8098-462B-AB18-D2A034DB658B}.Release|ARM.ActiveCfg = Release|ARM
+		{17729BC7-8098-462B-AB18-D2A034DB658B}.Release|ARM.Build.0 = Release|ARM
+		{17729BC7-8098-462B-AB18-D2A034DB658B}.Release|x64.ActiveCfg = Release|x64
+		{17729BC7-8098-462B-AB18-D2A034DB658B}.Release|x64.Build.0 = Release|x64
+		{17729BC7-8098-462B-AB18-D2A034DB658B}.Release|x86.ActiveCfg = Release|x86
+		{17729BC7-8098-462B-AB18-D2A034DB658B}.Release|x86.Build.0 = Release|x86
+		{7D58C672-8C4A-4FC1-9B2F-ECB974937BF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D58C672-8C4A-4FC1-9B2F-ECB974937BF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D58C672-8C4A-4FC1-9B2F-ECB974937BF6}.Debug|ARM.ActiveCfg = Debug|ARM
+		{7D58C672-8C4A-4FC1-9B2F-ECB974937BF6}.Debug|ARM.Build.0 = Debug|ARM
+		{7D58C672-8C4A-4FC1-9B2F-ECB974937BF6}.Debug|x64.ActiveCfg = Debug|x64
+		{7D58C672-8C4A-4FC1-9B2F-ECB974937BF6}.Debug|x64.Build.0 = Debug|x64
+		{7D58C672-8C4A-4FC1-9B2F-ECB974937BF6}.Debug|x86.ActiveCfg = Debug|x86
+		{7D58C672-8C4A-4FC1-9B2F-ECB974937BF6}.Debug|x86.Build.0 = Debug|x86
+		{7D58C672-8C4A-4FC1-9B2F-ECB974937BF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D58C672-8C4A-4FC1-9B2F-ECB974937BF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D58C672-8C4A-4FC1-9B2F-ECB974937BF6}.Release|ARM.ActiveCfg = Release|ARM
+		{7D58C672-8C4A-4FC1-9B2F-ECB974937BF6}.Release|ARM.Build.0 = Release|ARM
+		{7D58C672-8C4A-4FC1-9B2F-ECB974937BF6}.Release|x64.ActiveCfg = Release|x64
+		{7D58C672-8C4A-4FC1-9B2F-ECB974937BF6}.Release|x64.Build.0 = Release|x64
+		{7D58C672-8C4A-4FC1-9B2F-ECB974937BF6}.Release|x86.ActiveCfg = Release|x86
+		{7D58C672-8C4A-4FC1-9B2F-ECB974937BF6}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

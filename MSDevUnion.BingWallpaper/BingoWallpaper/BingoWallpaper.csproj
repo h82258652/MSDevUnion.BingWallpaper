@@ -112,6 +112,8 @@
     </Compile>
     <Compile Include="Converters\AreaToFlagConverter.cs" />
     <Compile Include="Converters\AreaToNameConverter.cs" />
+    <Compile Include="Converters\SaveLocationConverter.cs" />
+    <Compile Include="Converters\ThumbnailNameConverter.cs" />
     <Compile Include="Converters\ThumbnailUrlConverter.cs" />
     <Compile Include="Converters\WallpaperUrlConverter.cs" />
     <Compile Include="Datas\AppRunningData.cs" />
@@ -121,23 +123,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LocalizedStrings.tt</DependentUpon>
     </Compile>
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Archive.cs" />
-    <Compile Include="Models\AVObject.cs" />
-    <Compile Include="Models\CoverStory.cs" />
-    <Compile Include="Models\Hotspot.cs" />
-    <Compile Include="Models\Image.cs" />
-    <Compile Include="Models\LeanCloudPointer.cs" />
-    <Compile Include="Models\LeanCloudResultBase.cs" />
-    <Compile Include="Models\LeanCloudResultCollection.cs" />
-    <Compile Include="Models\Message.cs" />
-    <Compile Include="Models\Wallpaper.cs" />
-    <Compile Include="Models\WallpaperSize.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ServiceArea.cs" />
-    <Compile Include="Services\WallpaperService.cs" />
     <Compile Include="Utils\SuitableWallpaperSize.cs" />
     <Compile Include="ViewModels\DetailViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
@@ -199,10 +185,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Views\AboutView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -221,6 +203,18 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BingoWallpaper.BackgroundTask\BingoWallpaper.BackgroundTask.csproj">
+      <Project>{f4fd2f70-f1aa-48d0-a1c8-5c70bea2b3a2}</Project>
+      <Name>BingoWallpaper.BackgroundTask</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BingoWallpaper.Models\BingoWallpaper.Models.csproj">
+      <Project>{17729bc7-8098-462b-ab18-d2a034db658b}</Project>
+      <Name>BingoWallpaper.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BingoWallpaper.Services\BingoWallpaper.Services.csproj">
+      <Project>{7d58c672-8c4a-4fc1-9b2f-ecb974937bf6}</Project>
+      <Name>BingoWallpaper.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SoftwareKobo.UniversalToolkit\SoftwareKobo.UniversalToolkit.csproj">
       <Project>{db363430-f22a-441f-a043-fe3cdf7954ef}</Project>
       <Name>SoftwareKobo.UniversalToolkit</Name>
@@ -233,7 +227,12 @@
     <SDKReference Include="BehaviorsXamlSDKManaged, Version=12.0">
       <Name>Behaviors SDK %28XAML%29</Name>
     </SDKReference>
+    <SDKReference Include="WindowsMobile, Version=10.0.10240.0">
+      <Name>Windows Mobile Extensions for the UWP</Name>
+    </SDKReference>
   </ItemGroup>
+  <ItemGroup />
+  <Import Project="..\BingoWallpaper.Shared\BingoWallpaper.Shared.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

@@ -6,21 +6,18 @@ using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace BingoWallpaper.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        private string _backgroundImage;
-
         private RelayCommand _nextMonthCommand;
 
         private RelayCommand _previousMonthCommand;
 
         public MainViewModel()
         {
-            this.LoadWallpaper();
-            //  BackgroundImage = "http://www.bing.com/az/hprichbg/rb/BratwurstPolka_ZH-CN13791851201_1920x1080.jpg";
         }
 
         public string BackgroundImage
@@ -47,7 +44,8 @@ namespace BingoWallpaper.ViewModels
                 this._nextMonthCommand = this._nextMonthCommand ?? new RelayCommand(() =>
                 {
                     this.ViewMonth = this.ViewMonth.AddMonths(1);
-                }, () => true);
+                    this.LoadWallpaper();
+                }, () => this.ViewMonth <= DateTimeOffset.Now.AddMinutes(-1));
                 return this._nextMonthCommand;
             }
         }
@@ -59,7 +57,9 @@ namespace BingoWallpaper.ViewModels
                 this._previousMonthCommand = this._previousMonthCommand ?? new RelayCommand(() =>
                 {
                     this.ViewMonth = this.ViewMonth.AddMonths(-1);
-                }, () => true);
+                    this.LoadWallpaper();
+                },
+                () => this.ViewMonth >= AppSetting.MIN_VIEW_MONTH.AddMonths(1));
                 return this._previousMonthCommand;
             }
         }
@@ -74,8 +74,8 @@ namespace BingoWallpaper.ViewModels
             {
                 AppSetting.ViewMonth = value;
                 RaisePropertyChanged(() => ViewMonth);
-                RaisePropertyChanged(() => PreviousMonthCommand);
-                RaisePropertyChanged(() => NextMonthCommand);
+                PreviousMonthCommand.RaiseCanExecuteChanged();
+                NextMonthCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -93,11 +93,19 @@ namespace BingoWallpaper.ViewModels
             }
         }
 
-        private async void LoadWallpaper()
+        private static Task _loadWallpapersTask;
+
+        public async void LoadWallpaper()
         {
             try
             {
-                await AppRunningData.ReLoadWallpapers();
+                if (_loadWallpapersTask != null)
+                {
+                    _loadWallpapersTask.AsAsyncAction().Cancel();
+                }
+
+                _loadWallpapersTask = AppRunningData.ReLoadWallpapers();
+                await _loadWallpapersTask;
                 this.Wallpapers = AppRunningData.Wallpapers;
             }
             catch

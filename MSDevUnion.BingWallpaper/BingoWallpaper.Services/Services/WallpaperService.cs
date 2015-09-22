@@ -14,25 +14,12 @@ namespace BingoWallpaper.Services
     {
         private const string URLBASE = @"https://leancloud.cn";
 
-        public static string LeanCloudAppId
-        {
-            get;
-            set;
-        }
+        private const string LeanCloudAppId = @"2odv0fmdni1w22hceawylo48l76vxbltgpl1mnoq3hlxj55j";
 
-        public static string LeanCloudAppKey
-        {
-            get;
-            set;
-        }
+        private const string LeanCloudAppKey = @"idsoc6l9k218zrge2qi06anel3qcoqgvhutbqm93e4l58d3i";
 
         public async Task<LeanCloudResultCollection<Archive>> GetArchivesAsync(int year, int month, string market)
         {
-            if (market == null)
-            {
-                throw new ArgumentNullException(nameof(market));
-            }
-
             using (HttpClient client = CreateClient())
             {
                 var where = new
@@ -61,6 +48,36 @@ namespace BingoWallpaper.Services
 
                 return await client.GetJsonAsync<Image>(new Uri(requestUri));
             }
+        }
+
+        public async Task<Archive> GetNewestArchiveAsync(string market)
+        {
+            using (HttpClient client = CreateClient())
+            {
+                var where = new
+                {
+                    market = market
+                };
+
+                string requestUri = $"{URLBASE}/1.1/classes/Archive?where={WebUtility.UrlEncode(JsonConvert.SerializeObject(where))}&order=-date&limit=1";
+
+                return (await client.GetJsonAsync<LeanCloudResultCollection<Archive>>(new Uri(requestUri))).FirstOrDefault();
+            }
+        }
+
+        public async Task<Wallpaper> GetNewestWallpaperAsync(string market)
+        {
+            var archive = await GetNewestArchiveAsync(market);
+            if (archive == null)
+            {
+                return null;
+            }
+            var image = await GetImageAsync(archive.Image.ObjectId);
+            return new Wallpaper()
+            {
+                Archive = archive,
+                Image = image
+            };
         }
 
         public async Task<IEnumerable<Wallpaper>> GetWallpapersAsync(int year, int month, string market)

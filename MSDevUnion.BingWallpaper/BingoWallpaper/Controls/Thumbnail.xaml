@@ -14,12 +14,22 @@
     <Grid>
         <Grid.Resources>
             <conv:ThumbnailUrlConverter x:Key="ThumbnailUrlConverter" />
+            <conv:ThumbnailNameConverter x:Key="ThumbnailNameConverter" />
         </Grid.Resources>
+        <!--<Image Source="{Binding Converter={StaticResource ResourceKey=ThumbnailUrlConverter}}"
+               Stretch="None"></Image>-->
         <Image Stretch="None">
             <Image.Source>
                 <storage:StorageCachedImage UriSource="{Binding Converter={StaticResource ResourceKey=ThumbnailUrlConverter}}"
                                             IsAutoRetry="True" />
             </Image.Source>
         </Image>
+        <Border VerticalAlignment="Bottom"
+                Background="#80808080">
+            <TextBlock Text="{Binding Converter={StaticResource ResourceKey=ThumbnailNameConverter}}"
+                       FontSize="{ThemeResource ContentControlFontSize}"
+                       Foreground="{ThemeResource AppBarBackgroundThemeBrush}"
+                       TextWrapping="Wrap" />
+        </Border>
     </Grid>
 </UserControl>

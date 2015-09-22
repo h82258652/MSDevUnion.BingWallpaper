@@ -129,4 +129,7 @@
   <data name="SaveLocation.Text" xml:space="preserve">
     <value>壁纸保存位置</value>
   </data>
+  <data name="WallpaperSize.Text" xml:space="preserve">
+    <value>壁纸大小</value>
+  </data>
 </root>

@@ -4,22 +4,14 @@ using BingoWallpaper.ViewModels;
 using SoftwareKobo.UniversalToolkit.Helpers;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Storage;
+using Windows.Storage.Pickers;
 using Windows.System.UserProfile;
 using Windows.UI.Popups;
-using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.Web.Http;
@@ -46,6 +38,7 @@ namespace BingoWallpaper.Views
                 return (DetailViewModel)this.DataContext;
             }
         }
+
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             this.Frame.UnRegisterNavigateBack();
@@ -62,13 +55,99 @@ namespace BingoWallpaper.Views
             base.OnNavigatedTo(e);
         }
 
-        private void BtnSave_Click(object sender, RoutedEventArgs e)
+        private async void BtnSave_Click(object sender, RoutedEventArgs e)
         {
+            Control control = sender as Control;
+            if (control != null)
+            {
+                control.IsEnabled = false;
+            }
 
+            SaveLocation saveLocation = AppSetting.SaveLocation;
+            switch (saveLocation)
+            {
+                case SaveLocation.PictureLibrary:
+                    await SaveToPictureLibrary();
+                    break;
+                case SaveLocation.ChooseEveryTime:
+                    await SaveToChooseLocation();
+                    break;
+                case SaveLocation.SavedPictures:
+                    await SaveToSavedPictures();
+                    break;
+                default:
+                    break;
+            }
+
+            if (control != null)
+            {
+                control.IsEnabled = true;
+            }
+        }
+
+        private async Task SaveToChooseLocation()
+        {
+            FileSavePicker savePicker = new FileSavePicker();
+            savePicker.FileTypeChoices.Add(".jpg", new List<string>() { ".jpg" });
+            savePicker.SuggestedFileName = Path.GetFileNameWithoutExtension(ViewModel.Wallpaper.Image.UrlBase) + ".jpg";
+            savePicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+            StorageFile file = await savePicker.PickSaveFileAsync();
+            if (file != null)
+            {
+                await SaveFile(file);
+            }
+        }
+
+        private async Task SaveToPictureLibrary()
+        {
+            try
+            {
+                StorageFile file = await KnownFolders.PicturesLibrary.CreateFileAsync(Path.GetFileNameWithoutExtension(ViewModel.Wallpaper.Image.UrlBase) + ".jpg", CreationCollisionOption.ReplaceExisting);
+                await SaveFile(file);
+            }
+            catch
+            {
+                await new MessageDialog("保存失败").ShowAsync();
+            }
+        }
+
+        private async Task SaveToSavedPictures()
+        {
+            try
+            {
+                StorageFile file = await KnownFolders.SavedPictures.CreateFileAsync(Path.GetFileNameWithoutExtension(ViewModel.Wallpaper.Image.UrlBase) + ".jpg", CreationCollisionOption.ReplaceExisting);
+                await SaveFile(file);
+            }
+            catch
+            {
+                await new MessageDialog("保存失败").ShowAsync();
+            }
+        }
+
+        private async Task SaveFile(StorageFile file)
+        {
+            string url = ViewModel.Wallpaper.GetUrl(AppSetting.WallpaperSize);
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    await FileIO.WriteBufferAsync(file, await client.GetBufferAsync(new Uri(url)));
+                }
+                await new MessageDialog("保存成功").ShowAsync();
+            }
+            catch
+            {
+            }
         }
 
         private async void BtnSetLockScreen_Click(object sender, RoutedEventArgs e)
         {
+            Control control = sender as Control;
+            if (control!=null)
+            {
+                control.IsEnabled = false;
+            }
+
             bool isSuccess = false;
             if (UserProfilePersonalizationSettings.IsSupported())
             {
@@ -86,13 +165,24 @@ namespace BingoWallpaper.Views
                 await new MessageDialog("设置成功").ShowAsync();
             }
             else
-            {
+            {                
                 await new MessageDialog("设置失败").ShowAsync();
+            }
+
+            if (control != null)
+            {
+                control.IsEnabled = true; 
             }
         }
 
         private async void BtnSetWallpaper_Click(object sender, RoutedEventArgs e)
         {
+            Control control = sender as Control;
+            if (control != null)
+            {
+                control.IsEnabled = false;
+            }
+
             bool isSuccess = false;
             if (UserProfilePersonalizationSettings.IsSupported())
             {
@@ -113,11 +203,15 @@ namespace BingoWallpaper.Views
             {
                 await new MessageDialog("设置失败").ShowAsync();
             }
+
+            if (control != null)
+            {
+                control.IsEnabled = true;
+            }
         }
 
         private void BtnShare_Click(object sender, RoutedEventArgs e)
         {
-
         }
 
         private async Task<StorageFile> GetWallpaperFile()
@@ -125,8 +219,7 @@ namespace BingoWallpaper.Views
             var file = await ApplicationData.Current.LocalFolder.CreateFileAsync(Guid.NewGuid().ToString());
             using (HttpClient client = new HttpClient())
             {
-                string size = AppSetting.WallpaperSize.ToString();
-                string url = "http://www.bing.com" + this.ViewModel.Wallpaper.Image.UrlBase + "_" + size + ".jpg";
+                string url = ViewModel.Wallpaper.GetUrl(AppSetting.WallpaperSize);
                 await FileIO.WriteBufferAsync(file, await client.GetBufferAsync(new Uri(url)));
             }
             return file;
@@ -152,11 +245,6 @@ namespace BingoWallpaper.Views
                     }
                 };
             }
-        }
-
-        private void ImageOpened(object sender, RoutedEventArgs e)
-        {
-            this.LoadingRing.IsActive = false;
         }
     }
 }

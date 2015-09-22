@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F4FD2F70-F1AA-48D0-A1C8-5C70BEA2B3A2}</ProjectGuid>
-    <OutputType>winmdobj</OutputType>
+    <ProjectGuid>{17729BC7-8098-462B-AB18-D2A034DB658B}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BingoWallpaper.BackgroundTask</RootNamespace>
-    <AssemblyName>BingoWallpaper.BackgroundTask</AssemblyName>
+    <RootNamespace>BingoWallpaper</RootNamespace>
+    <AssemblyName>BingoWallpaper.Models</AssemblyName>
     <DefaultLanguage>zh-CN</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
@@ -16,7 +16,6 @@
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <AllowCrossPlatformRetargeting>false</AllowCrossPlatformRetargeting>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -108,24 +107,27 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UpdateTileTask.cs" />
+    <Compile Include="Models\Archive.cs" />
+    <Compile Include="Models\AVObject.cs" />
+    <Compile Include="Models\CoverStory.cs" />
+    <Compile Include="Models\Hotspot.cs" />
+    <Compile Include="Models\Image.cs" />
+    <Compile Include="Models\LeanCloudPointer.cs" />
+    <Compile Include="Models\LeanCloudResultBase.cs" />
+    <Compile Include="Models\LeanCloudResultCollection.cs" />
+    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\SaveLocation.cs" />
+    <Compile Include="Models\Wallpaper.cs" />
+    <Compile Include="Models\WallpaperSize.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Properties\BingoWallpaper.Models.rd.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BingoWallpaper.Models\BingoWallpaper.Models.csproj">
-      <Project>{17729bc7-8098-462b-ab18-d2a034db658b}</Project>
-      <Name>BingoWallpaper.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BingoWallpaper.Services\BingoWallpaper.Services.csproj">
-      <Project>{7d58c672-8c4a-4fc1-9b2f-ecb974937bf6}</Project>
-      <Name>BingoWallpaper.Services</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SoftwareKobo.UniversalToolkit\SoftwareKobo.UniversalToolkit.csproj">
       <Project>{db363430-f22a-441f-a043-fe3cdf7954ef}</Project>
       <Name>SoftwareKobo.UniversalToolkit</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="..\BingoWallpaper.Shared\BingoWallpaper.Shared.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

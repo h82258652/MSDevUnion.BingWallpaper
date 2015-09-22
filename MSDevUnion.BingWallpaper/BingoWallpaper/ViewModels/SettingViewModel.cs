@@ -1,8 +1,10 @@
 ﻿using BingoWallpaper.Datas;
+using BingoWallpaper.Models;
 using BingoWallpaper.Services;
-using BingoWallpaper.Utils;
 using GalaSoft.MvvmLight;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BingoWallpaper.ViewModels
 {
@@ -11,8 +13,6 @@ namespace BingoWallpaper.ViewModels
     /// </summary>
     public sealed class SettingViewModel : ViewModelBase
     {
-        private bool _isWallpaperSizeReady;
-
         public SettingViewModel()
         {
         }
@@ -37,8 +37,8 @@ namespace BingoWallpaper.ViewModels
                 return ServiceArea.All;
             }
         }
-        
-        public string SaveLocation
+
+        public SaveLocation SaveLocation
         {
             get
             {
@@ -51,21 +51,15 @@ namespace BingoWallpaper.ViewModels
             }
         }
 
-        public IReadOnlyList<string> SaveLocations
+        public IReadOnlyList<SaveLocation> SaveLocations
         {
             get
             {
-                string[] list = new string[]
-                {
-                    LocalizedStrings.PictureLibrary,
-                    LocalizedStrings.ChooseEveryTime,
-                    LocalizedStrings.SavedPictures
-                };
-                return list;
+                return Enum.GetValues(typeof(SaveLocation)).Cast<SaveLocation>().ToList();
             }
         }
 
-        public Models.WallpaperSize WallpaperSize
+        public WallpaperSize WallpaperSize
         {
             get
             {
@@ -78,11 +72,11 @@ namespace BingoWallpaper.ViewModels
             }
         }
 
-        public IReadOnlyList<Models.WallpaperSize> WallpaperSizes
+        public IReadOnlyList<WallpaperSize> WallpaperSizes
         {
             get
             {
-                return Models.WallpaperSize.SupportWallpaperSizes;
+                return WallpaperSize.SupportWallpaperSizes;
             }
         }
     }

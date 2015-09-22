@@ -21,6 +21,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using System.Threading.Tasks;
+using Windows.Foundation.Metadata;
+using Windows.UI;
 
 namespace BingoWallpaper
 {
@@ -31,7 +33,7 @@ namespace BingoWallpaper
             this.InitializeComponent();
 
             // 下面语句用于测试其他语言。
-            Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "en-US";
+            Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "";
 
             this.DefaultMainPage = typeof(MainView);
             this.DefaultExtendedSplashScreen = () => new ExtendedSplashScreen();
@@ -46,14 +48,21 @@ namespace BingoWallpaper
         {
             await Window.Current.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
-                ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
-                titleBar.BackgroundColor = new UISettings().GetColorValue(UIColorType.Accent);
-                titleBar.InactiveBackgroundColor = new UISettings().GetColorValue(UIColorType.AccentDark1);
-                titleBar.ButtonBackgroundColor = new UISettings().GetColorValue(UIColorType.Accent);
-                titleBar.ButtonInactiveBackgroundColor = new UISettings().GetColorValue(UIColorType.AccentDark1);
-                titleBar.ButtonHoverBackgroundColor = new UISettings().GetColorValue(UIColorType.AccentLight1);
-                titleBar.ButtonHoverForegroundColor = new UISettings().GetColorValue(UIColorType.Accent);
-                titleBar.ButtonPressedBackgroundColor = new UISettings().GetColorValue(UIColorType.AccentLight3);
+                UISettings uiSettings = new UISettings();
+                try
+                {
+                    ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
+                    titleBar.BackgroundColor = uiSettings.GetColorValue(UIColorType.Accent);
+                    titleBar.InactiveBackgroundColor = uiSettings.GetColorValue(UIColorType.AccentDark1);
+                    titleBar.ButtonBackgroundColor = uiSettings.GetColorValue(UIColorType.Accent);
+                    titleBar.ButtonInactiveBackgroundColor = uiSettings.GetColorValue(UIColorType.AccentDark1);
+                    titleBar.ButtonHoverBackgroundColor = uiSettings.GetColorValue(UIColorType.AccentLight1);
+                    titleBar.ButtonHoverForegroundColor = uiSettings.GetColorValue(UIColorType.Accent);
+                    titleBar.ButtonPressedBackgroundColor = uiSettings.GetColorValue(UIColorType.AccentLight3);
+                }
+                catch (InvalidCastException)
+                {
+                }
             });
         }
     }
