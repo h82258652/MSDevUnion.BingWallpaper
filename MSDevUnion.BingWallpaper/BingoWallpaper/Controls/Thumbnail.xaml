@@ -12,18 +12,8 @@
              d:DesignWidth="400"
              d:DataContext="{d:DesignInstance Type=model:Wallpaper}">
     <Grid>
-        <Grid.Resources>
-            <conv:ThumbnailUrlConverter x:Key="ThumbnailUrlConverter" />
-            <conv:ThumbnailNameConverter x:Key="ThumbnailNameConverter" />
-        </Grid.Resources>
-        <!--<Image Source="{Binding Converter={StaticResource ResourceKey=ThumbnailUrlConverter}}"
-               Stretch="None"></Image>-->
-        <Image Stretch="UniformToFill" Source="{Binding Converter={StaticResource ResourceKey=ThumbnailUrlConverter}}">
-            <!--<Image.Source>
-                <storage:StorageCachedImage UriSource="{Binding Converter={StaticResource ResourceKey=ThumbnailUrlConverter}}"
-                                            IsAutoRetry="True" />
-            </Image.Source>-->
-        </Image>
+        <Image Stretch="UniformToFill"
+               Source="{Binding Converter={StaticResource ResourceKey=ThumbnailUrlConverter}}" />
         <Border VerticalAlignment="Bottom"
                 Background="#80808080">
             <TextBlock Text="{Binding Converter={StaticResource ResourceKey=ThumbnailNameConverter}}"

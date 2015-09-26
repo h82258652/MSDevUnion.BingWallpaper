@@ -141,6 +141,7 @@ namespace BingoWallpaper.Views
             }
             catch
             {
+                await new MessageDialog("保存失败").ShowAsync();
             }
         }
 
@@ -272,6 +273,11 @@ namespace BingoWallpaper.Views
                 var uri = new Uri(hotspot.Link);
                 await Launcher.LaunchUriAsync(uri);
             }
+        }
+        
+        private void Wallpaper_Opened(object sender, RoutedEventArgs e)
+        {
+            LoadingRing.IsActive = false;
         }
     }
 }

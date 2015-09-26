@@ -6,12 +6,15 @@
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:toolkit="using:SoftwareKobo.UniversalToolkit"
                       xmlns:vm="using:BingoWallpaper.ViewModels"
+                      xmlns:localConv="using:BingoWallpaper.Converters"
                       mc:Ignorable="d"
                       RequestedTheme="Light">
     <toolkit:Bootstrapper.Resources>
         <ResourceDictionary>
             <vm:ViewModelLocator x:Key="Locator"
-                                 d:IsDataSource="True"></vm:ViewModelLocator>
+                                 d:IsDataSource="True" />
+            <localConv:ThumbnailUrlConverter x:Key="ThumbnailUrlConverter" />
+            <localConv:ThumbnailNameConverter x:Key="ThumbnailNameConverter" />
         </ResourceDictionary>
     </toolkit:Bootstrapper.Resources>
 </toolkit:Bootstrapper>

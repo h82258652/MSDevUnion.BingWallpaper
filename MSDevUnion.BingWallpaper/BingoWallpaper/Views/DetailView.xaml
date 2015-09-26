@@ -109,16 +109,12 @@
                                 <ScrollViewer.Resources>
                                     <localConv:WallpaperUrlConverter x:Key="WallpaperUrlConverter" />
                                 </ScrollViewer.Resources>
-                                <Image Stretch="None">
-                                    <Image.Source>
-                                        <storage:StorageCachedImage x:Name="image"
-                                                                    UriSource="{Binding Path=Wallpaper,Converter={StaticResource ResourceKey=WallpaperUrlConverter}}"
-                                                                    IsAutoRetry="True" />
-                                    </Image.Source>
-                                </Image>
+                                <Image Stretch="None"
+                                       Source="{Binding Path=Wallpaper,Converter={StaticResource ResourceKey=WallpaperUrlConverter}}"
+                                       ImageOpened="Wallpaper_Opened" />
                             </ScrollViewer>
                             <ProgressRing x:Name="LoadingRing"
-                                          IsActive="{Binding ElementName=image,Path=IsLoading}"
+                                          IsActive="True"
                                           RenderTransformOrigin="0.5,0.5">
                                 <ProgressRing.RenderTransform>
                                     <ScaleTransform ScaleX="5"
