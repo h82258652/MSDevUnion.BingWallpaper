@@ -223,6 +223,10 @@
       <Project>{7d58c672-8c4a-4fc1-9b2f-ecb974937bf6}</Project>
       <Name>BingoWallpaper.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BingoWallpaper.ThirdParty\BingoWallpaper.ThirdParty.csproj">
+      <Project>{bc68b9a8-82aa-4002-84f0-75152d376562}</Project>
+      <Name>BingoWallpaper.ThirdParty</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SoftwareKobo.UniversalToolkit\SoftwareKobo.UniversalToolkit.csproj">
       <Project>{db363430-f22a-441f-a043-fe3cdf7954ef}</Project>
       <Name>SoftwareKobo.UniversalToolkit</Name>

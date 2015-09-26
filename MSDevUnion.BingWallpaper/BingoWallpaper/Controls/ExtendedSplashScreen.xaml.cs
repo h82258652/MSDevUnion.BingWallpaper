@@ -55,7 +55,7 @@ namespace BingoWallpaper.Controls
                 }
                 else
                 {
-                    AppSetting.WallpaperSize = new WallpaperSize(1366, 768);
+                    AppSetting.WallpaperSize = new WallpaperSize(800, 600);
                 }
             }
         }

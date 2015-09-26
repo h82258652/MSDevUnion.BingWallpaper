@@ -11,6 +11,7 @@
       xmlns:localConv="using:BingoWallpaper.Converters"
       xmlns:storage="using:SoftwareKobo.UniversalToolkit.Storage"
       xmlns:controls="using:BingoWallpaper.Controls"
+      xmlns:thirdParty="using:BingoWallpaper.ThirdParty"
       mc:Ignorable="d"
       DataContext="{Binding Source={StaticResource ResourceKey=Locator},Path=Main}">
     <Page.BottomAppBar>
@@ -83,9 +84,9 @@
     </Page.BottomAppBar>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid>
-            <FlipView ItemsSource="{Binding Path=AllWallpapers}"
+            <thirdParty:VirtualizingFlipView ItemsSource="{Binding Path=AllWallpapers}"
                       SelectedItem="{Binding Path=ViewingWallpaper,Mode=TwoWay}">
-                <FlipView.ItemTemplate>
+                <thirdParty:VirtualizingFlipView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
                             <!--#region 背景图片-->
@@ -128,8 +129,8 @@
                                          IsIndeterminate="{Binding Path=IsLoading}" />
                         </Grid>
                     </DataTemplate>
-                </FlipView.ItemTemplate>
-            </FlipView>
+                </thirdParty:VirtualizingFlipView.ItemTemplate>
+            </thirdParty:VirtualizingFlipView>
         </Grid>
     </Grid>
 </Page>
