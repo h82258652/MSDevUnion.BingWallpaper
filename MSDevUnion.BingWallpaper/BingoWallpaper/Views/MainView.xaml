@@ -83,14 +83,14 @@
         </AppBar>
     </Page.BottomAppBar>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <FlipView ItemsSource="{Binding Path=AllWallpapers}"
+        <thirdParty:VirtualizingFlipView ItemsSource="{Binding Path=AllWallpapers}"
                   SelectedItem="{Binding Path=ViewingWallpaper,Mode=TwoWay}"
                   SelectionChanged="FlipView_SelectionChanged">
-            <FlipView.ItemTemplate>
+            <thirdParty:VirtualizingFlipView.ItemTemplate>
                 <DataTemplate>
                     <controls:ThumbnailPanel ItemClick="Wallpaper_Click" />
                 </DataTemplate>
-            </FlipView.ItemTemplate>
-        </FlipView>
+            </thirdParty:VirtualizingFlipView.ItemTemplate>
+        </thirdParty:VirtualizingFlipView>
     </Grid>
 </Page>

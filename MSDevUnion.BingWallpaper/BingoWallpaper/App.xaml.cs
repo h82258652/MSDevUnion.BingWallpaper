@@ -35,6 +35,8 @@ namespace BingoWallpaper
             // 下面语句用于测试其他语言。
             Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "";
 
+            DebugSettings.EnableFrameRateCounter = true;
+
             this.DefaultMainPage = typeof(MainView);
             this.DefaultExtendedSplashScreen = () => new ExtendedSplashScreen();
         }
