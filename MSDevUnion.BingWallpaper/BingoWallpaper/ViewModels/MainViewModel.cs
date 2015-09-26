@@ -28,9 +28,9 @@ namespace BingoWallpaper.ViewModels
                 if (this.Wallpapers != null)
                 {
                     var first = this.Wallpapers.FirstOrDefault();
-                    if (first != null)
+                    if (first!=null)
                     {
-                        url = "http://www.bing.com" + first.Image.UrlBase + "_1920x1080.jpg";
+                        url = first.GetUrl(new WallpaperSize(1920, 1080));
                     }
                 }
                 return url;

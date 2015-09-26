@@ -25,7 +25,8 @@
 
         public string GetUrl(WallpaperSize size)
         {
-            return "http://www.bing.com" + Image.UrlBase + "_" + size.ToString() + ".jpg";
+            return "http://7u2lw5.com5.z0.glb.clouddn.com" + Image.UrlBase + "_" + size.ToString() + ".jpg";
+            //return "http://www.bing.com" + Image.UrlBase + "_" + size.ToString() + ".jpg";
         }
     }
 }
