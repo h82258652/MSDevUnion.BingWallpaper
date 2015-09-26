@@ -27,7 +27,7 @@ namespace BingoWallpaper.Helpers
 
                 // image
                 XmlElement image = document.CreateElement("image");
-                image.SetAttribute("src", wallpaper.GetUrl(new WallpaperSize(150, 150)));
+                image.SetAttribute("src", wallpaper.GetOriginalUrl(new WallpaperSize(150, 150)));
                 image.SetAttribute("placement", "background");
                 binding.AppendChild(image);
 
@@ -47,7 +47,7 @@ namespace BingoWallpaper.Helpers
 
                 // image
                 XmlElement image = document.CreateElement("image");
-                image.SetAttribute("src", wallpaper.GetUrl(new WallpaperSize(310, 150)));
+                image.SetAttribute("src", wallpaper.GetOriginalUrl(new WallpaperSize(310, 150)));
                 image.SetAttribute("placement", "background");
                 binding.AppendChild(image);
 

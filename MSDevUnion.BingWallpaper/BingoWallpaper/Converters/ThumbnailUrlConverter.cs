@@ -11,14 +11,16 @@ namespace BingoWallpaper.Converters
             Wallpaper wallpaper = value as Wallpaper;
             if (wallpaper != null)
             {
-                if (wallpaper.IsLastInMonth)
-                {
-                    return wallpaper.GetUrl(new WallpaperSize(310, 150));
-                }
-                else
-                {
-                    return wallpaper.GetUrl(new WallpaperSize(150, 150));
-                }
+                return wallpaper.GetCacheUrl(new WallpaperSize(1920, 1080));
+
+                //if (wallpaper.IsLastInMonth)
+                //{
+                //    return wallpaper.GetUrl(new WallpaperSize(310, 150));
+                //}
+                //else
+                //{
+                //    return wallpaper.GetUrl(new WallpaperSize(150, 150));
+                //}
             }
             return value;
         }

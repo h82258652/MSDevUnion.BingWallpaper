@@ -18,11 +18,11 @@
         </Grid.Resources>
         <!--<Image Source="{Binding Converter={StaticResource ResourceKey=ThumbnailUrlConverter}}"
                Stretch="None"></Image>-->
-        <Image Stretch="None">
-            <Image.Source>
+        <Image Stretch="UniformToFill" Source="{Binding Converter={StaticResource ResourceKey=ThumbnailUrlConverter}}">
+            <!--<Image.Source>
                 <storage:StorageCachedImage UriSource="{Binding Converter={StaticResource ResourceKey=ThumbnailUrlConverter}}"
                                             IsAutoRetry="True" />
-            </Image.Source>
+            </Image.Source>-->
         </Image>
         <Border VerticalAlignment="Bottom"
                 Background="#80808080">

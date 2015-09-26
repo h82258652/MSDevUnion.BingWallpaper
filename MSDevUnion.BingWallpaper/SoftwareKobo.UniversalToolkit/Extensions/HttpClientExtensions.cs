@@ -20,7 +20,7 @@ namespace SoftwareKobo.UniversalToolkit.Extensions
         public static async Task<T> GetJsonAsync<T>(this HttpClient client, Uri uri)
         {
             string json = await client.GetStringAsync(uri);
-            return JsonConvert.DeserializeObject<T>(json);
+            return await Task.Factory.StartNew(() => JsonConvert.DeserializeObject<T>(json));
         }
     }
 }

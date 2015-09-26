@@ -16,7 +16,7 @@ namespace BingoWallpaper.Converters
             Wallpaper wallpaper = value as Wallpaper;
             if (wallpaper != null)
             {
-                string url = wallpaper.GetUrl(AppSetting.WallpaperSize);
+                string url = wallpaper.GetCacheUrl(AppSetting.WallpaperSize);
                 return url;
             }
             return null;

@@ -1,23 +1,30 @@
-﻿using SoftwareKobo.UniversalToolkit.Utils.AppxManifest;
+﻿using SoftwareKobo.UniversalToolkit.Extensions;
+using SoftwareKobo.UniversalToolkit.Utils.AppxManifest;
 using System;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
+using System.Xml.Linq;
+using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Graphics.Display;
 using Windows.Storage;
+using Windows.Storage.Streams;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 
-// The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
+// “空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=234238 上提供
 
 namespace SoftwareKobo.UniversalToolkit.Controls
 {
+    /// <summary>
+    /// 可用于自身或导航至 Frame 内部的空白页。
+    /// </summary>
     internal sealed partial class ExtendedSplashScreen
     {
         private SplashScreen _splashScreen;
@@ -92,7 +99,7 @@ namespace SoftwareKobo.UniversalToolkit.Controls
 
                 Color backgroundColor = splashScreen.BackgroundColor.HasValue ? splashScreen.BackgroundColor.Value : visualElements.BackgroundColor;
                 this.Background = new SolidColorBrush(backgroundColor);
-            }
+            }            
         }
     }
 }

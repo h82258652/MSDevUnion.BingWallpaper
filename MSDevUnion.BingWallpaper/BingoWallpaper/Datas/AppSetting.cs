@@ -1,14 +1,11 @@
 ﻿using BingoWallpaper.Models;
 using SoftwareKobo.UniversalToolkit.Storage;
-using System;
 using System.Text.RegularExpressions;
 
 namespace BingoWallpaper.Datas
 {
     internal static partial class AppSetting
     {
-        internal static readonly DateTimeOffset MIN_VIEW_MONTH = new DateTimeOffset(new DateTime(2015, 1, 1));
-
         /// <summary>
         /// 保存壁纸时，保存到哪个位置。
         /// </summary>
@@ -28,38 +25,6 @@ namespace BingoWallpaper.Datas
             set
             {
                 ApplicationRoamingSettings.Write(nameof(SaveLocation), value);
-            }
-        }
-
-        /// <summary>
-        /// 用户正在查看的哪个年月的壁纸。
-        /// </summary>
-        public static DateTimeOffset ViewMonth
-        {
-            get
-            {
-                DateTimeOffset value;
-                if (ApplicationRoamingSettings.Exists(nameof(ViewMonth)))
-                {
-                    value = ApplicationRoamingSettings.Read<DateTimeOffset>(nameof(ViewMonth));
-                }
-                else
-                {
-                    value = DateTimeOffset.Now;
-                }
-                if (value < MIN_VIEW_MONTH)
-                {
-                    value = MIN_VIEW_MONTH;
-                }
-                else if (value > DateTimeOffset.Now)
-                {
-                    value = DateTimeOffset.Now;
-                }
-                return value;
-            }
-            set
-            {
-                ApplicationRoamingSettings.Write(nameof(ViewMonth), value);
             }
         }
 

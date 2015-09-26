@@ -1,4 +1,7 @@
-﻿namespace BingoWallpaper.Models
+﻿using System;
+using System.Linq;
+
+namespace BingoWallpaper.Models
 {
     public class Wallpaper
     {
@@ -23,10 +26,25 @@
             set;
         }
 
-        public string GetUrl(WallpaperSize size)
+        public string GetCacheUrl(WallpaperSize size)
         {
+            if(WallpaperSize.SupportWallpaperSizes.Contains(size)== false)
+            {
+                throw new ArgumentException("7niu cache not support.",nameof(size));
+            }
+
             return "http://7u2lw5.com5.z0.glb.clouddn.com" + Image.UrlBase + "_" + size.ToString() + ".jpg";
-            //return "http://www.bing.com" + Image.UrlBase + "_" + size.ToString() + ".jpg";
         }
+
+        public string GetOriginalUrl(WallpaperSize size)
+        {
+            return "http://www.bing.com" + Image.UrlBase + "_" + size.ToString() + ".jpg";
+        }
+
+        //public string GetUrl(WallpaperSize size)
+        //{
+        //    return "http://7u2lw5.com5.z0.glb.clouddn.com" + Image.UrlBase + "_" + size.ToString() + ".jpg";
+        //    //return "http://www.bing.com" + Image.UrlBase + "_" + size.ToString() + ".jpg";
+        //}
     }
 }

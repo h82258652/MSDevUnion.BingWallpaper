@@ -32,6 +32,7 @@ namespace BingoWallpaper.Controls
                 if (item != null)
                 {
                     VariableSizedWrapGrid.SetColumnSpan(item, 2);
+                    VariableSizedWrapGrid.SetRowSpan(item, 2);
                 }
             }
         }

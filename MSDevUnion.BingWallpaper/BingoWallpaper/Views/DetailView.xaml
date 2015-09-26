@@ -4,7 +4,8 @@
       xmlns:local="using:BingoWallpaper.Views"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:conv="using:BingoWallpaper.Converters"
+      xmlns:localConv="using:BingoWallpaper.Converters"
+      xmlns:conv="using:SoftwareKobo.UniversalToolkit.Converters"
       xmlns:storage="using:SoftwareKobo.UniversalToolkit.Storage"
       mc:Ignorable="d"
       DataContext="{Binding Source={StaticResource ResourceKey=Locator},Path=Detail}">
@@ -15,9 +16,6 @@
             </NavigationThemeTransition>
         </TransitionCollection>
     </Page.Transitions>
-    <Page.Resources>
-        <conv:WallpaperUrlConverter x:Key="WallpaperUrlConverter" />
-    </Page.Resources>
     <Page.BottomAppBar>
         <CommandBar x:Name="AppBar"
                     Background="{ThemeResource SystemControlBackgroundAccentBrush}"
@@ -47,44 +45,116 @@
                           x:Uid="/Detail/Share"
                           Label="分享"
                           ToolTipService.ToolTip="分享" />
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Click="BtnOpenDeviceWallpaperSetting_Click"
+                              Label="打开壁纸设置" />
+                <AppBarButton Click="BtnOpenDeviceLockScreenSetting_Click"
+                              Label="打开锁屏设置" />
+            </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid>
-            <ScrollViewer x:Name="ScrollViewer"
-                          HorizontalScrollBarVisibility="Auto"
-                          VerticalScrollBarVisibility="Auto">
-                <Image Stretch="None">
-                    <Image.Source>
-                        <storage:StorageCachedImage x:Name="image"
-                                                    UriSource="{Binding Path=Wallpaper,Converter={StaticResource ResourceKey=WallpaperUrlConverter}}"
-                                                    IsAutoRetry="True" />
-                    </Image.Source>
-                </Image>
-            </ScrollViewer>
-            <ProgressRing x:Name="LoadingRing"
-                          IsActive="{Binding ElementName=image,Path=IsLoading}"
-                          RenderTransformOrigin="0.5,0.5">
-                <ProgressRing.RenderTransform>
-                    <ScaleTransform ScaleX="5"
-                                    ScaleY="5" />
-                </ProgressRing.RenderTransform>
-            </ProgressRing>
-        </Grid>
-        <Grid VerticalAlignment="Top"
-              Height="40">
-            <Grid.Background>
-                <LinearGradientBrush StartPoint="0.5,0"
-                                     EndPoint="0.5,1">
-                    <GradientStop Offset="0"
-                                  Color="#80000000" />
-                    <GradientStop Offset="1"
-                                  Color="#00000000" />
-                </LinearGradientBrush>
-            </Grid.Background>
-            <TextBlock Text="{Binding Path=Wallpaper.Archive.Info}"
-                       Foreground="White"
-                       Margin="5" />
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0"
+                  Background="{ThemeResource SystemControlBackgroundAccentBrush}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <ToggleButton x:Name="BtnHotspots"
+                              Background="{x:Null}">
+                    <ToggleButton.Content>
+                        <Grid>
+                            <Grid.Resources>
+                                <conv:BooleanToVisibilityConverter x:Name="BtnHotspotsViewOpenedConverter" />
+                                <conv:BooleanToVisibilityConverter x:Name="BtnHotspotsViewClosedConverter"
+                                                                   IsInversed="True" />
+                            </Grid.Resources>
+                            <!--#region 开启状态-->
+                            <Grid Visibility="{Binding ElementName=BtnHotspots,Path=IsChecked,Converter={StaticResource ResourceKey=BtnHotspotsViewOpenedConverter}}">
+                                <Image Source="/Assets/lightbulb-online.png"
+                                       Width="20"
+                                       Height="20"></Image>
+                            </Grid>
+                            <!--#endregion-->
+                            <!--#region 关闭状态-->
+                            <Grid Visibility="{Binding ElementName=BtnHotspots,Path=IsChecked,Converter={StaticResource ResourceKey=BtnHotspotsViewClosedConverter}}">
+                                <Image Source="/Assets/lightbulb-outline.png"
+                                       Width="20"
+                                       Height="20"></Image>
+                            </Grid>
+                            <!--#endregion-->
+                        </Grid>
+                    </ToggleButton.Content>
+                </ToggleButton>
+                <TextBlock Grid.Column="1"
+                           Text="{Binding Path=Wallpaper.Archive.Info}"
+                           Margin="5"
+                           Foreground="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                           TextAlignment="Right" />
+            </Grid>
+            <Grid Grid.Row="1">
+                <SplitView x:Name="HotspotsView"
+                           IsPaneOpen="{Binding ElementName=BtnHotspots,Path=IsChecked,Mode=TwoWay}"
+                           PaneBackground="#80000000">
+                    <SplitView.Content>
+                        <Grid>
+                            <ScrollViewer x:Name="ScrollViewer"
+                                          HorizontalScrollBarVisibility="Auto"
+                                          VerticalScrollBarVisibility="Auto">
+                                <ScrollViewer.Resources>
+                                    <localConv:WallpaperUrlConverter x:Key="WallpaperUrlConverter" />
+                                </ScrollViewer.Resources>
+                                <Image Stretch="None">
+                                    <Image.Source>
+                                        <storage:StorageCachedImage x:Name="image"
+                                                                    UriSource="{Binding Path=Wallpaper,Converter={StaticResource ResourceKey=WallpaperUrlConverter}}"
+                                                                    IsAutoRetry="True" />
+                                    </Image.Source>
+                                </Image>
+                            </ScrollViewer>
+                            <ProgressRing x:Name="LoadingRing"
+                                          IsActive="{Binding ElementName=image,Path=IsLoading}"
+                                          RenderTransformOrigin="0.5,0.5">
+                                <ProgressRing.RenderTransform>
+                                    <ScaleTransform ScaleX="5"
+                                                    ScaleY="5" />
+                                </ProgressRing.RenderTransform>
+                            </ProgressRing>
+                        </Grid>
+                    </SplitView.Content>
+                    <SplitView.Pane>
+                        <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                                      VerticalScrollBarVisibility="Hidden">
+                            <ItemsControl ItemsSource="{Binding Path=Wallpaper.Archive.Hotspots}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Margin="5,5,5,15">
+                                            <Grid.Resources>
+                                                <localConv:FirstCharConverter x:Key="FirstCharConverter" />
+                                                <localConv:LastCharsConverter x:Key="LastCharsConverter" />
+                                            </Grid.Resources>
+                                            <TextBlock TextWrapping="Wrap"
+                                                       Foreground="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                                                <Run FontSize="{ThemeResource TextStyleExtraLargeFontSize}"
+                                                     Text="{Binding Path=Description,Converter={StaticResource ResourceKey=FirstCharConverter}}" />
+                                                <Run Text="{Binding Path=Description,Converter={StaticResource ResourceKey=LastCharsConverter}}" />
+                                                <Hyperlink Click="HotspotClick">
+                                                    <Run Text="{Binding Path=Query}"
+                                                         Foreground="#FF0078D7" />
+                                                </Hyperlink></TextBlock>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+                    </SplitView.Pane>
+                </SplitView>
+            </Grid>
         </Grid>
     </Grid>
 </Page>

@@ -1,13 +1,17 @@
 ﻿using BingoWallpaper.Datas;
 using BingoWallpaper.Models;
 using BingoWallpaper.ViewModels;
+using SoftwareKobo.UniversalToolkit.Extensions;
 using SoftwareKobo.UniversalToolkit.Helpers;
+using SoftwareKobo.UniversalToolkit.Services.LauncherServices;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.Pickers;
+using Windows.System;
 using Windows.System.UserProfile;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
@@ -126,7 +130,7 @@ namespace BingoWallpaper.Views
 
         private async Task SaveFile(StorageFile file)
         {
-            string url = ViewModel.Wallpaper.GetUrl(AppSetting.WallpaperSize);
+            string url = ViewModel.Wallpaper.GetCacheUrl(AppSetting.WallpaperSize);
             try
             {
                 using (HttpClient client = new HttpClient())
@@ -143,7 +147,7 @@ namespace BingoWallpaper.Views
         private async void BtnSetLockScreen_Click(object sender, RoutedEventArgs e)
         {
             Control control = sender as Control;
-            if (control!=null)
+            if (control != null)
             {
                 control.IsEnabled = false;
             }
@@ -165,13 +169,13 @@ namespace BingoWallpaper.Views
                 await new MessageDialog("设置成功").ShowAsync();
             }
             else
-            {                
+            {
                 await new MessageDialog("设置失败").ShowAsync();
             }
 
             if (control != null)
             {
-                control.IsEnabled = true; 
+                control.IsEnabled = true;
             }
         }
 
@@ -219,7 +223,7 @@ namespace BingoWallpaper.Views
             var file = await ApplicationData.Current.LocalFolder.CreateFileAsync(Guid.NewGuid().ToString());
             using (HttpClient client = new HttpClient())
             {
-                string url = ViewModel.Wallpaper.GetUrl(AppSetting.WallpaperSize);
+                string url = ViewModel.Wallpaper.GetCacheUrl(AppSetting.WallpaperSize);
                 await FileIO.WriteBufferAsync(file, await client.GetBufferAsync(new Uri(url)));
             }
             return file;
@@ -244,6 +248,29 @@ namespace BingoWallpaper.Views
                         appBarBackgroundBrush.UnregisterPropertyChangedCallback(SolidColorBrush.ColorProperty, _listenAccentColorChangedToken.Value);
                     }
                 };
+            }
+        }
+
+        private async void BtnOpenDeviceWallpaperSetting_Click(object sender, RoutedEventArgs e)
+        {
+            SystemSettingsService service = new SystemSettingsService();
+            await service.OpenPersonalizationPageAsync();
+        }
+
+        private async void BtnOpenDeviceLockScreenSetting_Click(object sender, RoutedEventArgs e)
+        {
+            SystemSettingsService service = new SystemSettingsService();
+            await service.OpenLockScreenPageAsync();
+        }
+
+        private async void HotspotClick(Windows.UI.Xaml.Documents.Hyperlink sender, Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)
+        {
+            var textBlock = sender.GetAncestorsOfType<TextBlock>().First();
+            var hotspot = textBlock.DataContext as Hotspot;
+            if (hotspot != null)
+            {
+                var uri = new Uri(hotspot.Link);
+                await Launcher.LaunchUriAsync(uri);
             }
         }
     }

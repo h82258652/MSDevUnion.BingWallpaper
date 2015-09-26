@@ -1,116 +1,72 @@
 ﻿using BingoWallpaper.Datas;
 using BingoWallpaper.Models;
-using BingoWallpaper.Services;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace BingoWallpaper.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        private RelayCommand _nextMonthCommand;
+        private RelayCommand _refreshCommand;
 
-        private RelayCommand _previousMonthCommand;
+        private WallpaperCollection _viewingWallpaper;
 
         public MainViewModel()
         {
         }
 
-        public string BackgroundImage
+        /// <summary>
+        /// 所有壁纸信息。
+        /// </summary>
+        public ObservableCollection<WallpaperCollection> AllWallpapers
         {
             get
             {
-                string url = null;
-                if (this.Wallpapers != null)
+                return AppRunningData.AllWallpapers;
+            }
+        }
+
+        /// <summary>
+        /// 刷新所有壁纸信息命令。
+        /// </summary>
+        public RelayCommand RefreshCommand
+        {
+            get
+            {
+                _refreshCommand = _refreshCommand ?? new RelayCommand(ReloadAll);
+                return _refreshCommand;
+            }
+        }
+
+        /// <summary>
+        /// 正在查看的壁纸信息。
+        /// </summary>
+        public WallpaperCollection ViewingWallpaper
+        {
+            get
+            {
+                if (_viewingWallpaper == null)
                 {
-                    var first = this.Wallpapers.FirstOrDefault();
-                    if (first!=null)
-                    {
-                        url = first.GetUrl(new WallpaperSize(1920, 1080));
-                    }
+                    _viewingWallpaper = AllWallpapers.LastOrDefault();
                 }
-                return url;
-            }
-        }
-
-        public RelayCommand NextMonthCommand
-        {
-            get
-            {
-                this._nextMonthCommand = this._nextMonthCommand ?? new RelayCommand(() =>
-                {
-                    this.ViewMonth = this.ViewMonth.AddMonths(1);
-                    this.LoadWallpaper();
-                }, () => this.ViewMonth <= DateTimeOffset.Now.AddMinutes(-1));
-                return this._nextMonthCommand;
-            }
-        }
-
-        public RelayCommand PreviousMonthCommand
-        {
-            get
-            {
-                this._previousMonthCommand = this._previousMonthCommand ?? new RelayCommand(() =>
-                {
-                    this.ViewMonth = this.ViewMonth.AddMonths(-1);
-                    this.LoadWallpaper();
-                },
-                () => this.ViewMonth >= AppSetting.MIN_VIEW_MONTH.AddMonths(1));
-                return this._previousMonthCommand;
-            }
-        }
-
-        public DateTimeOffset ViewMonth
-        {
-            get
-            {
-                return AppSetting.ViewMonth;
+                return _viewingWallpaper;
             }
             set
             {
-                AppSetting.ViewMonth = value;
-                RaisePropertyChanged(() => ViewMonth);
-                PreviousMonthCommand.RaiseCanExecuteChanged();
-                NextMonthCommand.RaiseCanExecuteChanged();
+                _viewingWallpaper = value;
+                RaisePropertyChanged(() => ViewingWallpaper);
             }
         }
 
-        public ObservableCollection<Wallpaper> Wallpapers
+        /// <summary>
+        /// 重新加载所有壁纸信息。
+        /// </summary>
+        public void ReloadAll()
         {
-            get
-            {
-                return AppRunningData.Wallpapers;
-            }
-            set
-            {
-                AppRunningData.Wallpapers = value;
-                RaisePropertyChanged(() => Wallpapers);
-                RaisePropertyChanged(() => BackgroundImage);
-            }
-        }
-
-        private static Task _loadWallpapersTask;
-
-        public async void LoadWallpaper()
-        {
-            try
-            {
-                if (_loadWallpapersTask != null)
-                {
-                    _loadWallpapersTask.AsAsyncAction().Cancel();
-                }
-
-                _loadWallpapersTask = AppRunningData.ReLoadWallpapers();
-                await _loadWallpapersTask;
-                this.Wallpapers = AppRunningData.Wallpapers;
-            }
-            catch
-            {
-            }
+            AppRunningData.ReloadAll();
+            RaisePropertyChanged(() => AllWallpapers);
         }
     }
 }

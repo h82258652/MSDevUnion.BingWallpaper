@@ -1,22 +1,49 @@
 ﻿using BingoWallpaper.Models;
-using BingoWallpaper.Services;
+using System;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 
 namespace BingoWallpaper.Datas
 {
     public static class AppRunningData
     {
-        public static ObservableCollection<Wallpaper> Wallpapers
+        /// <summary>
+        /// 提供的壁纸信息最小日期。
+        /// </summary>
+        private static readonly DateTimeOffset MIN_VIEW_MONTH = new DateTimeOffset(new DateTime(2015, 1, 1));
+
+        private static ObservableCollection<WallpaperCollection> _allWallpapers;
+
+        /// <summary>
+        /// 所有壁纸信息。
+        /// </summary>
+        public static ObservableCollection<WallpaperCollection> AllWallpapers
         {
-            get;
-            set;
+            get
+            {
+                return _allWallpapers;
+            }
         }
 
-        public static async Task ReLoadWallpapers()
+        static AppRunningData()
         {
-            WallpaperService service = new WallpaperService();
-            Wallpapers = new ObservableCollection<Wallpaper>(await service.GetWallpapersAsync(AppSetting.ViewMonth.Year, AppSetting.ViewMonth.Month, AppSetting.Area));
+            _allWallpapers = new ObservableCollection<WallpaperCollection>();
+            DateTime date = MIN_VIEW_MONTH.DateTime;
+            while (date <= DateTime.Now)
+            {
+                _allWallpapers.Add(new WallpaperCollection(date.Year, date.Month));
+                date = date.AddMonths(1);
+            }
+        }
+
+        /// <summary>
+        /// 重新加载所有壁纸信息。
+        /// </summary>
+        public static void ReloadAll()
+        {
+            foreach (var collection in AllWallpapers)
+            {
+                collection.ReLoad();
+            }
         }
     }
 }

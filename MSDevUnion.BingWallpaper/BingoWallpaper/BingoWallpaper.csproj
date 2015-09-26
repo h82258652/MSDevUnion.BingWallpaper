@@ -112,10 +112,15 @@
     </Compile>
     <Compile Include="Converters\AreaToFlagConverter.cs" />
     <Compile Include="Converters\AreaToNameConverter.cs" />
+    <Compile Include="Converters\BackgroundImageConverter.cs" />
+    <Compile Include="Converters\FirstCharConverter.cs" />
+    <Compile Include="Converters\LastCharsConverter.cs" />
+    <Compile Include="Converters\MonthNameConverter.cs" />
     <Compile Include="Converters\SaveLocationConverter.cs" />
     <Compile Include="Converters\ThumbnailNameConverter.cs" />
     <Compile Include="Converters\ThumbnailUrlConverter.cs" />
     <Compile Include="Converters\WallpaperUrlConverter.cs" />
+    <Compile Include="Converters\YearNameConverter.cs" />
     <Compile Include="Datas\AppRunningData.cs" />
     <Compile Include="Datas\AppSetting.cs" />
     <Compile Include="LocalizedStrings.cs">
@@ -123,6 +128,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LocalizedStrings.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\WallpaperCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\SuitableWallpaperSize.cs" />
     <Compile Include="ViewModels\DetailViewModel.cs" />
@@ -159,6 +165,8 @@
     <Content Include="Assets\flags\Japan.png" />
     <Content Include="Assets\flags\United_Kingdom.png" />
     <Content Include="Assets\flags\United_States.png" />
+    <Content Include="Assets\lightbulb-online.png" />
+    <Content Include="Assets\lightbulb-outline.png" />
     <Content Include="LocalizedStrings.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>LocalizedStrings.cs</LastGenOutput>
