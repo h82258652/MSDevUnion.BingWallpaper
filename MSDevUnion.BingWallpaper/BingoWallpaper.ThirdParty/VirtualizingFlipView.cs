@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading;
 using System.Threading.Tasks;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
@@ -67,18 +68,58 @@ namespace BingoWallpaper.ThirdParty
                 }
                 else
                 {
-                    newContainer.Realize();
+                    RealizeItem(newContainer);
                 }
             }
             
             if (oldContainer != null)
             {
-                await Task.Delay(1000);
-                await oldContainer.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                VirtualizeItem(oldContainer);
+            }
+        }
+
+        private VirtualizingFlipViewItem _nextVirtualizingItem;
+        private Task _virtualizeItemTask;
+        private CancellationTokenSource _virtualizeItemTaskCancellationTokenSource;
+        private void VirtualizeItem(VirtualizingFlipViewItem item)
+        {
+            if (_nextVirtualizingItem != null)
+            {
+                _virtualizeItemTaskCancellationTokenSource?.Cancel();
+                _nextVirtualizingItem.Virtualize();
+                _virtualizeItemTask = null;
+                _virtualizeItemTaskCancellationTokenSource = null;
+            }
+            _nextVirtualizingItem = item;
+            _virtualizeItemTaskCancellationTokenSource = new CancellationTokenSource();
+            _virtualizeItemTask = new Task(ToVirtualizeItem, _virtualizeItemTaskCancellationTokenSource.Token);
+            _virtualizeItemTask.Start();
+        }
+
+        private async void ToVirtualizeItem()
+        {
+            var item = _nextVirtualizingItem;
+            await Task.Delay(1000);
+            if (item != null && item == _nextVirtualizingItem)
+            {
+                await item.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
                 {
-                    oldContainer.Virtualize();
+                    item.Virtualize();
+                    item = null;
                 });
             }
+        }
+
+        private async void RealizeItem(VirtualizingFlipViewItem item)
+        {
+            if (_nextVirtualizingItem == item)
+            {
+                _virtualizeItemTaskCancellationTokenSource?.Cancel();
+                _nextVirtualizingItem = null;
+                _virtualizeItemTask = null;
+                _virtualizeItemTaskCancellationTokenSource = null;
+            }
+            await item.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, item.Realize);
         }
     }
 }
