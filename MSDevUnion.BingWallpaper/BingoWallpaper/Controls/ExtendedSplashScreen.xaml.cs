@@ -102,7 +102,7 @@ namespace BingoWallpaper.Controls
                     TileHelper.UpdatePrimaryTile(wallpaper);
                 }
             }
-            finally
+            catch
             {
             }
         }
