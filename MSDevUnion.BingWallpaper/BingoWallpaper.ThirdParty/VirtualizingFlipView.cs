@@ -85,8 +85,8 @@ namespace BingoWallpaper.ThirdParty
         {
             if (_nextVirtualizingItem != null)
             {
-                _nextVirtualizingItem.Virtualize();
                 _virtualizeItemTaskCancellationTokenSource?.Cancel();
+                _nextVirtualizingItem.Virtualize();
                 _virtualizeItemTask = null;
                 _virtualizeItemTaskCancellationTokenSource = null;
             }
@@ -98,13 +98,14 @@ namespace BingoWallpaper.ThirdParty
 
         private async void ToVirtualizeItem()
         {
+            var item = _nextVirtualizingItem;
             await Task.Delay(1000);
-            if (_nextVirtualizingItem != null)
+            if (item != null && item == _nextVirtualizingItem)
             {
-                await _nextVirtualizingItem.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                await item.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
                 {
-                    _nextVirtualizingItem.Virtualize();
-                    _nextVirtualizingItem = null;
+                    item.Virtualize();
+                    item = null;
                 });
             }
         }
@@ -113,8 +114,8 @@ namespace BingoWallpaper.ThirdParty
         {
             if (_nextVirtualizingItem == item)
             {
-                _nextVirtualizingItem = null;
                 _virtualizeItemTaskCancellationTokenSource?.Cancel();
+                _nextVirtualizingItem = null;
                 _virtualizeItemTask = null;
                 _virtualizeItemTaskCancellationTokenSource = null;
             }
