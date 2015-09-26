@@ -1,6 +1,6 @@
 ﻿using BingoWallpaper.Models;
 using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace BingoWallpaper.Datas
 {
@@ -11,12 +11,12 @@ namespace BingoWallpaper.Datas
         /// </summary>
         private static readonly DateTimeOffset MIN_VIEW_MONTH = new DateTimeOffset(new DateTime(2015, 1, 1));
 
-        private static ObservableCollection<WallpaperCollection> _allWallpapers;
+        private static IList<WallpaperCollection> _allWallpapers;
 
         /// <summary>
         /// 所有壁纸信息。
         /// </summary>
-        public static ObservableCollection<WallpaperCollection> AllWallpapers
+        public static IList<WallpaperCollection> AllWallpapers
         {
             get
             {
@@ -26,7 +26,7 @@ namespace BingoWallpaper.Datas
 
         static AppRunningData()
         {
-            _allWallpapers = new ObservableCollection<WallpaperCollection>();
+            _allWallpapers = new List<WallpaperCollection>();
             DateTime date = MIN_VIEW_MONTH.DateTime;
             while (date <= DateTime.Now)
             {
@@ -38,11 +38,11 @@ namespace BingoWallpaper.Datas
         /// <summary>
         /// 重新加载所有壁纸信息。
         /// </summary>
-        public static void ReloadAll()
+        public static async void ReloadAll()
         {
             foreach (var collection in AllWallpapers)
             {
-                collection.ReLoad();
+                await collection.ReLoad();
             }
         }
     }

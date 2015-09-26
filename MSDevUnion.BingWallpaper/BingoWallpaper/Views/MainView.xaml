@@ -83,54 +83,14 @@
         </AppBar>
     </Page.BottomAppBar>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid>
-            <thirdParty:VirtualizingFlipView ItemsSource="{Binding Path=AllWallpapers}"
-                      SelectedItem="{Binding Path=ViewingWallpaper,Mode=TwoWay}">
-                <thirdParty:VirtualizingFlipView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <!--#region 背景图片-->
-                            <Image Stretch="UniformToFill"
-                                   Opacity="0.5"
-                                   Source="{Binding Path=Cover}" />
-                            <!--#endregion-->
-                            <GridView ScrollViewer.VerticalScrollBarVisibility="Auto"
-                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                      ItemsSource="{Binding}"
-                                      ItemClick="Wallpaper_Click"
-                                      IsItemClickEnabled="True">
-                                <GridView.ItemContainerStyle>
-                                    <Style TargetType="GridViewItem">
-                                        <Setter Property="Margin"
-                                                Value="2.5" />
-                                        <Setter Property="HorizontalContentAlignment"
-                                                Value="Stretch" />
-                                        <Setter Property="VerticalContentAlignment"
-                                                Value="Stretch" />
-                                    </Style>
-                                </GridView.ItemContainerStyle>
-                                <GridView.ItemTemplate>
-                                    <DataTemplate>
-                                        <controls:Thumbnail />
-                                    </DataTemplate>
-                                </GridView.ItemTemplate>
-                                <GridView.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <VariableSizedWrapGrid Orientation="Horizontal"
-                                                               HorizontalAlignment="Center"
-                                                               ItemWidth="160"
-                                                               ItemHeight="100"
-                                                               Loaded="ThumbnailGrid_Loaded"></VariableSizedWrapGrid>
-                                    </ItemsPanelTemplate>
-                                </GridView.ItemsPanel>
-                            </GridView>
-                            <ProgressBar HorizontalAlignment="Stretch"
-                                         VerticalAlignment="Top"
-                                         IsIndeterminate="{Binding Path=IsLoading}" />
-                        </Grid>
-                    </DataTemplate>
-                </thirdParty:VirtualizingFlipView.ItemTemplate>
-            </thirdParty:VirtualizingFlipView>
-        </Grid>
+        <FlipView ItemsSource="{Binding Path=AllWallpapers}"
+                  SelectedItem="{Binding Path=ViewingWallpaper,Mode=TwoWay}"
+                  SelectionChanged="FlipView_SelectionChanged">
+            <FlipView.ItemTemplate>
+                <DataTemplate>
+                    <controls:ThumbnailPanel ItemClick="Wallpaper_Click" />
+                </DataTemplate>
+            </FlipView.ItemTemplate>
+        </FlipView>
     </Grid>
 </Page>

@@ -2,7 +2,7 @@
 using BingoWallpaper.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace BingoWallpaper.ViewModels
@@ -20,7 +20,7 @@ namespace BingoWallpaper.ViewModels
         /// <summary>
         /// 所有壁纸信息。
         /// </summary>
-        public ObservableCollection<WallpaperCollection> AllWallpapers
+        public IList<WallpaperCollection> AllWallpapers
         {
             get
             {
@@ -35,7 +35,22 @@ namespace BingoWallpaper.ViewModels
         {
             get
             {
-                _refreshCommand = _refreshCommand ?? new RelayCommand(ReloadAll);
+                _refreshCommand = _refreshCommand ?? new RelayCommand(async () =>
+                {
+                    var index = AllWallpapers.IndexOf(ViewingWallpaper);
+                    var previous = AllWallpapers.ElementAtOrDefault(index - 1);
+                    var next = AllWallpapers.ElementAtOrDefault(index + 1);
+
+                    await ViewingWallpaper.ReLoad();
+                    if (previous != null)
+                    {
+                        await previous.ReLoad();
+                    }
+                    if (next != null)
+                    {
+                        await next.ReLoad();
+                    }
+                });
                 return _refreshCommand;
             }
         }

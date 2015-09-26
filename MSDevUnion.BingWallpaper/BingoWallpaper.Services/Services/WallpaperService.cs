@@ -18,36 +18,80 @@ namespace BingoWallpaper.Services
 
         private const string LeanCloudAppKey = @"idsoc6l9k218zrge2qi06anel3qcoqgvhutbqm93e4l58d3i";
 
+        private static Dictionary<string, string> DataCache
+        {
+            get
+            {
+                if (_lastHttpRequestTime.AddHours(1) < DateTime.Now)
+                {
+                    _dataCache.Clear();
+                }
+                return _dataCache;
+            }
+        }
+
+        private static DateTime _lastHttpRequestTime;
+
+        private static Dictionary<string, string> _dataCache = new Dictionary<string, string>();
+
         public async Task<LeanCloudResultCollection<Archive>> GetArchivesAsync(int year, int month, string market)
         {
-            using (HttpClient client = CreateClient())
+            var where = new
             {
-                var where = new
-                {
-                    market = market,
-                    date = new Dictionary<string, string>
+                market = market,
+                date = new Dictionary<string, string>
                     {
                         {
                             "$regex",
                             @"\Q" + new DateTime(year,month,1).ToString("yyyyMM") + @"\E"
                         }
                     }
-                };
+            };
 
-                string requestUri = $"{URLBASE}/1.1/classes/Archive?where={WebUtility.UrlEncode(JsonConvert.SerializeObject(where))}&order=-date";
+            string requestUri = $"{URLBASE}/1.1/classes/Archive?where={WebUtility.UrlEncode(JsonConvert.SerializeObject(where))}&order=-date";
 
-                return await client.GetJsonAsync<LeanCloudResultCollection<Archive>>(new Uri(requestUri));
+            string json;
+
+            if (DataCache.ContainsKey(requestUri))
+            {
+                json = DataCache[requestUri];
             }
+            else
+            {
+                using (HttpClient client = CreateClient())
+                {
+                    _lastHttpRequestTime = DateTime.Now;
+
+                    json = await client.GetStringAsync(new Uri(requestUri));
+                    DataCache[requestUri] = json;
+                }
+            }
+
+            return JsonConvert.DeserializeObject<LeanCloudResultCollection<Archive>>(json);
         }
 
         public async Task<Image> GetImageAsync(string objectId)
         {
-            using (HttpClient client = CreateClient())
-            {
-                string requestUri = $"{URLBASE}/1.1/classes/Image/{objectId}";
+            string requestUri = $"{URLBASE}/1.1/classes/Image/{objectId}";
 
-                return await client.GetJsonAsync<Image>(new Uri(requestUri));
+            string json;
+
+            if (DataCache.ContainsKey(requestUri))
+            {
+                json = DataCache[requestUri];
             }
+            else
+            {
+                using (HttpClient client = CreateClient())
+                {
+                    _lastHttpRequestTime = DateTime.Now;
+
+                    json = await client.GetStringAsync(new Uri(requestUri));
+                    DataCache[requestUri] = json;
+                }
+            }
+
+            return JsonConvert.DeserializeObject<Image>(json);
         }
 
         public async Task<Archive> GetNewestArchiveAsync(string market)

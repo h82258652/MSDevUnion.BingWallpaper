@@ -1,8 +1,5 @@
 ﻿using BingoWallpaper.Datas;
 using BingoWallpaper.ViewModels;
-using System;
-using System.Collections.Generic;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
@@ -15,15 +12,9 @@ namespace BingoWallpaper.Views
     {
         private static string _lastViewArea;
 
-        private List<WeakReference<VariableSizedWrapGrid>> _thumbnailGrids = new List<WeakReference<VariableSizedWrapGrid>>();
-
         public MainView()
         {
             this.InitializeComponent();
-            Window.Current.SizeChanged += delegate
-            {
-                ResetThumbnailGrid();
-            };
         }
 
         public MainViewModel ViewModel
@@ -45,43 +36,42 @@ namespace BingoWallpaper.Views
         {
             if (string.Equals(_lastViewArea, AppSetting.Area) == false)
             {
-                this.ViewModel.ReloadAll();
+                foreach (var wallpapers in this.ViewModel.AllWallpapers)
+                {
+                    wallpapers.Clear();
+                }
             }
 
             base.OnNavigatedTo(e);
         }
 
-        private void ResetThumbnailGrid()
-        {
-            var size = Window.Current.Bounds;
-            foreach (var thumbnailGridReference in _thumbnailGrids)
-            {
-                VariableSizedWrapGrid grid;
-                if (thumbnailGridReference.TryGetTarget(out grid))
-                {
-                    if (size.Width > 960)
-                    {
-                        grid.ItemWidth = 320;
-                        grid.ItemHeight = 200;
-                    }
-                    else
-                    {
-                        grid.ItemWidth = 160;
-                        grid.ItemHeight = 100;
-                    }
-                }
-            }
-        }
-
-        private void ThumbnailGrid_Loaded(object sender, RoutedEventArgs e)
-        {
-            _thumbnailGrids.Add(new WeakReference<VariableSizedWrapGrid>((VariableSizedWrapGrid)sender));
-            ResetThumbnailGrid();
-        }
-
         private void Wallpaper_Click(object sender, ItemClickEventArgs e)
         {
             this.Frame.Navigate(typeof(DetailView), e.ClickedItem);
+        }
+
+        private async void FlipView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var allWallpapers = ViewModel.AllWallpapers;
+            var viewingWallpaper = ViewModel.ViewingWallpaper;
+
+            var currentIndex = allWallpapers.IndexOf(viewingWallpaper);
+
+            for (int i = 0; i < allWallpapers.Count; i++)
+            {
+                var wallpapers = allWallpapers[i];
+                if (i == currentIndex - 1 || i == currentIndex || i == currentIndex + 1)
+                {
+                    if (wallpapers.Count <= 0)
+                    {
+                        await allWallpapers[i].ReLoad();
+                    }
+                }
+                else
+                {
+                    wallpapers.Clear();
+                }
+            }
         }
     }
 }

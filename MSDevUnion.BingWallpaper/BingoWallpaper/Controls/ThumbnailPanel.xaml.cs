@@ -1,24 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-// The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
 namespace BingoWallpaper.Controls
 {
     public sealed partial class ThumbnailPanel : UserControl
     {
+        private VariableSizedWrapGrid _thumbnailGrid;
+
         public ThumbnailPanel()
         {
             this.InitializeComponent();
@@ -28,43 +16,34 @@ namespace BingoWallpaper.Controls
             };
         }
 
+        public event ItemClickEventHandler ItemClick;
+
+        private void ResetThumbnailGrid()
+        {
+            var size = Window.Current.Bounds;
+            if (size.Width > 960)
+            {
+                _thumbnailGrid.ItemWidth = 320;
+                _thumbnailGrid.ItemHeight = 200;
+            }
+            else
+            {
+                _thumbnailGrid.ItemWidth = 160;
+                _thumbnailGrid.ItemHeight = 100;
+            }
+        }
+
+        private void ThumbnailGrid_Loaded(object sender, RoutedEventArgs e)
+        {
+            _thumbnailGrid = (VariableSizedWrapGrid)sender;
+            ResetThumbnailGrid();
+        }
+
         private void Wallpaper_Click(object sender, ItemClickEventArgs e)
         {
             if (ItemClick != null)
             {
                 ItemClick(sender, e);
-            }
-        }
-
-        public event ItemClickEventHandler ItemClick;
-
-        private void ThumbnailGrid_Loaded(object sender, RoutedEventArgs e)
-        {
-            _thumbnailGrids.Add(new WeakReference<VariableSizedWrapGrid>((VariableSizedWrapGrid)sender));
-            ResetThumbnailGrid();
-        }
-
-        private List<WeakReference<VariableSizedWrapGrid>> _thumbnailGrids = new List<WeakReference<VariableSizedWrapGrid>>();
-
-        private void ResetThumbnailGrid()
-        {
-            var size = Window.Current.Bounds;
-            foreach (var thumbnailGridReference in _thumbnailGrids)
-            {
-                VariableSizedWrapGrid grid;
-                if (thumbnailGridReference.TryGetTarget(out grid))
-                {
-                    if (size.Width > 960)
-                    {
-                        grid.ItemWidth = 320;
-                        grid.ItemHeight = 200;
-                    }
-                    else
-                    {
-                        grid.ItemWidth = 160;
-                        grid.ItemHeight = 100;
-                    }
-                }
             }
         }
     }

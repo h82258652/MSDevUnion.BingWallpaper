@@ -12,17 +12,8 @@ namespace BingoWallpaper.Converters
             if (wallpaper != null)
             {
                 return wallpaper.GetCacheUrl(new WallpaperSize(1920, 1080));
-
-                //if (wallpaper.IsLastInMonth)
-                //{
-                //    return wallpaper.GetUrl(new WallpaperSize(310, 150));
-                //}
-                //else
-                //{
-                //    return wallpaper.GetUrl(new WallpaperSize(150, 150));
-                //}
             }
-            return value;
+            return null;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

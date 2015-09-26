@@ -2,6 +2,7 @@
 using BingoWallpaper.Services;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Threading.Tasks;
 
 namespace BingoWallpaper.Models
 {
@@ -15,7 +16,6 @@ namespace BingoWallpaper.Models
         {
             this._year = year;
             this._month = month;
-            ReLoad();
         }
 
         public string Cover
@@ -62,8 +62,13 @@ namespace BingoWallpaper.Models
         /// <summary>
         /// 重新加载该年月的壁纸信息。
         /// </summary>
-        public async void ReLoad()
+        public async Task ReLoad()
         {
+            if (this.IsLoading)
+            {
+                return;
+            }
+
             this.IsLoading = true;
 
             this.ClearItems();

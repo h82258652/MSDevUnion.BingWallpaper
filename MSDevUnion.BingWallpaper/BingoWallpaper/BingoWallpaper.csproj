@@ -110,10 +110,14 @@
     <Compile Include="Controls\Thumbnail.xaml.cs">
       <DependentUpon>Thumbnail.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ThumbnailPanel.xaml.cs">
+      <DependentUpon>ThumbnailPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converters\AreaToFlagConverter.cs" />
     <Compile Include="Converters\AreaToNameConverter.cs" />
     <Compile Include="Converters\BackgroundImageConverter.cs" />
     <Compile Include="Converters\FirstCharConverter.cs" />
+    <Compile Include="Converters\IsUseThumbnailPanelInstanceConverter.cs" />
     <Compile Include="Converters\LastCharsConverter.cs" />
     <Compile Include="Converters\MonthNameConverter.cs" />
     <Compile Include="Converters\SaveLocationConverter.cs" />
@@ -192,6 +196,10 @@
     <Page Include="Controls\Thumbnail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ThumbnailPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\AboutView.xaml">
       <SubType>Designer</SubType>
