@@ -13,7 +13,7 @@
              d:DataContext="{d:DesignInstance Type=model:Wallpaper}">
     <Grid>
         <Image Stretch="UniformToFill"
-               Source="{Binding Converter={StaticResource ResourceKey=ThumbnailUrlConverter}}" />
+               Source="{Binding Converter={StaticResource ResourceKey=ThumbnailUrlConverter}}"/>
         <Border VerticalAlignment="Bottom"
                 Background="#80808080">
             <TextBlock Text="{Binding Converter={StaticResource ResourceKey=ThumbnailNameConverter}}"
