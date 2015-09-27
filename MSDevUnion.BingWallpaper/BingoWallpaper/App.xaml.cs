@@ -23,6 +23,7 @@ using Windows.UI.Xaml.Navigation;
 using System.Threading.Tasks;
 using Windows.Foundation.Metadata;
 using Windows.UI;
+using Windows.Storage;
 
 namespace BingoWallpaper
 {
@@ -33,9 +34,9 @@ namespace BingoWallpaper
             this.InitializeComponent();
 
             // 下面语句用于测试其他语言。
-            Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "";
+            //Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "";
 
-            DebugSettings.EnableFrameRateCounter = true;
+            //DebugSettings.EnableFrameRateCounter = true;
 
             this.DefaultMainPage = typeof(MainView);
             this.DefaultExtendedSplashScreen = () => new ExtendedSplashScreen();

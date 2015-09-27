@@ -11,6 +11,7 @@ namespace BingoWallpaper.BackgroundTask
     {
         public async void Run(IBackgroundTaskInstance taskInstance)
         {
+            return;
             BackgroundTaskDeferral deferral = taskInstance.GetDeferral();
             try
             {

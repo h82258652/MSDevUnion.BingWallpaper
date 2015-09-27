@@ -14,7 +14,8 @@ namespace BingoWallpaper.Datas
             {
                 if (ApplicationRoamingSettings.Exists(nameof(Area)))
                 {
-                    return ApplicationRoamingSettings.Read<string>(nameof(Area));
+                    var area = ApplicationRoamingSettings.Read<string>(nameof(Area));
+                    return area;
                 }
                 else
                 {

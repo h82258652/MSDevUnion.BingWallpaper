@@ -18,21 +18,15 @@ namespace BingoWallpaper.Services
 
         private const string LeanCloudAppKey = @"idsoc6l9k218zrge2qi06anel3qcoqgvhutbqm93e4l58d3i";
 
-        private static Dictionary<string, string> DataCache
+        private static Dictionary<string, JsonResultCache> DataCache
         {
             get
             {
-                if (_lastHttpRequestTime.AddHours(1) < DateTime.Now)
-                {
-                    _dataCache.Clear();
-                }
                 return _dataCache;
             }
         }
 
-        private static DateTime _lastHttpRequestTime;
-
-        private static Dictionary<string, string> _dataCache = new Dictionary<string, string>();
+        private static Dictionary<string, JsonResultCache> _dataCache = new Dictionary<string, JsonResultCache>();
 
         public async Task<LeanCloudResultCollection<Archive>> GetArchivesAsync(int year, int month, string market)
         {
@@ -52,18 +46,22 @@ namespace BingoWallpaper.Services
 
             string json;
 
-            if (DataCache.ContainsKey(requestUri))
+            if (DataCache.ContainsKey(requestUri) && DataCache[requestUri].IsUseable())
             {
-                json = DataCache[requestUri];
+                json = DataCache[requestUri].Json;
             }
             else
             {
                 using (HttpClient client = CreateClient())
                 {
-                    _lastHttpRequestTime = DateTime.Now;
+                    var requestTime = DateTime.Now;
 
                     json = await client.GetStringAsync(new Uri(requestUri));
-                    DataCache[requestUri] = json;
+                    DataCache[requestUri] = new JsonResultCache()
+                    {
+                        Json = json,
+                        RequestTime = requestTime
+                    };
                 }
             }
 
@@ -76,18 +74,22 @@ namespace BingoWallpaper.Services
 
             string json;
 
-            if (DataCache.ContainsKey(requestUri))
+            if (DataCache.ContainsKey(requestUri) && DataCache[requestUri].IsUseable())
             {
-                json = DataCache[requestUri];
+                json = DataCache[requestUri].Json;
             }
             else
             {
                 using (HttpClient client = CreateClient())
                 {
-                    _lastHttpRequestTime = DateTime.Now;
+                    var requestTime = DateTime.Now;
 
                     json = await client.GetStringAsync(new Uri(requestUri));
-                    DataCache[requestUri] = json;
+                    DataCache[requestUri] = new JsonResultCache()
+                    {
+                        Json = json,
+                        RequestTime = requestTime
+                    };
                 }
             }
 
