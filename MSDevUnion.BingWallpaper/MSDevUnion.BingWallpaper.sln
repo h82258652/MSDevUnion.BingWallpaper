@@ -27,6 +27,8 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "BingoWallpaper.Shared", "Bi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BingoWallpaper.ThirdParty", "BingoWallpaper.ThirdParty\BingoWallpaper.ThirdParty.csproj", "{BC68B9A8-82AA-4002-84F0-75152D376562}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareKobo.Social.Sina.Weibo", "SoftwareKobo.Social.Sina.Weibo\SoftwareKobo.Social.Sina.Weibo.csproj", "{7076B845-958D-412C-BF79-C7A2E61A4BFF}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		BingoWallpaper.Shared\BingoWallpaper.Shared.projitems*{05dfd84b-f846-4bd5-bdd4-54b8e0c311fe}*SharedItemsImports = 13
@@ -234,6 +236,22 @@ Global
 		{BC68B9A8-82AA-4002-84F0-75152D376562}.Release|x64.Build.0 = Release|x64
 		{BC68B9A8-82AA-4002-84F0-75152D376562}.Release|x86.ActiveCfg = Release|x86
 		{BC68B9A8-82AA-4002-84F0-75152D376562}.Release|x86.Build.0 = Release|x86
+		{7076B845-958D-412C-BF79-C7A2E61A4BFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7076B845-958D-412C-BF79-C7A2E61A4BFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7076B845-958D-412C-BF79-C7A2E61A4BFF}.Debug|ARM.ActiveCfg = Debug|ARM
+		{7076B845-958D-412C-BF79-C7A2E61A4BFF}.Debug|ARM.Build.0 = Debug|ARM
+		{7076B845-958D-412C-BF79-C7A2E61A4BFF}.Debug|x64.ActiveCfg = Debug|x64
+		{7076B845-958D-412C-BF79-C7A2E61A4BFF}.Debug|x64.Build.0 = Debug|x64
+		{7076B845-958D-412C-BF79-C7A2E61A4BFF}.Debug|x86.ActiveCfg = Debug|x86
+		{7076B845-958D-412C-BF79-C7A2E61A4BFF}.Debug|x86.Build.0 = Debug|x86
+		{7076B845-958D-412C-BF79-C7A2E61A4BFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7076B845-958D-412C-BF79-C7A2E61A4BFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7076B845-958D-412C-BF79-C7A2E61A4BFF}.Release|ARM.ActiveCfg = Release|ARM
+		{7076B845-958D-412C-BF79-C7A2E61A4BFF}.Release|ARM.Build.0 = Release|ARM
+		{7076B845-958D-412C-BF79-C7A2E61A4BFF}.Release|x64.ActiveCfg = Release|x64
+		{7076B845-958D-412C-BF79-C7A2E61A4BFF}.Release|x64.Build.0 = Release|x64
+		{7076B845-958D-412C-BF79-C7A2E61A4BFF}.Release|x86.ActiveCfg = Release|x86
+		{7076B845-958D-412C-BF79-C7A2E61A4BFF}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
