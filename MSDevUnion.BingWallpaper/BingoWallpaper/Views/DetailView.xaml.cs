@@ -16,6 +16,7 @@ using Windows.System.UserProfile;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Documents;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.Web.Http;
@@ -264,7 +265,7 @@ namespace BingoWallpaper.Views
             await service.OpenLockScreenPageAsync();
         }
 
-        private async void HotspotClick(Windows.UI.Xaml.Documents.Hyperlink sender, Windows.UI.Xaml.Documents.HyperlinkClickEventArgs args)
+        private async void HotspotClick(Hyperlink sender, HyperlinkClickEventArgs args)
         {
             var textBlock = sender.GetAncestorsOfType<TextBlock>().First();
             var hotspot = textBlock.DataContext as Hotspot;
