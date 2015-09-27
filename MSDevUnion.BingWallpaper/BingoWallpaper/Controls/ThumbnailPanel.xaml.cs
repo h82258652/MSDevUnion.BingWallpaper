@@ -20,6 +20,11 @@ namespace BingoWallpaper.Controls
 
         private void ResetThumbnailGrid()
         {
+            if (_thumbnailGrid == null)
+            {
+                return;
+            }
+
             var size = Window.Current.Bounds;
             if (size.Width > 960)
             {

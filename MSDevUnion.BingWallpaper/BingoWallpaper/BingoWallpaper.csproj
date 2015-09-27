@@ -115,9 +115,7 @@
     </Compile>
     <Compile Include="Converters\AreaToFlagConverter.cs" />
     <Compile Include="Converters\AreaToNameConverter.cs" />
-    <Compile Include="Converters\BackgroundImageConverter.cs" />
     <Compile Include="Converters\FirstCharConverter.cs" />
-    <Compile Include="Converters\IsUseThumbnailPanelInstanceConverter.cs" />
     <Compile Include="Converters\LastCharsConverter.cs" />
     <Compile Include="Converters\MonthNameConverter.cs" />
     <Compile Include="Converters\SaveLocationConverter.cs" />

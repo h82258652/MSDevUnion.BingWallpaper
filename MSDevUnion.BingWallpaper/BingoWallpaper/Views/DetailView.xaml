@@ -7,6 +7,8 @@
       xmlns:localConv="using:BingoWallpaper.Converters"
       xmlns:conv="using:SoftwareKobo.UniversalToolkit.Converters"
       xmlns:storage="using:SoftwareKobo.UniversalToolkit.Storage"
+      xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+      xmlns:core="using:Microsoft.Xaml.Interactions.Core"
       mc:Ignorable="d"
       DataContext="{Binding Source={StaticResource ResourceKey=Locator},Path=Detail}">
     <Page.Transitions>
@@ -78,14 +80,14 @@
                             <Grid Visibility="{Binding ElementName=BtnHotspots,Path=IsChecked,Converter={StaticResource ResourceKey=BtnHotspotsViewOpenedConverter}}">
                                 <Image Source="/Assets/lightbulb-online.png"
                                        Width="20"
-                                       Height="20"></Image>
+                                       Height="20" />
                             </Grid>
                             <!--#endregion-->
                             <!--#region 关闭状态-->
                             <Grid Visibility="{Binding ElementName=BtnHotspots,Path=IsChecked,Converter={StaticResource ResourceKey=BtnHotspotsViewClosedConverter}}">
                                 <Image Source="/Assets/lightbulb-outline.png"
                                        Width="20"
-                                       Height="20"></Image>
+                                       Height="20" />
                             </Grid>
                             <!--#endregion-->
                         </Grid>
@@ -110,8 +112,15 @@
                                     <localConv:WallpaperUrlConverter x:Key="WallpaperUrlConverter" />
                                 </ScrollViewer.Resources>
                                 <Image Stretch="None"
-                                       Source="{Binding Path=Wallpaper,Converter={StaticResource ResourceKey=WallpaperUrlConverter}}"
-                                       ImageOpened="Wallpaper_Opened" />
+                                       Source="{Binding Path=Wallpaper,Converter={StaticResource ResourceKey=WallpaperUrlConverter}}">
+                                    <interactivity:Interaction.Behaviors>
+                                        <core:EventTriggerBehavior EventName="ImageOpened">
+                                            <core:ChangePropertyAction TargetObject="{Binding ElementName=LoadingRing}"
+                                                                       PropertyName="IsActive"
+                                                                       Value="False" />
+                                        </core:EventTriggerBehavior>
+                                    </interactivity:Interaction.Behaviors>
+                                </Image>
                             </ScrollViewer>
                             <ProgressRing x:Name="LoadingRing"
                                           IsActive="True"

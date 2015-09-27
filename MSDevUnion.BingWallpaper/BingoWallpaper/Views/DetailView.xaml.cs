@@ -274,10 +274,5 @@ namespace BingoWallpaper.Views
                 await Launcher.LaunchUriAsync(uri);
             }
         }
-        
-        private void Wallpaper_Opened(object sender, RoutedEventArgs e)
-        {
-            LoadingRing.IsActive = false;
-        }
     }
 }
