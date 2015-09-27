@@ -91,7 +91,7 @@
                 </ComboBox>
                 <!--#endregion-->
                 <!--#region 清空缓存-->
-                <StackPanel Orientation="Horizontal"
+                <!--<StackPanel Orientation="Horizontal"
                             Margin="10">
                     <Button VerticalAlignment="Center"
                             Padding="10,5,10,5"
@@ -104,7 +104,7 @@
                     <TextBlock VerticalAlignment="Center"
                                x:Name="txtCachedSize"
                                Text="正在计算……" />
-                </StackPanel>
+                </StackPanel>-->
                 <!--#endregion-->
             </StackPanel>
         </ScrollViewer>

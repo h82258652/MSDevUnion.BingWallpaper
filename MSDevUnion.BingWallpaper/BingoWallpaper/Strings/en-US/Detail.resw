@@ -117,22 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="About.Label" xml:space="preserve">
-    <value>About</value>
+  <data name="OpenDeviceLockScreenSetting.Label" xml:space="preserve">
+    <value>Open lock screen setting</value>
   </data>
-  <data name="About.ToolTipService.ToolTip" xml:space="preserve">
-    <value>About</value>
+  <data name="OpenDeviceLockScreenSetting.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Open lock screen setting</value>
   </data>
-  <data name="Refresh.Label" xml:space="preserve">
-    <value>Refresh</value>
+  <data name="OpenDeviceWallpaperSetting.Label" xml:space="preserve">
+    <value>Open wallpaper setting</value>
   </data>
-  <data name="Refresh.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Refresh</value>
+  <data name="OpenDeviceWallpaperSetting.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Open wallpaper setting</value>
   </data>
-  <data name="Setting.Label" xml:space="preserve">
-    <value>Setting</value>
+  <data name="Save.Label" xml:space="preserve">
+    <value>Save</value>
   </data>
-  <data name="Setting.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Setting</value>
+  <data name="Save.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Save this image to local disk.</value>
+  </data>
+  <data name="SetLockScreen.Label" xml:space="preserve">
+    <value>Set as lockscreen</value>
+  </data>
+  <data name="SetLockScreen.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Set this image as your device lock screen.</value>
+  </data>
+  <data name="SetWallpaper.Label" xml:space="preserve">
+    <value>Set as wallpaper</value>
+  </data>
+  <data name="SetWallpaper.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Set this image as your device wallpaper.</value>
+  </data>
+  <data name="Share.Label" xml:space="preserve">
+    <value>Share</value>
+  </data>
+  <data name="Share.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Share this image to your friends.</value>
   </data>
 </root>

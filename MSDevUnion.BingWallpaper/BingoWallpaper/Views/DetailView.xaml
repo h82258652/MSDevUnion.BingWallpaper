@@ -18,6 +18,9 @@
             </NavigationThemeTransition>
         </TransitionCollection>
     </Page.Transitions>
+    <Page.Resources>
+        <localConv:HotspotButtonContentConverter x:Key="HotspotButtonContentConverter" />
+    </Page.Resources>
     <Page.BottomAppBar>
         <CommandBar x:Name="AppBar"
                     Background="{ThemeResource SystemControlBackgroundAccentBrush}"
@@ -39,7 +42,7 @@
             </AppBarButton>
             <AppBarButton Icon="SetLockScreen"
                           Click="BtnSetLockScreen_Click"
-                          x:Uid="/Detail/SetLookScreen"
+                          x:Uid="/Detail/SetLockScreen"
                           Label="设置为锁屏"
                           ToolTipService.ToolTip="设置为锁屏" />
             <AppBarButton Icon="ReShare"
@@ -48,10 +51,14 @@
                           Label="分享"
                           ToolTipService.ToolTip="分享" />
             <CommandBar.SecondaryCommands>
-                <AppBarButton Click="BtnOpenDeviceWallpaperSetting_Click"
-                              Label="打开壁纸设置" />
-                <AppBarButton Click="BtnOpenDeviceLockScreenSetting_Click"
-                              Label="打开锁屏设置" />
+                <AppBarButton x:Uid="/Detail/OpenDeviceWallpaperSetting"
+                              Click="BtnOpenDeviceWallpaperSetting_Click"
+                              Label="打开壁纸设置"
+                              ToolTipService.ToolTip="打开壁纸设置" />
+                <AppBarButton x:Uid="/Detail/OpenDeviceLockScreenSetting"
+                              Click="BtnOpenDeviceLockScreenSetting_Click"
+                              Label="打开锁屏设置"
+                              ToolTipService.ToolTip="打开锁屏设置" />
             </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>
@@ -70,27 +77,9 @@
                 <ToggleButton x:Name="BtnHotspots"
                               Background="{x:Null}">
                     <ToggleButton.Content>
-                        <Grid>
-                            <Grid.Resources>
-                                <conv:BooleanToVisibilityConverter x:Name="BtnHotspotsViewOpenedConverter" />
-                                <conv:BooleanToVisibilityConverter x:Name="BtnHotspotsViewClosedConverter"
-                                                                   IsInversed="True" />
-                            </Grid.Resources>
-                            <!--#region 开启状态-->
-                            <Grid Visibility="{Binding ElementName=BtnHotspots,Path=IsChecked,Converter={StaticResource ResourceKey=BtnHotspotsViewOpenedConverter}}">
-                                <Image Source="/Assets/lightbulb-online.png"
-                                       Width="20"
-                                       Height="20" />
-                            </Grid>
-                            <!--#endregion-->
-                            <!--#region 关闭状态-->
-                            <Grid Visibility="{Binding ElementName=BtnHotspots,Path=IsChecked,Converter={StaticResource ResourceKey=BtnHotspotsViewClosedConverter}}">
-                                <Image Source="/Assets/lightbulb-outline.png"
-                                       Width="20"
-                                       Height="20" />
-                            </Grid>
-                            <!--#endregion-->
-                        </Grid>
+                        <Image Source="{Binding ElementName=HotspotsView,Path=IsPaneOpen,Converter={StaticResource HotspotButtonContentConverter}}"
+                               Width="20"
+                               Height="20" />
                     </ToggleButton.Content>
                 </ToggleButton>
                 <TextBlock Grid.Column="1"

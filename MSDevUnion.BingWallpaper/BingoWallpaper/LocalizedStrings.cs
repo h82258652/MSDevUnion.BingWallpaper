@@ -92,6 +92,22 @@ namespace BingoWallpaper
             }
         }
 
+        public static string Description
+        {
+            get
+            {
+                return ResourceLoader.GetForCurrentView().GetString("Description");
+            }
+        }
+
+        public static string DisplayName
+        {
+            get
+            {
+                return ResourceLoader.GetForCurrentView().GetString("DisplayName");
+            }
+        }
+
         public static string ChooseEveryTime
         {
             get

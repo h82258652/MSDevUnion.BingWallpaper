@@ -91,6 +91,8 @@
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <None Include="project.json" />
+    <PRIResource Include="Strings\en-US\Detail.resw" />
+    <PRIResource Include="Strings\zh-CN\Detail.resw" />
     <PRIResource Include="Strings\en-US\Main.resw" />
     <PRIResource Include="Strings\en-US\Setting.resw" />
     <PRIResource Include="Strings\en-US\Area.resw" />
@@ -116,6 +118,7 @@
     <Compile Include="Converters\AreaToFlagConverter.cs" />
     <Compile Include="Converters\AreaToNameConverter.cs" />
     <Compile Include="Converters\FirstCharConverter.cs" />
+    <Compile Include="Converters\HotspotButtonContentConverter.cs" />
     <Compile Include="Converters\LastCharsConverter.cs" />
     <Compile Include="Converters\MonthNameConverter.cs" />
     <Compile Include="Converters\SaveLocationConverter.cs" />

@@ -38,48 +38,48 @@ namespace BingoWallpaper.Views
         {
             Frame.RegisterNavigateBack();
 
-            CalcCachedSize();
+            //CalcCachedSize();
 
             base.OnNavigatedTo(e);
         }
 
-        private async void BtnCleanupCachedImage_Click(object sender, RoutedEventArgs e)
-        {
-            Control control = sender as Control;
-            if (control != null)
-            {
-                control.IsEnabled = false;
-            }
-            StorageCachedImage.CleanUpCachedImages();
-            await new MessageDialog("清空成功").ShowAsync();
-            this.CalcCachedSize();
-            if (control != null)
-            {
-                control.IsEnabled = true;
-            }
-        }
+        //private async void BtnCleanupCachedImage_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Control control = sender as Control;
+        //    if (control != null)
+        //    {
+        //        control.IsEnabled = false;
+        //    }
+        //    StorageCachedImage.CleanUpCachedImages();
+        //    await new MessageDialog("清空成功").ShowAsync();
+        //    this.CalcCachedSize();
+        //    if (control != null)
+        //    {
+        //        control.IsEnabled = true;
+        //    }
+        //}
 
-        private void CalcCachedSize()
-        {
-            // 获取已缓存图片大小，单位字节。
-            long bytes = StorageCachedImage.GetCachedImagesSize();
-            double kb = bytes / 1024.0;
-            if (kb < 1.0)
-            {
-                txtCachedSize.Text = $"{bytes} B";
-                return;
-            }
-            double mb = kb / 1024.0;
-            if (mb < 1.0)
-            {
-                txtCachedSize.Text = kb.ToString("f2") + " KB";
-                return;
-            }
-            else
-            {
-                txtCachedSize.Text = mb.ToString("f2") + " MB";
-                return;
-            }
-        }
+        //private void CalcCachedSize()
+        //{
+        //    // 获取已缓存图片大小，单位字节。
+        //    long bytes = StorageCachedImage.GetCachedImagesSize();
+        //    double kb = bytes / 1024.0;
+        //    if (kb < 1.0)
+        //    {
+        //        txtCachedSize.Text = $"{bytes} B";
+        //        return;
+        //    }
+        //    double mb = kb / 1024.0;
+        //    if (mb < 1.0)
+        //    {
+        //        txtCachedSize.Text = kb.ToString("f2") + " KB";
+        //        return;
+        //    }
+        //    else
+        //    {
+        //        txtCachedSize.Text = mb.ToString("f2") + " MB";
+        //        return;
+        //    }
+        //}
     }
 }

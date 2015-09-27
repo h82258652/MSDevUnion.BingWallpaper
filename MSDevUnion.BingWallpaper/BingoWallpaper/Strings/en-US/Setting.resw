@@ -132,4 +132,7 @@
   <data name="WallpaperSize.Text" xml:space="preserve">
     <value>Wallpaper Size</value>
   </data>
+  <data name="Area.Text" xml:space="preserve">
+    <value>Country/Area</value>
+  </data>
 </root>

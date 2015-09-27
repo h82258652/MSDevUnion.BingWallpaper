@@ -123,6 +123,12 @@
   <data name="About.ToolTipService.ToolTip" xml:space="preserve">
     <value>关于</value>
   </data>
+  <data name="Refresh.Label" xml:space="preserve">
+    <value>刷新</value>
+  </data>
+  <data name="Refresh.ToolTipService.ToolTip" xml:space="preserve">
+    <value>刷新</value>
+  </data>
   <data name="Setting.Label" xml:space="preserve">
     <value>设置</value>
   </data>
