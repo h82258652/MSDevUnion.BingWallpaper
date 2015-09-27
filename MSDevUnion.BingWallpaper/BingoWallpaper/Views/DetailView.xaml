@@ -63,77 +63,79 @@
         </CommandBar>
     </Page.BottomAppBar>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0"
-                  Background="{ThemeResource SystemControlBackgroundAccentBrush}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <ToggleButton x:Name="BtnHotspots"
-                              Background="{x:Null}">
-                    <ToggleButton.Content>
-                        <Image Source="{Binding ElementName=HotspotsView,Path=IsPaneOpen,Converter={StaticResource HotspotButtonContentConverter}}"
-                               Width="20"
-                               Height="20" />
-                    </ToggleButton.Content>
-                </ToggleButton>
-                <TextBlock Grid.Column="1"
-                           Text="{Binding Path=Wallpaper.Archive.Info}"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0"
+              Background="{ThemeResource SystemControlBackgroundAccentBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <ToggleButton x:Name="BtnHotspots"
+                          Background="{x:Null}">
+                <ToggleButton.Content>
+                    <Image Source="{Binding ElementName=HotspotsView,Path=IsPaneOpen,Converter={StaticResource HotspotButtonContentConverter}}"
+                           Width="20"
+                           Height="20" />
+                </ToggleButton.Content>
+            </ToggleButton>
+            <ScrollViewer Grid.Column="1"
+                          VerticalScrollBarVisibility="Disabled"
+                          HorizontalScrollBarVisibility="Hidden">
+                <TextBlock Text="{Binding Path=Wallpaper.Archive.Info}"
                            Margin="5"
                            Foreground="{ThemeResource ApplicationPageBackgroundThemeBrush}"
                            TextAlignment="Right" />
-            </Grid>
-            <Grid Grid.Row="1">
-                <SplitView x:Name="HotspotsView"
-                           IsPaneOpen="{Binding ElementName=BtnHotspots,Path=IsChecked,Mode=TwoWay}"
-                           PaneBackground="#80000000">
-                    <SplitView.Content>
-                        <Grid>
-                            <ScrollViewer x:Name="ScrollViewer"
-                                          HorizontalScrollBarVisibility="Auto"
-                                          VerticalScrollBarVisibility="Auto">
-                                <ScrollViewer.Resources>
-                                    <localConv:WallpaperUrlConverter x:Key="WallpaperUrlConverter" />
-                                </ScrollViewer.Resources>
-                                <Image Stretch="None"
-                                       Source="{Binding Path=Wallpaper,Converter={StaticResource ResourceKey=WallpaperUrlConverter}}">
-                                    <interactivity:Interaction.Behaviors>
-                                        <core:EventTriggerBehavior EventName="ImageOpened">
-                                            <core:ChangePropertyAction TargetObject="{Binding ElementName=LoadingRing}"
-                                                                       PropertyName="IsActive"
-                                                                       Value="False" />
-                                        </core:EventTriggerBehavior>
-                                    </interactivity:Interaction.Behaviors>
-                                </Image>
-                            </ScrollViewer>
-                            <ProgressRing x:Name="LoadingRing"
-                                          IsActive="True"
-                                          RenderTransformOrigin="0.5,0.5">
-                                <ProgressRing.RenderTransform>
-                                    <ScaleTransform ScaleX="5"
-                                                    ScaleY="5" />
-                                </ProgressRing.RenderTransform>
-                            </ProgressRing>
-                        </Grid>
-                    </SplitView.Content>
-                    <SplitView.Pane>
-                        <ScrollViewer HorizontalScrollBarVisibility="Disabled"
-                                      VerticalScrollBarVisibility="Hidden">
-                            <ItemsControl ItemsSource="{Binding Path=Wallpaper.Archive.Hotspots}">
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <Grid Margin="5,5,5,15">
-                                            <Grid.Resources>
-                                                <localConv:FirstCharConverter x:Key="FirstCharConverter" />
-                                                <localConv:LastCharsConverter x:Key="LastCharsConverter" />
-                                            </Grid.Resources>
-                                            <TextBlock TextWrapping="Wrap"
-                                                       Foreground="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            </ScrollViewer>
+        </Grid>
+        <Grid Grid.Row="1">
+            <SplitView x:Name="HotspotsView"
+                       IsPaneOpen="{Binding ElementName=BtnHotspots,Path=IsChecked,Mode=TwoWay}"
+                       PaneBackground="#80000000">
+                <SplitView.Content>
+                    <Grid>
+                        <ScrollViewer x:Name="ScrollViewer"
+                                      HorizontalScrollBarVisibility="Auto"
+                                      VerticalScrollBarVisibility="Auto">
+                            <ScrollViewer.Resources>
+                                <localConv:WallpaperUrlConverter x:Key="WallpaperUrlConverter" />
+                            </ScrollViewer.Resources>
+                            <Image Stretch="None"
+                                   Source="{Binding Path=Wallpaper,Converter={StaticResource ResourceKey=WallpaperUrlConverter}}">
+                                <interactivity:Interaction.Behaviors>
+                                    <core:EventTriggerBehavior EventName="ImageOpened">
+                                        <core:ChangePropertyAction TargetObject="{Binding ElementName=LoadingRing}"
+                                                                   PropertyName="IsActive"
+                                                                   Value="False" />
+                                    </core:EventTriggerBehavior>
+                                </interactivity:Interaction.Behaviors>
+                            </Image>
+                        </ScrollViewer>
+                        <ProgressRing x:Name="LoadingRing"
+                                      IsActive="True"
+                                      RenderTransformOrigin="0.5,0.5">
+                            <ProgressRing.RenderTransform>
+                                <ScaleTransform ScaleX="5"
+                                                ScaleY="5" />
+                            </ProgressRing.RenderTransform>
+                        </ProgressRing>
+                    </Grid>
+                </SplitView.Content>
+                <SplitView.Pane>
+                    <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                                  VerticalScrollBarVisibility="Hidden">
+                        <ItemsControl ItemsSource="{Binding Path=Wallpaper.Archive.Hotspots}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="5,5,5,15">
+                                        <Grid.Resources>
+                                            <localConv:FirstCharConverter x:Key="FirstCharConverter" />
+                                            <localConv:LastCharsConverter x:Key="LastCharsConverter" />
+                                        </Grid.Resources>
+                                        <TextBlock TextWrapping="Wrap"
+                                                   Foreground="{ThemeResource ApplicationPageBackgroundThemeBrush}">
                                                 <Run FontSize="{ThemeResource TextStyleExtraLargeFontSize}"
                                                      Text="{Binding Path=Description,Converter={StaticResource ResourceKey=FirstCharConverter}}" />
                                                 <Run Text="{Binding Path=Description,Converter={StaticResource ResourceKey=LastCharsConverter}}" />
@@ -141,14 +143,13 @@
                                                     <Run Text="{Binding Path=Query}"
                                                          Foreground="#FF0078D7" />
                                                 </Hyperlink></TextBlock>
-                                        </Grid>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
-                        </ScrollViewer>
-                    </SplitView.Pane>
-                </SplitView>
-            </Grid>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </SplitView.Pane>
+            </SplitView>
         </Grid>
     </Grid>
 </Page>

@@ -109,6 +109,7 @@
     <Compile Include="Controls\ExtendedSplashScreen.xaml.cs">
       <DependentUpon>ExtendedSplashScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\FullWindowPopup.cs" />
     <Compile Include="Controls\Thumbnail.xaml.cs">
       <DependentUpon>Thumbnail.xaml</DependentUpon>
     </Compile>

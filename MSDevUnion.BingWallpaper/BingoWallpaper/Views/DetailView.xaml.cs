@@ -16,6 +16,7 @@ using Windows.System.UserProfile;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Documents;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
@@ -216,10 +217,29 @@ namespace BingoWallpaper.Views
             }
         }
 
-        private void BtnShare_Click(object sender, RoutedEventArgs e)
+        private async void BtnShare_Click(object sender, RoutedEventArgs e)
         {
+         //   Popup popup = new Popup();
+         //   popup.IsLightDismissEnabled = true;
+         //   popup.Width = Window.Current.Bounds.Width;
+         //   popup.Width = Window.Current.Bounds.Height;
+
+         //Grid.
+
+            //await new ContentDialog().ShowAsync();
+
+            //AppBar.Visibility = Visibility.Collapsed;
+
+            //await Task.Delay(5000);
+
+            //AppBar.Visibility = Visibility.Visible;
+            // SharePopup.IsOpen = true;
         }
 
+        /// <summary>
+        /// 获取当前壁纸文件。该方法用于壁纸设置和锁屏。
+        /// </summary>
+        /// <returns></returns>
         private async Task<StorageFile> GetWallpaperFile()
         {
             var file = await ApplicationData.Current.LocalFolder.CreateFileAsync(Guid.NewGuid().ToString());
