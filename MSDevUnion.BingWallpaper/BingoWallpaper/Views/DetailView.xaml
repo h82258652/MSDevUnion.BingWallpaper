@@ -56,7 +56,6 @@
                     <controls:FullWindowPopup x:Name="PopupShare"
                                               IsLightDismissEnabled="True">
                         <Grid VerticalAlignment="Bottom"
-                              Height="150"
                               Background="Black">
                             <Grid HorizontalAlignment="Center">
                                 <Grid.ColumnDefinitions>
