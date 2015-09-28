@@ -18,6 +18,7 @@ using Windows.Storage.Pickers;
 using Windows.Storage.Streams;
 using Windows.System;
 using Windows.System.UserProfile;
+using Windows.UI;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -41,17 +42,6 @@ namespace BingoWallpaper.Views
             this.InitializeComponent();
             this.ListenAccentColorChanged();
             this.InitSystemShare();
-        }
-        
-        private void InitSystemShare()
-        {
-            DataTransferManager.GetForCurrentView().DataRequested += async (DataTransferManager sender, DataRequestedEventArgs args) =>
-            {
-                DataRequest request = args.Request;
-                request.Data.Properties.Title = ViewModel.Wallpaper.Archive.Info;
-                request.Data.SetBitmap(RandomAccessStreamReference.CreateFromUri(new Uri(ViewModel.Wallpaper.GetCacheUrl(AppSetting.WallpaperSize))));
-                await new MessageDialog("分享成功").ShowAsync();
-            };
         }
 
         public DetailViewModel ViewModel
@@ -78,6 +68,18 @@ namespace BingoWallpaper.Views
             base.OnNavigatedTo(e);
         }
 
+        private async void BtnOpenDeviceLockScreenSetting_Click(object sender, RoutedEventArgs e)
+        {
+            SystemSettingsService service = new SystemSettingsService();
+            await service.OpenLockScreenPageAsync();
+        }
+
+        private async void BtnOpenDeviceWallpaperSetting_Click(object sender, RoutedEventArgs e)
+        {
+            SystemSettingsService service = new SystemSettingsService();
+            await service.OpenPersonalizationPageAsync();
+        }
+
         private async void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             PopupExecuting.IsOpen = true;
@@ -102,62 +104,6 @@ namespace BingoWallpaper.Views
             }
 
             PopupExecuting.IsOpen = false;
-        }
-
-        private async Task SaveToChooseLocation()
-        {
-            FileSavePicker savePicker = new FileSavePicker();
-            savePicker.FileTypeChoices.Add(".jpg", new List<string>() { ".jpg" });
-            savePicker.SuggestedFileName = Path.GetFileNameWithoutExtension(ViewModel.Wallpaper.Image.UrlBase) + ".jpg";
-            savePicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
-            StorageFile file = await savePicker.PickSaveFileAsync();
-            if (file != null)
-            {
-                await SaveFile(file);
-            }
-        }
-
-        private async Task SaveToPictureLibrary()
-        {
-            try
-            {
-                StorageFile file = await KnownFolders.PicturesLibrary.CreateFileAsync(Path.GetFileNameWithoutExtension(ViewModel.Wallpaper.Image.UrlBase) + ".jpg", CreationCollisionOption.ReplaceExisting);
-                await SaveFile(file);
-            }
-            catch
-            {
-                await new MessageDialog("保存失败").ShowAsync();
-            }
-        }
-
-        private async Task SaveToSavedPictures()
-        {
-            try
-            {
-                StorageFile file = await KnownFolders.SavedPictures.CreateFileAsync(Path.GetFileNameWithoutExtension(ViewModel.Wallpaper.Image.UrlBase) + ".jpg", CreationCollisionOption.ReplaceExisting);
-                await SaveFile(file);
-            }
-            catch
-            {
-                await new MessageDialog("保存失败").ShowAsync();
-            }
-        }
-
-        private async Task SaveFile(StorageFile file)
-        {
-            string url = ViewModel.Wallpaper.GetCacheUrl(AppSetting.WallpaperSize);
-            try
-            {
-                using (HttpClient client = new HttpClient())
-                {
-                    await FileIO.WriteBufferAsync(file, await client.GetBufferAsync(new Uri(url)));
-                }
-                await new MessageDialog("保存成功").ShowAsync();
-            }
-            catch
-            {
-                await new MessageDialog("保存失败").ShowAsync();
-            }
         }
 
         private async void BtnSetLockScreen_Click(object sender, RoutedEventArgs e)
@@ -236,6 +182,32 @@ namespace BingoWallpaper.Views
             return file;
         }
 
+        private async void HotspotClick(Hyperlink sender, HyperlinkClickEventArgs args)
+        {
+            var textBlock = sender.GetAncestorsOfType<TextBlock>().First();
+            var hotspot = textBlock.DataContext as Hotspot;
+            if (hotspot != null)
+            {
+                var uri = new Uri(hotspot.Link);
+                await Launcher.LaunchUriAsync(uri);
+                var runs = sender.Inlines.OfType<Run>();
+                foreach (var run in runs)
+                {
+                    run.Foreground = new SolidColorBrush(Colors.Purple);
+                }
+            }
+        }
+
+        private void InitSystemShare()
+        {
+            DataTransferManager.GetForCurrentView().DataRequested += (DataTransferManager sender, DataRequestedEventArgs args) =>
+            {
+                DataRequest request = args.Request;
+                request.Data.Properties.Title = ViewModel.Wallpaper.Archive.Info;
+                request.Data.SetBitmap(RandomAccessStreamReference.CreateFromUri(new Uri(ViewModel.Wallpaper.GetCacheUrl(AppSetting.WallpaperSize))));
+            };
+        }
+
         /// <summary>
         /// 使用 hack 方法监听主题色发生变化。
         /// </summary>
@@ -258,26 +230,59 @@ namespace BingoWallpaper.Views
             }
         }
 
-        private async void BtnOpenDeviceWallpaperSetting_Click(object sender, RoutedEventArgs e)
+        private async Task SaveFile(StorageFile file)
         {
-            SystemSettingsService service = new SystemSettingsService();
-            await service.OpenPersonalizationPageAsync();
-        }
-
-        private async void BtnOpenDeviceLockScreenSetting_Click(object sender, RoutedEventArgs e)
-        {
-            SystemSettingsService service = new SystemSettingsService();
-            await service.OpenLockScreenPageAsync();
-        }
-
-        private async void HotspotClick(Hyperlink sender, HyperlinkClickEventArgs args)
-        {
-            var textBlock = sender.GetAncestorsOfType<TextBlock>().First();
-            var hotspot = textBlock.DataContext as Hotspot;
-            if (hotspot != null)
+            string url = ViewModel.Wallpaper.GetCacheUrl(AppSetting.WallpaperSize);
+            try
             {
-                var uri = new Uri(hotspot.Link);
-                await Launcher.LaunchUriAsync(uri);
+                using (HttpClient client = new HttpClient())
+                {
+                    await FileIO.WriteBufferAsync(file, await client.GetBufferAsync(new Uri(url)));
+                }
+                await new MessageDialog("保存成功").ShowAsync();
+            }
+            catch
+            {
+                await new MessageDialog("保存失败").ShowAsync();
+            }
+        }
+
+        private async Task SaveToChooseLocation()
+        {
+            FileSavePicker savePicker = new FileSavePicker();
+            savePicker.FileTypeChoices.Add(".jpg", new List<string>() { ".jpg" });
+            savePicker.SuggestedFileName = Path.GetFileNameWithoutExtension(ViewModel.Wallpaper.Image.UrlBase) + ".jpg";
+            savePicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+            StorageFile file = await savePicker.PickSaveFileAsync();
+            if (file != null)
+            {
+                await SaveFile(file);
+            }
+        }
+
+        private async Task SaveToPictureLibrary()
+        {
+            try
+            {
+                StorageFile file = await KnownFolders.PicturesLibrary.CreateFileAsync(Path.GetFileNameWithoutExtension(ViewModel.Wallpaper.Image.UrlBase) + ".jpg", CreationCollisionOption.ReplaceExisting);
+                await SaveFile(file);
+            }
+            catch
+            {
+                await new MessageDialog("保存失败").ShowAsync();
+            }
+        }
+
+        private async Task SaveToSavedPictures()
+        {
+            try
+            {
+                StorageFile file = await KnownFolders.SavedPictures.CreateFileAsync(Path.GetFileNameWithoutExtension(ViewModel.Wallpaper.Image.UrlBase) + ".jpg", CreationCollisionOption.ReplaceExisting);
+                await SaveFile(file);
+            }
+            catch
+            {
+                await new MessageDialog("保存失败").ShowAsync();
             }
         }
 
@@ -292,7 +297,7 @@ namespace BingoWallpaper.Views
             catch
             {
                 await new MessageDialog("请求授权失败").ShowAsync();
-                PopupExecuting.IsOpen = true;
+                PopupExecuting.IsOpen = false;
                 return;
             }
             try
@@ -306,7 +311,7 @@ namespace BingoWallpaper.Views
                 if (shareResult.IsSuccess)
                 {
                     await new MessageDialog("分享成功").ShowAsync();
-                    PopupExecuting.IsOpen = true;
+                    PopupExecuting.IsOpen = false;
                     return;
                 }
             }
@@ -314,7 +319,7 @@ namespace BingoWallpaper.Views
             {
             }
             await new MessageDialog("分享失败").ShowAsync();
-            PopupExecuting.IsOpen = true;
+            PopupExecuting.IsOpen = false;
         }
 
         private void SystemShare_Tapped(object sender, TappedRoutedEventArgs e)
