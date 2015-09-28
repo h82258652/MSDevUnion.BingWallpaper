@@ -1,6 +1,8 @@
 ﻿using BingoWallpaper.Datas;
 using BingoWallpaper.Models;
 using BingoWallpaper.ViewModels;
+using SoftwareKobo.Social.Sina.Weibo;
+using SoftwareKobo.Social.Sina.Weibo.Models;
 using SoftwareKobo.UniversalToolkit.Extensions;
 using SoftwareKobo.UniversalToolkit.Helpers;
 using SoftwareKobo.UniversalToolkit.Services.LauncherServices;
@@ -8,16 +10,19 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Storage;
 using Windows.Storage.Pickers;
+using Windows.Storage.Streams;
 using Windows.System;
 using Windows.System.UserProfile;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Documents;
+using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.Web.Http;
@@ -35,6 +40,18 @@ namespace BingoWallpaper.Views
         {
             this.InitializeComponent();
             this.ListenAccentColorChanged();
+            this.InitSystemShare();
+        }
+        
+        private void InitSystemShare()
+        {
+            DataTransferManager.GetForCurrentView().DataRequested += async (DataTransferManager sender, DataRequestedEventArgs args) =>
+            {
+                DataRequest request = args.Request;
+                request.Data.Properties.Title = ViewModel.Wallpaper.Archive.Info;
+                request.Data.SetBitmap(RandomAccessStreamReference.CreateFromUri(new Uri(ViewModel.Wallpaper.GetCacheUrl(AppSetting.WallpaperSize))));
+                await new MessageDialog("分享成功").ShowAsync();
+            };
         }
 
         public DetailViewModel ViewModel
@@ -63,11 +80,7 @@ namespace BingoWallpaper.Views
 
         private async void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            Control control = sender as Control;
-            if (control != null)
-            {
-                control.IsEnabled = false;
-            }
+            PopupExecuting.IsOpen = true;
 
             SaveLocation saveLocation = AppSetting.SaveLocation;
             switch (saveLocation)
@@ -75,20 +88,20 @@ namespace BingoWallpaper.Views
                 case SaveLocation.PictureLibrary:
                     await SaveToPictureLibrary();
                     break;
+
                 case SaveLocation.ChooseEveryTime:
                     await SaveToChooseLocation();
                     break;
+
                 case SaveLocation.SavedPictures:
                     await SaveToSavedPictures();
                     break;
+
                 default:
                     break;
             }
 
-            if (control != null)
-            {
-                control.IsEnabled = true;
-            }
+            PopupExecuting.IsOpen = false;
         }
 
         private async Task SaveToChooseLocation()
@@ -149,11 +162,7 @@ namespace BingoWallpaper.Views
 
         private async void BtnSetLockScreen_Click(object sender, RoutedEventArgs e)
         {
-            Control control = sender as Control;
-            if (control != null)
-            {
-                control.IsEnabled = false;
-            }
+            PopupExecuting.IsOpen = true;
 
             bool isSuccess = false;
             if (UserProfilePersonalizationSettings.IsSupported())
@@ -176,19 +185,12 @@ namespace BingoWallpaper.Views
                 await new MessageDialog("设置失败").ShowAsync();
             }
 
-            if (control != null)
-            {
-                control.IsEnabled = true;
-            }
+            PopupExecuting.IsOpen = false;
         }
 
         private async void BtnSetWallpaper_Click(object sender, RoutedEventArgs e)
         {
-            Control control = sender as Control;
-            if (control != null)
-            {
-                control.IsEnabled = false;
-            }
+            PopupExecuting.IsOpen = true;
 
             bool isSuccess = false;
             if (UserProfilePersonalizationSettings.IsSupported())
@@ -211,29 +213,12 @@ namespace BingoWallpaper.Views
                 await new MessageDialog("设置失败").ShowAsync();
             }
 
-            if (control != null)
-            {
-                control.IsEnabled = true;
-            }
+            PopupExecuting.IsOpen = false;
         }
 
-        private async void BtnShare_Click(object sender, RoutedEventArgs e)
+        private void BtnShare_Click(object sender, RoutedEventArgs e)
         {
-         //   Popup popup = new Popup();
-         //   popup.IsLightDismissEnabled = true;
-         //   popup.Width = Window.Current.Bounds.Width;
-         //   popup.Width = Window.Current.Bounds.Height;
-
-         //Grid.
-
-            //await new ContentDialog().ShowAsync();
-
-            //AppBar.Visibility = Visibility.Collapsed;
-
-            //await Task.Delay(5000);
-
-            //AppBar.Visibility = Visibility.Visible;
-            // SharePopup.IsOpen = true;
+            PopupShare.IsOpen = true;
         }
 
         /// <summary>
@@ -294,6 +279,56 @@ namespace BingoWallpaper.Views
                 var uri = new Uri(hotspot.Link);
                 await Launcher.LaunchUriAsync(uri);
             }
+        }
+
+        private async void SinaShare_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            PopupExecuting.IsOpen = true;
+            WeiboClient weiboClient;
+            try
+            {
+                weiboClient = await WeiboClient.CreateAsync();
+            }
+            catch
+            {
+                await new MessageDialog("请求授权失败").ShowAsync();
+                PopupExecuting.IsOpen = true;
+                return;
+            }
+            try
+            {
+                byte[] data;
+                using (HttpClient httpClient = new HttpClient())
+                {
+                    data = (await httpClient.GetBufferAsync(new Uri(ViewModel.Wallpaper.GetCacheUrl(AppSetting.WallpaperSize)))).ToArray();
+                }
+                Weibo shareResult = await weiboClient.ShareImageAsync(data, ViewModel.Wallpaper.Archive.Info);
+                if (shareResult.IsSuccess)
+                {
+                    await new MessageDialog("分享成功").ShowAsync();
+                    PopupExecuting.IsOpen = true;
+                    return;
+                }
+            }
+            catch
+            {
+            }
+            await new MessageDialog("分享失败").ShowAsync();
+            PopupExecuting.IsOpen = true;
+        }
+
+        private void SystemShare_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            DataTransferManager.ShowShareUI();
+        }
+
+        private void Wallpaper_Opened(object sender, RoutedEventArgs e)
+        {
+            // 调整 scrollviewer 到最适合缩放。
+            var scrollViewerWidth = this.ScrollViewer.ActualWidth;
+            var wallpaperWidth = AppSetting.WallpaperSize.Width;
+            var zoomFactor = scrollViewerWidth / wallpaperWidth;
+            this.ScrollViewer.ChangeView(null, null, (float)zoomFactor);
         }
     }
 }

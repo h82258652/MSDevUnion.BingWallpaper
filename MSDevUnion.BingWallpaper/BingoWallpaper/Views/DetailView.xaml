@@ -9,6 +9,7 @@
       xmlns:storage="using:SoftwareKobo.UniversalToolkit.Storage"
       xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
       xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+      xmlns:controls="using:SoftwareKobo.UniversalToolkit.Controls"
       mc:Ignorable="d"
       DataContext="{Binding Source={StaticResource ResourceKey=Locator},Path=Detail}">
     <Page.Transitions>
@@ -20,6 +21,7 @@
     </Page.Transitions>
     <Page.Resources>
         <localConv:HotspotButtonContentConverter x:Key="HotspotButtonContentConverter" />
+        <localConv:HotspotButtonVisibilityConverter x:Key="HotspotButtonVisibilityConverter" />
     </Page.Resources>
     <Page.BottomAppBar>
         <CommandBar x:Name="AppBar"
@@ -49,7 +51,62 @@
                           Click="BtnShare_Click"
                           x:Uid="/Detail/Share"
                           Label="分享"
-                          ToolTipService.ToolTip="分享" />
+                          ToolTipService.ToolTip="分享">
+                <controls:FullWindowPopup.AttachedPopup>
+                    <controls:FullWindowPopup x:Name="PopupShare"
+                                              IsLightDismissEnabled="True">
+                        <Grid VerticalAlignment="Bottom"
+                              Height="150"
+                              Background="Black">
+                            <Grid HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <!--<ColumnDefinition />-->
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0"
+                                            Margin="20"
+                                            Tapped="SinaShare_Tapped">
+                                    <Image Width="64"
+                                           Height="64"
+                                           Source="/Assets/share/SinaWeibo.png" />
+                                    <TextBlock Margin="0,10,0,0"
+                                               TextAlignment="Center"
+                                               Foreground="LightGray"
+                                               Text="新浪微博" />
+                                </StackPanel>
+                                <!--<StackPanel Grid.Column="1"
+                                Margin="20">
+                        <Image Width="64"
+                               Height="64"
+                               Source="/Assets/share/wechat.png" />
+                        <TextBlock Margin="0,10,0,0"
+                                   TextAlignment="Center"
+                                   Foreground="LightGray"
+                                   Text="微信分享" />
+                    </StackPanel>-->
+                                <StackPanel Grid.Column="2"
+                                            Margin="20"
+                                            Tapped="SystemShare_Tapped">
+                                    <Image Width="64"
+                                           Height="64"
+                                           Source="/Assets/share/more.png" />
+                                    <TextBlock Margin="0,10,0,0"
+                                               TextAlignment="Center"
+                                               Foreground="LightGray"
+                                               Text="系统分享" />
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                        <controls:FullWindowPopup.ChildTransitions>
+                            <TransitionCollection>
+                                <PopupThemeTransition FromHorizontalOffset="0"
+                                                      FromVerticalOffset="150" />
+                            </TransitionCollection>
+                        </controls:FullWindowPopup.ChildTransitions>
+                    </controls:FullWindowPopup>
+                </controls:FullWindowPopup.AttachedPopup>
+            </AppBarButton>
             <CommandBar.SecondaryCommands>
                 <AppBarButton x:Uid="/Detail/OpenDeviceWallpaperSetting"
                               Click="BtnOpenDeviceWallpaperSetting_Click"
@@ -62,6 +119,19 @@
             </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>
+    <controls:FullWindowPopup.AttachedPopup>
+        <controls:FullWindowPopup x:Name="PopupExecuting">
+            <Grid Background="#80000000">
+                <StackPanel HorizontalAlignment="Stretch"
+                            VerticalAlignment="Center">
+                    <ProgressBar IsIndeterminate="True" />
+                    <TextBlock Text="正在执行"
+                               TextAlignment="Center"
+                               Foreground="LightGray" />
+                </StackPanel>
+            </Grid>
+        </controls:FullWindowPopup>
+    </controls:FullWindowPopup.AttachedPopup>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -74,7 +144,8 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <ToggleButton x:Name="BtnHotspots"
-                          Background="{x:Null}">
+                          Background="{x:Null}"
+                          Visibility="{Binding Path=Wallpaper.Archive.Hotspots,Converter={StaticResource HotspotButtonVisibilityConverter}}">
                 <ToggleButton.Content>
                     <Image Source="{Binding ElementName=HotspotsView,Path=IsPaneOpen,Converter={StaticResource HotspotButtonContentConverter}}"
                            Width="20"
@@ -98,12 +169,16 @@
                     <Grid>
                         <ScrollViewer x:Name="ScrollViewer"
                                       HorizontalScrollBarVisibility="Auto"
-                                      VerticalScrollBarVisibility="Auto">
+                                      VerticalScrollBarVisibility="Auto"
+                                      ZoomMode="Enabled"
+                                      MinZoomFactor="0.25"
+                                      MaxZoomFactor="1">
                             <ScrollViewer.Resources>
                                 <localConv:WallpaperUrlConverter x:Key="WallpaperUrlConverter" />
                             </ScrollViewer.Resources>
                             <Image Stretch="None"
-                                   Source="{Binding Path=Wallpaper,Converter={StaticResource ResourceKey=WallpaperUrlConverter}}">
+                                   Source="{Binding Path=Wallpaper,Converter={StaticResource ResourceKey=WallpaperUrlConverter}}"
+                                   ImageOpened="Wallpaper_Opened">
                                 <interactivity:Interaction.Behaviors>
                                     <core:EventTriggerBehavior EventName="ImageOpened">
                                         <core:ChangePropertyAction TargetObject="{Binding ElementName=LoadingRing}"

@@ -22,7 +22,7 @@
                 <ComboBox ItemsSource="{Binding Path=SaveLocations}"
                           SelectedItem="{Binding Path=SaveLocation,Mode=TwoWay}"
                           Margin="10"
-                          Width="200">
+                          Width="300">
                     <ComboBox.Header>
                         <TextBlock x:Uid="/Setting/SaveLocation"
                                    Text="壁纸保存位置">
@@ -44,7 +44,7 @@
                 <ComboBox ItemsSource="{Binding Path=WallpaperSizes}"
                           SelectedItem="{Binding Path=WallpaperSize,Mode=TwoWay}"
                           Margin="10"
-                          Width="200">
+                          Width="300">
                     <ComboBox.Header>
                         <TextBlock x:Uid="/Setting/WallpaperSize"
                                    Text="壁纸大小">
@@ -61,7 +61,7 @@
                 <ComboBox ItemsSource="{Binding Path=Areas}"
                           SelectedItem="{Binding Path=Area,Mode=TwoWay}"
                           Margin="10"
-                          Width="200">
+                          Width="300">
                     <ComboBox.Header>
                         <TextBlock x:Uid="/Setting/Area"
                                    Text="国家/地区">

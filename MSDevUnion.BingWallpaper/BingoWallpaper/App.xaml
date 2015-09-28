@@ -14,5 +14,5 @@
             <vm:ViewModelLocator x:Key="Locator"
                                  d:IsDataSource="True" />
         </ResourceDictionary>
-    </toolkit:Bootstrapper.Resources>
+    </toolkit:Bootstrapper.Resources>    
 </toolkit:Bootstrapper>

@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using SoftwareKobo.Social.Sina.Weibo;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -27,3 +28,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
 [assembly: ComVisible(false)]
+
+[assembly: Weibo("393209958", "3c2387aa56497a4ed187f146afc8cb34", "https://github.com/h82258652/MSDevUnion.BingWallpaper")]

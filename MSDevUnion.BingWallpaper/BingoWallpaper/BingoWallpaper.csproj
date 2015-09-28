@@ -109,7 +109,6 @@
     <Compile Include="Controls\ExtendedSplashScreen.xaml.cs">
       <DependentUpon>ExtendedSplashScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\FullWindowPopup.cs" />
     <Compile Include="Controls\Thumbnail.xaml.cs">
       <DependentUpon>Thumbnail.xaml</DependentUpon>
     </Compile>
@@ -120,6 +119,7 @@
     <Compile Include="Converters\AreaToNameConverter.cs" />
     <Compile Include="Converters\FirstCharConverter.cs" />
     <Compile Include="Converters\HotspotButtonContentConverter.cs" />
+    <Compile Include="Converters\HotspotButtonVisibilityConverter.cs" />
     <Compile Include="Converters\LastCharsConverter.cs" />
     <Compile Include="Converters\MonthNameConverter.cs" />
     <Compile Include="Converters\SaveLocationConverter.cs" />
@@ -173,6 +173,10 @@
     <Content Include="Assets\flags\United_States.png" />
     <Content Include="Assets\lightbulb-online.png" />
     <Content Include="Assets\lightbulb-outline.png" />
+    <Content Include="Assets\share\more.png" />
+    <Content Include="Assets\share\qzone.png" />
+    <Content Include="Assets\share\SinaWeibo.png" />
+    <Content Include="Assets\share\wechat.png" />
     <Content Include="LocalizedStrings.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>LocalizedStrings.cs</LastGenOutput>

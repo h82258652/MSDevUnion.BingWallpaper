@@ -11,5 +11,21 @@
         </TransitionCollection>
     </Page.Transitions>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <Grid>
+                <TextBlock Text="服务器开发"></TextBlock>
+                <TextBlock Text="bohan"></TextBlock>                
+            </Grid>
+            <Grid>
+                <TextBlock Text="客户端开发"></TextBlock>
+                <TextBlock Text="h82258652"></TextBlock>
+                <TextBlock Text="higan"></TextBlock>
+            </Grid>
+            <Grid>
+                <TextBlock Text="图标设计"></TextBlock>
+                <TextBlock Text="纸币"></TextBlock>
+            </Grid>
+        </StackPanel>
     </Grid>
 </Page>
