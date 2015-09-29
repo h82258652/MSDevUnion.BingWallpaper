@@ -29,4 +29,4 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyFileVersion("1.0.0.0")]
 [assembly: ComVisible(false)]
 
-[assembly: Weibo("393209958", "3c2387aa56497a4ed187f146afc8cb34", "https://github.com/h82258652/MSDevUnion.BingWallpaper")]
+[assembly: Weibo("393209958", "3c2387aa56497a4ed187f146afc8cb34", "http://bing.coding.io/")]

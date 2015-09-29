@@ -27,7 +27,8 @@
             <TextBlock Text="{Binding Converter={StaticResource ResourceKey=ThumbnailNameConverter}}"
                        FontSize="{ThemeResource ContentControlFontSize}"
                        Foreground="{ThemeResource AppBarBackgroundThemeBrush}"
-                       TextWrapping="Wrap" />
+                       TextWrapping="Wrap"
+                       IsTextScaleFactorEnabled="False" />
         </Border>
     </Grid>
 </UserControl>

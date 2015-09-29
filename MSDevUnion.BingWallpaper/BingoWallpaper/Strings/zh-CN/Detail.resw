@@ -135,11 +135,23 @@
   <data name="Save.ToolTipService.ToolTip" xml:space="preserve">
     <value>保存</value>
   </data>
+  <data name="SaveFailed" xml:space="preserve">
+    <value>保存失败</value>
+  </data>
+  <data name="SaveSuccess" xml:space="preserve">
+    <value>保存成功</value>
+  </data>
+  <data name="SetFailed" xml:space="preserve">
+    <value>设置失败</value>
+  </data>
   <data name="SetLockScreen.Label" xml:space="preserve">
     <value>设置为锁屏</value>
   </data>
   <data name="SetLockScreen.ToolTipService.ToolTip" xml:space="preserve">
     <value>设置为锁屏</value>
+  </data>
+  <data name="SetSuccess" xml:space="preserve">
+    <value>设置成功</value>
   </data>
   <data name="SetWallpaper.Label" xml:space="preserve">
     <value>设置为壁纸</value>
@@ -152,5 +164,11 @@
   </data>
   <data name="Share.ToolTipService.ToolTip" xml:space="preserve">
     <value>分享</value>
+  </data>
+  <data name="ShareFailed" xml:space="preserve">
+    <value>分享失败</value>
+  </data>
+  <data name="ShareSuccess" xml:space="preserve">
+    <value>分享成功</value>
   </data>
 </root>

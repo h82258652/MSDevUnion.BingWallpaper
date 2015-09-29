@@ -30,11 +30,13 @@
             <AppBarButton Icon="Save"
                           Click="BtnSave_Click"
                           x:Uid="/Detail/Save"
+                          IsTextScaleFactorEnabled="False"
                           Label="保存"
                           ToolTipService.ToolTip="保存" />
             <AppBarSeparator />
             <AppBarButton Click="BtnSetWallpaper_Click"
                           x:Uid="/Detail/SetWallpaper"
+                          IsTextScaleFactorEnabled="False"
                           Label="设置为壁纸"
                           ToolTipService.ToolTip="设置为壁纸">
                 <AppBarButton.Icon>
@@ -45,11 +47,13 @@
             <AppBarButton Icon="SetLockScreen"
                           Click="BtnSetLockScreen_Click"
                           x:Uid="/Detail/SetLockScreen"
+                          IsTextScaleFactorEnabled="False"
                           Label="设置为锁屏"
                           ToolTipService.ToolTip="设置为锁屏" />
             <AppBarButton Icon="ReShare"
                           Click="BtnShare_Click"
                           x:Uid="/Detail/Share"
+                          IsTextScaleFactorEnabled="False"
                           Label="分享"
                           ToolTipService.ToolTip="分享">
                 <controls:FullWindowPopup.AttachedPopup>
@@ -60,7 +64,7 @@
                             <Grid HorizontalAlignment="Center">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition />
-                                    <!--<ColumnDefinition />-->
+                                    <ColumnDefinition />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Grid.Column="0"
@@ -72,18 +76,21 @@
                                     <TextBlock Margin="0,10,0,0"
                                                TextAlignment="Center"
                                                Foreground="LightGray"
+                                               IsTextScaleFactorEnabled="False"
                                                Text="新浪微博" />
                                 </StackPanel>
-                                <!--<StackPanel Grid.Column="1"
-                                Margin="20">
-                        <Image Width="64"
-                               Height="64"
-                               Source="/Assets/share/wechat.png" />
-                        <TextBlock Margin="0,10,0,0"
-                                   TextAlignment="Center"
-                                   Foreground="LightGray"
-                                   Text="微信分享" />
-                    </StackPanel>-->
+                                <StackPanel Grid.Column="1"
+                                            Margin="20"
+                                            Tapped="WechatShare_Tapped">
+                                    <Image Width="64"
+                                           Height="64"
+                                           Source="/Assets/share/wechat.png" />
+                                    <TextBlock Margin="0,10,0,0"
+                                               TextAlignment="Center"
+                                               Foreground="LightGray"
+                                               IsTextScaleFactorEnabled="False"
+                                               Text="微信分享" />
+                                </StackPanel>
                                 <StackPanel Grid.Column="2"
                                             Margin="20"
                                             Tapped="SystemShare_Tapped">
@@ -93,6 +100,7 @@
                                     <TextBlock Margin="0,10,0,0"
                                                TextAlignment="Center"
                                                Foreground="LightGray"
+                                               IsTextScaleFactorEnabled="False"
                                                Text="系统分享" />
                                 </StackPanel>
                             </Grid>
@@ -108,11 +116,13 @@
             </AppBarButton>
             <CommandBar.SecondaryCommands>
                 <AppBarButton x:Uid="/Detail/OpenDeviceWallpaperSetting"
-                              Click="BtnOpenDeviceWallpaperSetting_Click"
+                              Command="{Binding Path=OpenWallpaperSettingCommand}"
+                              IsTextScaleFactorEnabled="False"
                               Label="打开壁纸设置"
                               ToolTipService.ToolTip="打开壁纸设置" />
                 <AppBarButton x:Uid="/Detail/OpenDeviceLockScreenSetting"
-                              Click="BtnOpenDeviceLockScreenSetting_Click"
+                              Command="{Binding Path=OpenLockScreenSettingCommand}"
+                              IsTextScaleFactorEnabled="False"
                               Label="打开锁屏设置"
                               ToolTipService.ToolTip="打开锁屏设置" />
             </CommandBar.SecondaryCommands>

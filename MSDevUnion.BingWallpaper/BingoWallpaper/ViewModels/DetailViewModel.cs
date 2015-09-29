@@ -1,5 +1,7 @@
 ﻿using BingoWallpaper.Models;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using SoftwareKobo.UniversalToolkit.Services.LauncherServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +24,36 @@ namespace BingoWallpaper.ViewModels
             {
                 this._wallpaper = value;
                 this.RaisePropertyChanged(() => this.Wallpaper);
+            }
+        }
+
+        private RelayCommand _openLockScreenSettingCommand;
+
+        public RelayCommand OpenLockScreenSettingCommand
+        {
+            get
+            {
+                _openLockScreenSettingCommand = _openLockScreenSettingCommand ?? new RelayCommand(async () =>
+                {
+                    SystemSettingsService service = new SystemSettingsService();
+                    await service.OpenLockScreenPageAsync();
+                });
+                return _openLockScreenSettingCommand;
+            }
+        }
+
+        private RelayCommand _openWallpaperSettingCommand;
+
+        public RelayCommand OpenWallpaperSettingCommand
+        {
+            get
+            {
+                _openWallpaperSettingCommand = _openWallpaperSettingCommand ?? new RelayCommand(async () =>
+                {
+                    SystemSettingsService service = new SystemSettingsService();
+                    await service.OpenPersonalizationPageAsync();
+                });
+                return _openWallpaperSettingCommand;
             }
         }
     }

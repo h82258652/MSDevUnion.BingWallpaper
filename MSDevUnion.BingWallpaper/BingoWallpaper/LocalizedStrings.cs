@@ -92,6 +92,54 @@ namespace BingoWallpaper
             }
         }
 
+        public static string SaveFailed
+        {
+            get
+            {
+                return ResourceLoader.GetForCurrentView("Detail").GetString("SaveFailed");
+            }
+        }
+
+        public static string SaveSuccess
+        {
+            get
+            {
+                return ResourceLoader.GetForCurrentView("Detail").GetString("SaveSuccess");
+            }
+        }
+
+        public static string SetFailed
+        {
+            get
+            {
+                return ResourceLoader.GetForCurrentView("Detail").GetString("SetFailed");
+            }
+        }
+
+        public static string SetSuccess
+        {
+            get
+            {
+                return ResourceLoader.GetForCurrentView("Detail").GetString("SetSuccess");
+            }
+        }
+
+        public static string ShareFailed
+        {
+            get
+            {
+                return ResourceLoader.GetForCurrentView("Detail").GetString("ShareFailed");
+            }
+        }
+
+        public static string ShareSuccess
+        {
+            get
+            {
+                return ResourceLoader.GetForCurrentView("Detail").GetString("ShareSuccess");
+            }
+        }
+
         public static string Description
         {
             get

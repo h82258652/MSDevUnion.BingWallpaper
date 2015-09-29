@@ -5,7 +5,6 @@ using SoftwareKobo.Social.Sina.Weibo;
 using SoftwareKobo.Social.Sina.Weibo.Models;
 using SoftwareKobo.UniversalToolkit.Extensions;
 using SoftwareKobo.UniversalToolkit.Helpers;
-using SoftwareKobo.UniversalToolkit.Services.LauncherServices;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -68,18 +67,6 @@ namespace BingoWallpaper.Views
             base.OnNavigatedTo(e);
         }
 
-        private async void BtnOpenDeviceLockScreenSetting_Click(object sender, RoutedEventArgs e)
-        {
-            SystemSettingsService service = new SystemSettingsService();
-            await service.OpenLockScreenPageAsync();
-        }
-
-        private async void BtnOpenDeviceWallpaperSetting_Click(object sender, RoutedEventArgs e)
-        {
-            SystemSettingsService service = new SystemSettingsService();
-            await service.OpenPersonalizationPageAsync();
-        }
-
         private async void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             PopupExecuting.IsOpen = true;
@@ -97,9 +84,6 @@ namespace BingoWallpaper.Views
 
                 case SaveLocation.SavedPictures:
                     await SaveToSavedPictures();
-                    break;
-
-                default:
                     break;
             }
 
@@ -122,14 +106,8 @@ namespace BingoWallpaper.Views
                 {
                 }
             }
-            if (isSuccess)
-            {
-                await new MessageDialog("设置成功").ShowAsync();
-            }
-            else
-            {
-                await new MessageDialog("设置失败").ShowAsync();
-            }
+
+            await new MessageDialog(isSuccess ? LocalizedStrings.SetSuccess : LocalizedStrings.SetFailed).ShowAsyncEnqueue();
 
             PopupExecuting.IsOpen = false;
         }
@@ -150,21 +128,23 @@ namespace BingoWallpaper.Views
                 {
                 }
             }
-            if (isSuccess)
-            {
-                await new MessageDialog("设置成功").ShowAsync();
-            }
-            else
-            {
-                await new MessageDialog("设置失败").ShowAsync();
-            }
+
+            await new MessageDialog(isSuccess ? LocalizedStrings.SetSuccess : LocalizedStrings.SetFailed).ShowAsyncEnqueue();
 
             PopupExecuting.IsOpen = false;
         }
 
-        private void BtnShare_Click(object sender, RoutedEventArgs e)
+        private async Task<byte[]> GetImageData()
         {
-            PopupShare.IsOpen = true;
+            using (HttpClient client = new HttpClient())
+            {
+                return (await client.GetBufferAsync(new Uri(ViewModel.Wallpaper.GetCacheUrl(AppSetting.WallpaperSize)))).ToArray();
+            }
+        }
+
+        private string GetImageTitle()
+        {
+            return ViewModel.Wallpaper.Archive.Info;
         }
 
         /// <summary>
@@ -184,15 +164,21 @@ namespace BingoWallpaper.Views
 
         private async void HotspotClick(Hyperlink sender, HyperlinkClickEventArgs args)
         {
+            // 获取父级的 TextBlock。
             var textBlock = sender.GetAncestorsOfType<TextBlock>().First();
+
+            // 获取点击的热点。
             var hotspot = textBlock.DataContext as Hotspot;
             if (hotspot != null)
             {
                 var uri = new Uri(hotspot.Link);
                 await Launcher.LaunchUriAsync(uri);
+
+                // 获取子级的 Run。
                 var runs = sender.Inlines.OfType<Run>();
                 foreach (var run in runs)
                 {
+                    // 设置为紫色，表示已经访问过。
                     run.Foreground = new SolidColorBrush(Colors.Purple);
                 }
             }
@@ -203,7 +189,7 @@ namespace BingoWallpaper.Views
             DataTransferManager.GetForCurrentView().DataRequested += (DataTransferManager sender, DataRequestedEventArgs args) =>
             {
                 DataRequest request = args.Request;
-                request.Data.Properties.Title = ViewModel.Wallpaper.Archive.Info;
+                request.Data.Properties.Title = GetImageTitle();
                 request.Data.SetBitmap(RandomAccessStreamReference.CreateFromUri(new Uri(ViewModel.Wallpaper.GetCacheUrl(AppSetting.WallpaperSize))));
             };
         }
@@ -233,30 +219,34 @@ namespace BingoWallpaper.Views
         private async Task SaveFile(StorageFile file)
         {
             string url = ViewModel.Wallpaper.GetCacheUrl(AppSetting.WallpaperSize);
-            try
+            using (HttpClient client = new HttpClient())
             {
-                using (HttpClient client = new HttpClient())
-                {
-                    await FileIO.WriteBufferAsync(file, await client.GetBufferAsync(new Uri(url)));
-                }
-                await new MessageDialog("保存成功").ShowAsync();
-            }
-            catch
-            {
-                await new MessageDialog("保存失败").ShowAsync();
+                await FileIO.WriteBufferAsync(file, await client.GetBufferAsync(new Uri(url)));
             }
         }
 
         private async Task SaveToChooseLocation()
         {
-            FileSavePicker savePicker = new FileSavePicker();
-            savePicker.FileTypeChoices.Add(".jpg", new List<string>() { ".jpg" });
-            savePicker.SuggestedFileName = Path.GetFileNameWithoutExtension(ViewModel.Wallpaper.Image.UrlBase) + ".jpg";
-            savePicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
-            StorageFile file = await savePicker.PickSaveFileAsync();
-            if (file != null)
+            try
             {
-                await SaveFile(file);
+                FileSavePicker savePicker = new FileSavePicker();
+                savePicker.FileTypeChoices.Add(".jpg", new List<string>() { ".jpg" });
+                savePicker.SuggestedFileName = Path.GetFileNameWithoutExtension(ViewModel.Wallpaper.Image.UrlBase) + ".jpg";
+                savePicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+                StorageFile file = await savePicker.PickSaveFileAsync();
+                if (file != null)
+                {
+                    await SaveFile(file);
+                }
+                else
+                {
+                    return;
+                }
+                await new MessageDialog(LocalizedStrings.SaveSuccess).ShowAsyncEnqueue();
+            }
+            catch
+            {
+                await new MessageDialog(LocalizedStrings.SaveFailed).ShowAsyncEnqueue();
             }
         }
 
@@ -266,10 +256,11 @@ namespace BingoWallpaper.Views
             {
                 StorageFile file = await KnownFolders.PicturesLibrary.CreateFileAsync(Path.GetFileNameWithoutExtension(ViewModel.Wallpaper.Image.UrlBase) + ".jpg", CreationCollisionOption.ReplaceExisting);
                 await SaveFile(file);
+                await new MessageDialog(LocalizedStrings.SaveSuccess).ShowAsyncEnqueue();
             }
             catch
             {
-                await new MessageDialog("保存失败").ShowAsync();
+                await new MessageDialog(LocalizedStrings.SaveFailed).ShowAsyncEnqueue();
             }
         }
 
@@ -279,46 +270,20 @@ namespace BingoWallpaper.Views
             {
                 StorageFile file = await KnownFolders.SavedPictures.CreateFileAsync(Path.GetFileNameWithoutExtension(ViewModel.Wallpaper.Image.UrlBase) + ".jpg", CreationCollisionOption.ReplaceExisting);
                 await SaveFile(file);
+                await new MessageDialog(LocalizedStrings.SaveSuccess).ShowAsyncEnqueue();
             }
             catch
             {
-                await new MessageDialog("保存失败").ShowAsync();
+                await new MessageDialog(LocalizedStrings.SaveFailed).ShowAsyncEnqueue();
             }
         }
 
         private async void SinaShare_Tapped(object sender, TappedRoutedEventArgs e)
         {
             PopupExecuting.IsOpen = true;
-            WeiboClient weiboClient;
-            try
-            {
-                weiboClient = await WeiboClient.CreateAsync();
-            }
-            catch
-            {
-                await new MessageDialog("请求授权失败").ShowAsync();
-                PopupExecuting.IsOpen = false;
-                return;
-            }
-            try
-            {
-                byte[] data;
-                using (HttpClient httpClient = new HttpClient())
-                {
-                    data = (await httpClient.GetBufferAsync(new Uri(ViewModel.Wallpaper.GetCacheUrl(AppSetting.WallpaperSize)))).ToArray();
-                }
-                Weibo shareResult = await weiboClient.ShareImageAsync(data, ViewModel.Wallpaper.Archive.Info);
-                if (shareResult.IsSuccess)
-                {
-                    await new MessageDialog("分享成功").ShowAsync();
-                    PopupExecuting.IsOpen = false;
-                    return;
-                }
-            }
-            catch
-            {
-            }
-            await new MessageDialog("分享失败").ShowAsync();
+
+            await WeiboShare();
+
             PopupExecuting.IsOpen = false;
         }
 
@@ -334,6 +299,49 @@ namespace BingoWallpaper.Views
             var wallpaperWidth = AppSetting.WallpaperSize.Width;
             var zoomFactor = scrollViewerWidth / wallpaperWidth;
             this.ScrollViewer.ChangeView(null, null, (float)zoomFactor);
+        }
+
+        private void WechatShare_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+        }
+
+        private async Task WeiboShare()
+        {
+            try
+            {
+                WeiboClient client = await WeiboClient.CreateAsync();
+                byte[] shareData = await GetImageData();
+                string shareText = GetImageTitle();
+                Weibo shareResult = await client.ShareImageAsync(shareData, shareText);
+                if (shareResult.ErrorCode == 21332)
+                {
+                    // 用户在微博平台上清除了授权，需要清除本地 access token，重新进行授权。
+
+                    // 清除本地 access token。
+                    WeiboClient.ClearAuthorize();
+
+                    // 重新授权。
+                    client = await WeiboClient.CreateAsync();
+
+                    // 重新分享。
+                    shareResult = await client.ShareImageAsync(shareData, shareText);
+                }
+
+                if (shareResult.IsSuccess)
+                {
+                    await new MessageDialog(LocalizedStrings.ShareSuccess).ShowAsyncEnqueue();
+                    return;
+                }
+            }
+            catch
+            {
+                await new MessageDialog(LocalizedStrings.ShareFailed).ShowAsyncEnqueue();
+            }
+        }
+
+        private void BtnShare_Click(object sender, RoutedEventArgs e)
+        {
+            PopupShare.IsOpen = true;
         }
     }
 }

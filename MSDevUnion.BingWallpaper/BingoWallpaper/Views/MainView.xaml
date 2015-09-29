@@ -35,24 +35,28 @@
                             Orientation="Vertical"
                             Margin="10,5,0,5">
                     <TextBlock Text="{Binding Path=ViewingWallpaper,Converter={StaticResource YearNameConverter}}"
-                               Visibility="{Binding ElementName=AppBar,Path=IsOpen,Converter={StaticResource YearVisibilityConverter}}" />
+                               Visibility="{Binding ElementName=AppBar,Path=IsOpen,Converter={StaticResource YearVisibilityConverter}}"
+                               IsTextScaleFactorEnabled="False" />
                     <Grid>
                         <TextBlock x:Name="NarrowMonth"
                                    Text="{Binding Path=ViewingWallpaper,Converter={StaticResource MonthNameConverter},ConverterParameter=Narrow}"
                                    FontSize="{ThemeResource TextStyleExtraLargeFontSize}"
                                    FontWeight="Bold"
-                                   Visibility="Collapsed" />
+                                   Visibility="Collapsed"
+                                   IsTextScaleFactorEnabled="False" />
                         <TextBlock x:Name="WideMonth"
                                    Text="{Binding Path=ViewingWallpaper,Converter={StaticResource MonthNameConverter},ConverterParameter=Wide}"
                                    FontSize="{ThemeResource TextStyleExtraLargeFontSize}"
                                    FontWeight="Bold"
-                                   Visibility="Visible" />
+                                   Visibility="Visible"
+                                   IsTextScaleFactorEnabled="False" />
                     </Grid>
                 </StackPanel>
                 <AppBarButton Grid.Column="1"
                               IsCompact="{Binding ElementName=AppBar,Path=IsOpen,Converter={StaticResource ResourceKey=BooleanInverseConverter}}"
                               Icon="Refresh"
                               x:Uid="/Main/Refresh"
+                              IsTextScaleFactorEnabled="False"
                               Label="刷新"
                               ToolTipService.ToolTip="刷新">
                     <interactivity:Interaction.Behaviors>
@@ -65,6 +69,7 @@
                               IsCompact="{Binding ElementName=AppBar,Path=IsOpen,Converter={StaticResource ResourceKey=BooleanInverseConverter}}"
                               Icon="Setting"
                               x:Uid="/Main/Setting"
+                              IsTextScaleFactorEnabled="False"
                               Label="设置"
                               ToolTipService.ToolTip="设置">
                     <interactivity:Interaction.Behaviors>
@@ -76,6 +81,7 @@
                 <AppBarButton Grid.Column="3"
                               IsCompact="{Binding ElementName=AppBar,Path=IsOpen,Converter={StaticResource ResourceKey=BooleanInverseConverter}}"
                               x:Uid="/Main/About"
+                              IsTextScaleFactorEnabled="False"
                               Label="关于"
                               ToolTipService.ToolTip="关于">
                     <AppBarButton.Icon>

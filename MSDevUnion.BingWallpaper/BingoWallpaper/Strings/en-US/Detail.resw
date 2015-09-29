@@ -135,11 +135,23 @@
   <data name="Save.ToolTipService.ToolTip" xml:space="preserve">
     <value>Save this image to local disk.</value>
   </data>
+  <data name="SaveFailed" xml:space="preserve">
+    <value>Save failed</value>
+  </data>
+  <data name="SaveSuccess" xml:space="preserve">
+    <value>Save success</value>
+  </data>
+  <data name="SetFailed" xml:space="preserve">
+    <value>Set failed</value>
+  </data>
   <data name="SetLockScreen.Label" xml:space="preserve">
     <value>Set as lockscreen</value>
   </data>
   <data name="SetLockScreen.ToolTipService.ToolTip" xml:space="preserve">
     <value>Set this image as your device lock screen.</value>
+  </data>
+  <data name="SetSuccess" xml:space="preserve">
+    <value>Set success</value>
   </data>
   <data name="SetWallpaper.Label" xml:space="preserve">
     <value>Set as wallpaper</value>
@@ -152,5 +164,11 @@
   </data>
   <data name="Share.ToolTipService.ToolTip" xml:space="preserve">
     <value>Share this image to your friends.</value>
+  </data>
+  <data name="ShareFailed" xml:space="preserve">
+    <value>Share failed</value>
+  </data>
+  <data name="ShareSuccess" xml:space="preserve">
+    <value>Share success</value>
   </data>
 </root>
