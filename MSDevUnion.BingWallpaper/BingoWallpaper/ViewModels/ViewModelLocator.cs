@@ -13,6 +13,7 @@ namespace BingoWallpaper.ViewModels
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<DetailViewModel>();
             SimpleIoc.Default.Register<SettingViewModel>();
+            SimpleIoc.Default.Register<AboutViewModel>();
         }
 
         public MainViewModel Main
@@ -36,6 +37,14 @@ namespace BingoWallpaper.ViewModels
             get
             {
                 return ServiceLocator.Current.GetInstance<SettingViewModel>();
+            }
+        }
+
+        public AboutViewModel About
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<AboutViewModel>();
             }
         }
     }

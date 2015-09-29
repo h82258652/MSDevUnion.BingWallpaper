@@ -18,43 +18,44 @@ namespace BingoWallpaper.Converters
                 }
                 else
                 {
+                    bool isNarrow = string.Equals(parameter, "Narrow");
                     switch (collection.Month)
                     {
                         case 1:
-                            return "January";
+                            return isNarrow ? "Jan." : "January";
 
                         case 2:
-                            return "February";
+                            return isNarrow ? "Feb." : "February";
 
                         case 3:
-                            return "March";
+                            return isNarrow ? "Mar." : "March";
 
                         case 4:
-                            return "April";
+                            return isNarrow ? "Apr." : "April";
 
                         case 5:
-                            return "May";
+                            return isNarrow ? "May." : "May";
 
                         case 6:
-                            return "June";
+                            return isNarrow ? "Jun." : "June";
 
                         case 7:
-                            return "July";
+                            return isNarrow ? "Jul." : "July";
 
                         case 8:
-                            return "August";
+                            return isNarrow ? "Aug." : "August";
 
                         case 9:
-                            return "September";
+                            return isNarrow ? "Sep." : "September";
 
                         case 10:
-                            return "October";
+                            return isNarrow ? "Oct." : "October";
 
                         case 11:
-                            return "November";
+                            return isNarrow ? "Nov." : "November";
 
                         case 12:
-                            return "December";
+                            return isNarrow ? "Dec." : "December";
                     }
                 }
             }

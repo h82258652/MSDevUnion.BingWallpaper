@@ -36,9 +36,18 @@
                             Margin="10,5,0,5">
                     <TextBlock Text="{Binding Path=ViewingWallpaper,Converter={StaticResource YearNameConverter}}"
                                Visibility="{Binding ElementName=AppBar,Path=IsOpen,Converter={StaticResource YearVisibilityConverter}}" />
-                    <TextBlock Text="{Binding Path=ViewingWallpaper,Converter={StaticResource MonthNameConverter}}"
-                               FontSize="{ThemeResource TextStyleExtraLargeFontSize}"
-                               FontWeight="Bold" />
+                    <Grid>
+                        <TextBlock x:Name="NarrowMonth"
+                                   Text="{Binding Path=ViewingWallpaper,Converter={StaticResource MonthNameConverter},ConverterParameter=Narrow}"
+                                   FontSize="{ThemeResource TextStyleExtraLargeFontSize}"
+                                   FontWeight="Bold"
+                                   Visibility="Collapsed" />
+                        <TextBlock x:Name="WideMonth"
+                                   Text="{Binding Path=ViewingWallpaper,Converter={StaticResource MonthNameConverter},ConverterParameter=Wide}"
+                                   FontSize="{ThemeResource TextStyleExtraLargeFontSize}"
+                                   FontWeight="Bold"
+                                   Visibility="Visible" />
+                    </Grid>
                 </StackPanel>
                 <AppBarButton Grid.Column="1"
                               IsCompact="{Binding ElementName=AppBar,Path=IsOpen,Converter={StaticResource ResourceKey=BooleanInverseConverter}}"
@@ -83,9 +92,35 @@
         </AppBar>
     </Page.BottomAppBar>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="narrow">
+                    <VisualState.Setters>
+                        <Setter Target="NarrowMonth.Visibility"
+                                Value="Visible" />
+                        <Setter Target="WideMonth.Visibility"
+                                Value="Collapsed" />
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="wide">
+                    <VisualState.Setters>
+                        <Setter Target="NarrowMonth.Visibility"
+                                Value="Collapsed" />
+                        <Setter Target="WideMonth.Visibility"
+                                Value="Visible" />
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="400" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <thirdParty:VirtualizingFlipView ItemsSource="{Binding Path=AllWallpapers}"
-                  SelectedItem="{Binding Path=ViewingWallpaper,Mode=TwoWay}"
-                  SelectionChanged="FlipView_SelectionChanged">
+                                         SelectedItem="{Binding Path=ViewingWallpaper,Mode=TwoWay}"
+                                         SelectionChanged="FlipView_SelectionChanged">
             <thirdParty:VirtualizingFlipView.ItemTemplate>
                 <DataTemplate>
                     <controls:ThumbnailPanel ItemClick="Wallpaper_Click" />

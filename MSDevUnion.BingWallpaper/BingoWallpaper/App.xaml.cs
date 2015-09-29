@@ -34,7 +34,7 @@ namespace BingoWallpaper
             this.InitializeComponent();
 
             // 下面语句用于测试其他语言。
-            Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "";
+            Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "en-US";
 
             //DebugSettings.EnableFrameRateCounter = true;
 

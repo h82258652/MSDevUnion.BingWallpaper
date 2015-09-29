@@ -1,4 +1,5 @@
 ﻿using SoftwareKobo.UniversalToolkit.Helpers;
+using SoftwareKobo.UniversalToolkit.Services.LauncherServices;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
@@ -26,6 +27,12 @@ namespace BingoWallpaper.Views
             Frame.RegisterNavigateBack();
 
             base.OnNavigatedTo(e);
+        }
+
+        private async void BtnReview_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            StoreService service = new StoreService();
+            await service.OpenCurrentAppReviewPageAsync();
         }
     }
 }

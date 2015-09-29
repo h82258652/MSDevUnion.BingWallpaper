@@ -4,28 +4,82 @@
       xmlns:local="using:BingoWallpaper.Views"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      mc:Ignorable="d">
+      mc:Ignorable="d"
+      DataContext="{Binding Source={StaticResource ResourceKey=Locator},Path=About}">
     <Page.Transitions>
         <TransitionCollection>
             <EdgeUIThemeTransition Edge="Right" />
         </TransitionCollection>
     </Page.Transitions>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel HorizontalAlignment="Center"
-                    VerticalAlignment="Center">
-            <Grid>
-                <TextBlock Text="服务器开发"></TextBlock>
-                <TextBlock Text="bohan"></TextBlock>                
-            </Grid>
-            <Grid>
-                <TextBlock Text="客户端开发"></TextBlock>
-                <TextBlock Text="h82258652"></TextBlock>
-                <TextBlock Text="higan"></TextBlock>
-            </Grid>
-            <Grid>
-                <TextBlock Text="图标设计"></TextBlock>
-                <TextBlock Text="纸币"></TextBlock>
-            </Grid>
-        </StackPanel>
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                      VerticalScrollBarVisibility="Hidden">
+            <StackPanel HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <Grid Margin="15">
+                    <StackPanel>
+                        <Image Source="/Assets/share/wechat.png"
+                               Width="96"
+                               Height="96" />
+                        <TextBlock Margin="0,5,0,0"
+                                   TextAlignment="Center"
+                                   Foreground="#101010"
+                                   FontSize="{ThemeResource TextStyleLargeFontSize}"
+                                   FontWeight="ExtraBold"
+                                   Text="{Binding Path=DisplayName}" />
+                    </StackPanel>
+                </Grid>
+                <Grid Margin="10">
+                    <StackPanel>
+                        <TextBlock FontSize="{ThemeResource TextStyleExtraLargeFontSize}"
+                                   TextAlignment="Center"
+                                   Foreground="{ThemeResource SystemControlBackgroundAccentBrush}"
+                                   x:Uid="/About/ServerDevelop"
+                                   Text="服务器开发" />
+                        <TextBlock FontSize="{ThemeResource TextStyleLargeFontSize}"
+                                   TextAlignment="Center"
+                                   Foreground="Gray"
+                                   Text="bohan" />
+                    </StackPanel>
+                </Grid>
+                <Grid Margin="10">
+                    <StackPanel>
+                        <TextBlock FontSize="{ThemeResource TextStyleExtraLargeFontSize}"
+                                   TextAlignment="Center"
+                                   Foreground="{ThemeResource SystemControlBackgroundAccentBrush}"
+                                   x:Uid="/About/ClientDevelop"
+                                   Text="客户端开发" />
+                        <TextBlock FontSize="{ThemeResource TextStyleLargeFontSize}"
+                                   TextAlignment="Center"
+                                   Foreground="Gray"
+                                   Text="h82258652" />
+                        <TextBlock FontSize="{ThemeResource TextStyleLargeFontSize}"
+                                   TextAlignment="Center"
+                                   Foreground="Gray"
+                                   Text="higan" />
+                    </StackPanel>
+                </Grid>
+                <Grid Margin="10">
+                    <StackPanel>
+                        <TextBlock FontSize="{ThemeResource TextStyleExtraLargeFontSize}"
+                                   TextAlignment="Center"
+                                   Foreground="{ThemeResource SystemControlBackgroundAccentBrush}"
+                                   x:Uid="/About/IconDesign"
+                                   Text="图标设计" />
+                        <TextBlock FontSize="{ThemeResource TextStyleLargeFontSize}"
+                                   TextAlignment="Center"
+                                   Foreground="Gray"
+                                   Text="纸币" />
+                    </StackPanel>
+                </Grid>
+                <Grid Margin="10">
+                    <HyperlinkButton HorizontalAlignment="Center"
+                                     FontSize="{ThemeResource HubHeaderThemeFontSize}"
+                                     Command="{Binding Path=ReviewCommand}"
+                                     x:Uid="/About/Review"
+                                     Content="给个好评" />
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>
