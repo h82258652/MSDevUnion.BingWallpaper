@@ -45,8 +45,8 @@
                     <VariableSizedWrapGrid Orientation="Horizontal"
                                            HorizontalAlignment="Center"
                                            ItemWidth="160"
-                                           ItemHeight="100"
-                                           Loaded="ThumbnailGrid_Loaded"></VariableSizedWrapGrid>
+                                           ItemHeight="96"
+                                           Loaded="ThumbnailGrid_Loaded" />
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>
         </GridView>

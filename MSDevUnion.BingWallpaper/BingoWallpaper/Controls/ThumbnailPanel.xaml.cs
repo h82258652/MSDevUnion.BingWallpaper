@@ -29,12 +29,12 @@ namespace BingoWallpaper.Controls
             if (size.Width > 960)
             {
                 _thumbnailGrid.ItemWidth = 320;
-                _thumbnailGrid.ItemHeight = 200;
+                _thumbnailGrid.ItemHeight = 192;
             }
             else
             {
                 _thumbnailGrid.ItemWidth = 160;
-                _thumbnailGrid.ItemHeight = 100;
+                _thumbnailGrid.ItemHeight = 96;
             }
         }
 

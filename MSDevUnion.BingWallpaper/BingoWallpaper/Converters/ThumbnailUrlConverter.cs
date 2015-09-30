@@ -11,7 +11,7 @@ namespace BingoWallpaper.Converters
             Wallpaper wallpaper = value as Wallpaper;
             if (wallpaper != null)
             {
-                return wallpaper.GetCacheUrl(new WallpaperSize(1920, 1080));
+                return wallpaper.GetCacheUrl(new WallpaperSize(800, 480));
             }
             return null;
         }
