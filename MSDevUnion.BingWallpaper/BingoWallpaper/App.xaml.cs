@@ -46,6 +46,11 @@ namespace BingoWallpaper
 
         protected override async Task OnPreStartAsync(IActivatedEventArgs args, AppStartInfo info)
         {
+#if DEBUG
+            this.DebugSettings.EnableFrameRateCounter = true;
+            this.DebugSettings.EnableDisplayMemoryUsage();
+#endif
+
             await SetTitleBar();
         }
 

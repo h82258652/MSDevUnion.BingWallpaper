@@ -41,7 +41,6 @@ namespace SoftwareKobo.UniversalToolkit.Controls
             {
                 this.IsOpen = false;
             };
-
             Window.Current.SizeChanged += delegate
             {
                 this.ReSize();
