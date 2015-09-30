@@ -39,7 +39,13 @@
                         <TextBlock FontSize="{ThemeResource TextStyleLargeFontSize}"
                                    TextAlignment="Center"
                                    Foreground="Gray"
-                                   Text="bohan" />
+                                   Text="bohan">
+                            <TextBlock.Transitions>
+                                <TransitionCollection>
+                                    <EntranceThemeTransition FromHorizontalOffset="0"
+                                                             FromVerticalOffset="100" />
+                                </TransitionCollection>
+                            </TextBlock.Transitions></TextBlock>
                     </StackPanel>
                 </Grid>
                 <Grid Margin="10">
@@ -52,11 +58,23 @@
                         <TextBlock FontSize="{ThemeResource TextStyleLargeFontSize}"
                                    TextAlignment="Center"
                                    Foreground="Gray"
-                                   Text="h82258652" />
+                                   Text="h82258652">
+                            <TextBlock.Transitions>
+                                <TransitionCollection>
+                                    <EntranceThemeTransition FromHorizontalOffset="0"
+                                                             FromVerticalOffset="100" />
+                                </TransitionCollection>
+                            </TextBlock.Transitions></TextBlock>
                         <TextBlock FontSize="{ThemeResource TextStyleLargeFontSize}"
                                    TextAlignment="Center"
                                    Foreground="Gray"
-                                   Text="higan" />
+                                   Text="higan">
+                            <TextBlock.Transitions>
+                                <TransitionCollection>
+                                    <EntranceThemeTransition FromHorizontalOffset="0"
+                                                             FromVerticalOffset="100" />
+                                </TransitionCollection>
+                            </TextBlock.Transitions></TextBlock>
                     </StackPanel>
                 </Grid>
                 <Grid Margin="10">
@@ -69,7 +87,13 @@
                         <TextBlock FontSize="{ThemeResource TextStyleLargeFontSize}"
                                    TextAlignment="Center"
                                    Foreground="Gray"
-                                   Text="纸币" />
+                                   Text="纸币">
+                            <TextBlock.Transitions>
+                                <TransitionCollection>
+                                    <EntranceThemeTransition FromHorizontalOffset="0"
+                                                             FromVerticalOffset="100" />
+                                </TransitionCollection>
+                            </TextBlock.Transitions></TextBlock>
                     </StackPanel>
                 </Grid>
                 <Grid Margin="10">

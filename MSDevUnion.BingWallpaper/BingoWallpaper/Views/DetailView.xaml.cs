@@ -1,6 +1,7 @@
 ﻿using BingoWallpaper.Datas;
 using BingoWallpaper.Models;
 using BingoWallpaper.ViewModels;
+using MicroMsg.sdk;
 using SoftwareKobo.Social.Sina.Weibo;
 using SoftwareKobo.Social.Sina.Weibo.Models;
 using SoftwareKobo.UniversalToolkit.Extensions;
@@ -132,6 +133,11 @@ namespace BingoWallpaper.Views
             await new MessageDialog(isSuccess ? LocalizedStrings.SetSuccess : LocalizedStrings.SetFailed).ShowAsyncEnqueue();
 
             PopupExecuting.IsOpen = false;
+        }
+
+        private void BtnShare_Click(object sender, RoutedEventArgs e)
+        {
+            PopupShare.IsOpen = true;
         }
 
         private async Task<byte[]> GetImageData()
@@ -282,30 +288,12 @@ namespace BingoWallpaper.Views
         {
             PopupExecuting.IsOpen = true;
 
-            await WeiboShare();
+            await SinShare();
 
             PopupExecuting.IsOpen = false;
         }
 
-        private void SystemShare_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            DataTransferManager.ShowShareUI();
-        }
-
-        private void Wallpaper_Opened(object sender, RoutedEventArgs e)
-        {
-            // 调整 scrollviewer 到最适合缩放。
-            var scrollViewerWidth = this.ScrollViewer.ActualWidth;
-            var wallpaperWidth = AppSetting.WallpaperSize.Width;
-            var zoomFactor = scrollViewerWidth / wallpaperWidth;
-            this.ScrollViewer.ChangeView(null, null, (float)zoomFactor);
-        }
-
-        private void WechatShare_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-        }
-
-        private async Task WeiboShare()
+        private async Task SinShare()
         {
             try
             {
@@ -339,9 +327,53 @@ namespace BingoWallpaper.Views
             }
         }
 
-        private void BtnShare_Click(object sender, RoutedEventArgs e)
+        private void SystemShare_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            PopupShare.IsOpen = true;
+            DataTransferManager.ShowShareUI();
+        }
+
+        private void Wallpaper_Opened(object sender, RoutedEventArgs e)
+        {
+            // 调整 scrollviewer 到最适合缩放。
+            var scrollViewerWidth = this.ScrollViewer.ActualWidth;
+            var wallpaperWidth = AppSetting.WallpaperSize.Width;
+            var zoomFactor = scrollViewerWidth / wallpaperWidth;
+            this.ScrollViewer.ChangeView(null, null, (float)zoomFactor);
+        }
+
+        private async Task WechatShare()
+        {
+            try
+            {
+                WXImageMessage message = new WXImageMessage();
+                message.Title = this.GetImageTitle();
+                message.ImageData = await this.GetImageData();
+
+                SendMessageToWX.Req request = new SendMessageToWX.Req(message, SendMessageToWX.Req.WXSceneChooseByUser);
+                IWXAPI api = WXAPIFactory.CreateWXAPI(App.WechatAppID);
+
+                bool isSuccess = api.SendReq(request);
+                return;
+            }
+            catch
+            {
+            }
+            await new MessageDialog(LocalizedStrings.ShareFailed).ShowAsyncEnqueue();
+        }
+
+        private void WechatShare_Loaded(object sender, RoutedEventArgs e)
+        {
+            UIElement wechatShare = sender as UIElement;
+            wechatShare.Visibility = DeviceFamilyHelper.IsDesktop ? Visibility.Collapsed : Visibility.Visible;
+        }
+
+        private async void WechatShare_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            PopupExecuting.IsOpen = true;
+
+            await WechatShare();
+
+            PopupExecuting.IsOpen = false;
         }
     }
 }

@@ -29,6 +29,8 @@ namespace BingoWallpaper
 {
     public sealed partial class App : Bootstrapper
     {
+        internal const string WechatAppID = @"wxd930ea5d5a258f4f";
+
         public App()
         {
             this.InitializeComponent();

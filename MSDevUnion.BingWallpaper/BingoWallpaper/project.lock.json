@@ -1605,6 +1605,16 @@
           "lib/win8/Microsoft.Practices.Unity.dll": {},
           "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
         }
+      },
+      "WeChatSDK/1.9.0": {
+        "compile": {
+          "lib/NetCore45/MicroMsgSDKForUapp.dll": {},
+          "lib/NetCore45/ProtoBufferDll4Uap.dll": {}
+        },
+        "runtime": {
+          "lib/NetCore45/MicroMsgSDKForUapp.dll": {},
+          "lib/NetCore45/ProtoBufferDll4Uap.dll": {}
+        }
       }
     },
     "UAP,Version=v10.0/win10-arm": {
@@ -3300,6 +3310,16 @@
           "lib/win8/Microsoft.Practices.Unity.dll": {},
           "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
         }
+      },
+      "WeChatSDK/1.9.0": {
+        "compile": {
+          "lib/NetCore45/MicroMsgSDKForUapp.dll": {},
+          "lib/NetCore45/ProtoBufferDll4Uap.dll": {}
+        },
+        "runtime": {
+          "lib/NetCore45/MicroMsgSDKForUapp.dll": {},
+          "lib/NetCore45/ProtoBufferDll4Uap.dll": {}
+        }
       }
     },
     "UAP,Version=v10.0/win10-arm-aot": {
@@ -4966,6 +4986,16 @@
         "runtime": {
           "lib/win8/Microsoft.Practices.Unity.dll": {},
           "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+        }
+      },
+      "WeChatSDK/1.9.0": {
+        "compile": {
+          "lib/NetCore45/MicroMsgSDKForUapp.dll": {},
+          "lib/NetCore45/ProtoBufferDll4Uap.dll": {}
+        },
+        "runtime": {
+          "lib/NetCore45/MicroMsgSDKForUapp.dll": {},
+          "lib/NetCore45/ProtoBufferDll4Uap.dll": {}
         }
       }
     },
@@ -6667,6 +6697,16 @@
           "lib/win8/Microsoft.Practices.Unity.dll": {},
           "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
         }
+      },
+      "WeChatSDK/1.9.0": {
+        "compile": {
+          "lib/NetCore45/MicroMsgSDKForUapp.dll": {},
+          "lib/NetCore45/ProtoBufferDll4Uap.dll": {}
+        },
+        "runtime": {
+          "lib/NetCore45/MicroMsgSDKForUapp.dll": {},
+          "lib/NetCore45/ProtoBufferDll4Uap.dll": {}
+        }
       }
     },
     "UAP,Version=v10.0/win10-x64-aot": {
@@ -8333,6 +8373,16 @@
         "runtime": {
           "lib/win8/Microsoft.Practices.Unity.dll": {},
           "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+        }
+      },
+      "WeChatSDK/1.9.0": {
+        "compile": {
+          "lib/NetCore45/MicroMsgSDKForUapp.dll": {},
+          "lib/NetCore45/ProtoBufferDll4Uap.dll": {}
+        },
+        "runtime": {
+          "lib/NetCore45/MicroMsgSDKForUapp.dll": {},
+          "lib/NetCore45/ProtoBufferDll4Uap.dll": {}
         }
       }
     },
@@ -10034,6 +10084,16 @@
           "lib/win8/Microsoft.Practices.Unity.dll": {},
           "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
         }
+      },
+      "WeChatSDK/1.9.0": {
+        "compile": {
+          "lib/NetCore45/MicroMsgSDKForUapp.dll": {},
+          "lib/NetCore45/ProtoBufferDll4Uap.dll": {}
+        },
+        "runtime": {
+          "lib/NetCore45/MicroMsgSDKForUapp.dll": {},
+          "lib/NetCore45/ProtoBufferDll4Uap.dll": {}
+        }
       }
     },
     "UAP,Version=v10.0/win10-x86-aot": {
@@ -11700,6 +11760,16 @@
         "runtime": {
           "lib/win8/Microsoft.Practices.Unity.dll": {},
           "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+        }
+      },
+      "WeChatSDK/1.9.0": {
+        "compile": {
+          "lib/NetCore45/MicroMsgSDKForUapp.dll": {},
+          "lib/NetCore45/ProtoBufferDll4Uap.dll": {}
+        },
+        "runtime": {
+          "lib/NetCore45/MicroMsgSDKForUapp.dll": {},
+          "lib/NetCore45/ProtoBufferDll4Uap.dll": {}
         }
       }
     }
@@ -15431,13 +15501,28 @@
         "Unity.nuspec",
         "UnityConfiguration30.xsd"
       ]
+    },
+    "WeChatSDK/1.9.0": {
+      "sha512": "pLKqgcYFJ1fvdudQzmBSsWTsiP6A3bURbKrtuRxXUOPNFKM7N/FyFKVZ8Oo5ff/DJgTfeU5ZbjS9j8y0oh7hmw==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "lib/NetCore45/MicroMsgSDKForUapp.dll",
+        "lib/NetCore45/ProtoBufferDll4Uap.dll",
+        "lib/portable-net45+netcore45+win8+wpa81/MicroMsgSDKForUapp.dll",
+        "lib/portable-net45+netcore45+win8+wpa81/ProtoBufferDll4Uap.dll",
+        "package/services/metadata/core-properties/285c450608ec438d8b778a56003004a6.psmdcp",
+        "WeChatSDK.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "": [
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.0.0",
       "MvvmLightLibs >= 5.2.0",
-      "Newtonsoft.Json >= 7.0.1"
+      "Newtonsoft.Json >= 7.0.1",
+      "WeChatSDK >= 1.9.0"
     ],
     "UAP,Version=v10.0": []
   }

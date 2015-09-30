@@ -10,6 +10,7 @@
       xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
       xmlns:core="using:Microsoft.Xaml.Interactions.Core"
       xmlns:controls="using:SoftwareKobo.UniversalToolkit.Controls"
+      xmlns:triggers="using:SoftwareKobo.UniversalToolkit.Triggers"
       mc:Ignorable="d"
       DataContext="{Binding Source={StaticResource ResourceKey=Locator},Path=Detail}">
     <Page.Transitions>
@@ -63,9 +64,9 @@
                               Background="Black">
                             <Grid HorizontalAlignment="Center">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition />
-                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Grid.Column="0"
                                             Margin="20"
@@ -81,7 +82,8 @@
                                 </StackPanel>
                                 <StackPanel Grid.Column="1"
                                             Margin="20"
-                                            Tapped="WechatShare_Tapped">
+                                            Tapped="WechatShare_Tapped"
+                                            Loaded="WechatShare_Loaded">
                                     <Image Width="64"
                                            Height="64"
                                            Source="/Assets/share/wechat.png" />
