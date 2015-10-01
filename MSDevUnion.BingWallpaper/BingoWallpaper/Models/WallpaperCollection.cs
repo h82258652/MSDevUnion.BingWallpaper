@@ -1,5 +1,6 @@
 ﻿using BingoWallpaper.Datas;
 using BingoWallpaper.Services;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Threading.Tasks;
@@ -84,7 +85,7 @@ namespace BingoWallpaper.Models
                     this.Add(wallpaper);
                 }
             }
-            catch
+            catch (Exception ex)
             {
             }
 

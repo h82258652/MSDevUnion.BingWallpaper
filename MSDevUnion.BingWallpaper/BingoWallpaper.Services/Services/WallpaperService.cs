@@ -12,11 +12,10 @@ namespace BingoWallpaper.Services
 {
     public class WallpaperService
     {
-        private const string URLBASE = @"https://leancloud.cn";
-
         private const string LeanCloudAppId = @"2odv0fmdni1w22hceawylo48l76vxbltgpl1mnoq3hlxj55j";
-
         private const string LeanCloudAppKey = @"idsoc6l9k218zrge2qi06anel3qcoqgvhutbqm93e4l58d3i";
+        private const string URLBASE = @"https://leancloud.cn";
+        private static Dictionary<string, JsonResultCache> _dataCache = new Dictionary<string, JsonResultCache>();
 
         private static Dictionary<string, JsonResultCache> DataCache
         {
@@ -25,8 +24,6 @@ namespace BingoWallpaper.Services
                 return _dataCache;
             }
         }
-
-        private static Dictionary<string, JsonResultCache> _dataCache = new Dictionary<string, JsonResultCache>();
 
         public async Task<LeanCloudResultCollection<Archive>> GetArchivesAsync(int year, int month, string market)
         {
@@ -96,6 +93,53 @@ namespace BingoWallpaper.Services
             return JsonConvert.DeserializeObject<Image>(json);
         }
 
+        public async Task<LeanCloudResultCollection<Image>> GetImagesAsync(string[] objectIds)
+        {
+            if (objectIds == null)
+            {
+                throw new ArgumentNullException(nameof(objectIds));
+            }
+            if (objectIds.Length == 0)
+            {
+                return new LeanCloudResultCollection<Image>();
+            }
+
+            var where = new
+            {
+                objectId = new Dictionary<string, string[]>
+                {
+                    {
+                        "$in",
+                        objectIds
+                    }
+                }
+            };
+
+            string requestUri = $"{URLBASE}/1.1/classes/Image?where={WebUtility.UrlEncode(JsonConvert.SerializeObject(where))}&order=-updatedAt";
+
+            string json;
+            if (DataCache.ContainsKey(requestUri) && DataCache[requestUri].IsUseable())
+            {
+                json = DataCache[requestUri].Json;
+            }
+            else
+            {
+                using (HttpClient client = CreateClient())
+                {
+                    var requestTime = DateTime.Now;
+
+                    json = await client.GetStringAsync(new Uri(requestUri));
+                    DataCache[requestUri] = new JsonResultCache()
+                    {
+                        Json = json,
+                        RequestTime = requestTime
+                    };
+                }
+            }
+
+            return JsonConvert.DeserializeObject<LeanCloudResultCollection<Image>>(json);
+        }
+
         public async Task<Archive> GetNewestArchiveAsync(string market)
         {
             using (HttpClient client = CreateClient())
@@ -128,11 +172,13 @@ namespace BingoWallpaper.Services
 
         public async Task<IEnumerable<Wallpaper>> GetWallpapersAsync(int year, int month, string market)
         {
-            var collection = await GetArchivesAsync(year, month, market);
+            var archives = await GetArchivesAsync(year, month, market);
+            var imageIds = archives.Select(temp => temp.Image.ObjectId);
+            var images = await GetImagesAsync(imageIds.ToArray());
             List<Wallpaper> wallpapers = new List<Wallpaper>();
-            foreach (var archive in collection)
+            foreach (var archive in archives)
             {
-                var image = await GetImageAsync(archive.Image.ObjectId);
+                var image = images.FirstOrDefault(temp => temp.ObjectId == archive.Image.ObjectId);
                 wallpapers.Add(new Wallpaper()
                 {
                     Archive = archive,
