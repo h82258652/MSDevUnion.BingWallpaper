@@ -29,16 +29,16 @@ namespace BingoWallpaper
 {
     public sealed partial class App : Bootstrapper
     {
-        internal const string WechatAppID = @"wxd930ea5d5a258f4f";
+        internal const string WechatAppID = @"wxff94ab33c2c89267";
 
         public App()
         {
             this.InitializeComponent();
-
+            
+#if DEBUG
             // 下面语句用于测试其他语言。
             Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "";
-
-            //DebugSettings.EnableFrameRateCounter = true;
+#endif            
 
             this.DefaultMainPage = typeof(MainView);
             this.DefaultExtendedSplashScreen = () => new ExtendedSplashScreen();
