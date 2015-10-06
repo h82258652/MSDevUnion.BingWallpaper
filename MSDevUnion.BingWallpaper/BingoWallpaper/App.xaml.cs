@@ -24,12 +24,15 @@ using System.Threading.Tasks;
 using Windows.Foundation.Metadata;
 using Windows.UI;
 using Windows.Storage;
+using UmengSDK;
 
 namespace BingoWallpaper
 {
     public sealed partial class App : Bootstrapper
     {
         internal const string WechatAppID = @"wxff94ab33c2c89267";
+
+        private const string UmengAppkey = @"56137ba2e0f55adb22005d2b";
 
         public App()
         {
@@ -52,6 +55,18 @@ namespace BingoWallpaper
 #endif
 
             await SetTitleBar();
+
+            await UmengAnalytics.StartTrackAsync(UmengAppkey);
+        }
+
+        protected override async void OnResuming(object sender, object e)
+        {
+            await UmengAnalytics.StartTrackAsync(UmengAppkey);
+        }
+
+        protected override async Task OnSuspendingAsync(object sender, SuspendingEventArgs e)
+        {
+            await UmengAnalytics.EndTrackAsync();
         }
 
         public static async Task SetTitleBar()

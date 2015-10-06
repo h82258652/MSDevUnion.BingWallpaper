@@ -3,6 +3,7 @@
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
     "MvvmLightLibs": "5.2.0",
     "Newtonsoft.Json": "7.0.1",
+    "UmengAnalytics": "3.1.0",
     "WeChatSDK": "1.9.0"
   },
   "frameworks": {

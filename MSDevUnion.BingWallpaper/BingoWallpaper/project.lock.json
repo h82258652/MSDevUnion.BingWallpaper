@@ -1593,6 +1593,14 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
+      "UmengAnalytics/3.1.0": {
+        "compile": {
+          "lib/netcore451/UmengAnalyticsUniversal.dll": {}
+        },
+        "runtime": {
+          "lib/netcore451/UmengAnalyticsUniversal.dll": {}
+        }
+      },
       "Unity/3.5.1404": {
         "dependencies": {
           "CommonServiceLocator": "[1.2.0, )"
@@ -3298,6 +3306,14 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
+      "UmengAnalytics/3.1.0": {
+        "compile": {
+          "lib/netcore451/UmengAnalyticsUniversal.dll": {}
+        },
+        "runtime": {
+          "lib/netcore451/UmengAnalyticsUniversal.dll": {}
+        }
+      },
       "Unity/3.5.1404": {
         "dependencies": {
           "CommonServiceLocator": "[1.2.0, )"
@@ -4973,6 +4989,14 @@
         },
         "runtime": {
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
+        }
+      },
+      "UmengAnalytics/3.1.0": {
+        "compile": {
+          "lib/netcore451/UmengAnalyticsUniversal.dll": {}
+        },
+        "runtime": {
+          "lib/netcore451/UmengAnalyticsUniversal.dll": {}
         }
       },
       "Unity/3.5.1404": {
@@ -6685,6 +6709,14 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
+      "UmengAnalytics/3.1.0": {
+        "compile": {
+          "lib/netcore451/UmengAnalyticsUniversal.dll": {}
+        },
+        "runtime": {
+          "lib/netcore451/UmengAnalyticsUniversal.dll": {}
+        }
+      },
       "Unity/3.5.1404": {
         "dependencies": {
           "CommonServiceLocator": "[1.2.0, )"
@@ -8360,6 +8392,14 @@
         },
         "runtime": {
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
+        }
+      },
+      "UmengAnalytics/3.1.0": {
+        "compile": {
+          "lib/netcore451/UmengAnalyticsUniversal.dll": {}
+        },
+        "runtime": {
+          "lib/netcore451/UmengAnalyticsUniversal.dll": {}
         }
       },
       "Unity/3.5.1404": {
@@ -10072,6 +10112,14 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
+      "UmengAnalytics/3.1.0": {
+        "compile": {
+          "lib/netcore451/UmengAnalyticsUniversal.dll": {}
+        },
+        "runtime": {
+          "lib/netcore451/UmengAnalyticsUniversal.dll": {}
+        }
+      },
       "Unity/3.5.1404": {
         "dependencies": {
           "CommonServiceLocator": "[1.2.0, )"
@@ -11747,6 +11795,14 @@
         },
         "runtime": {
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
+        }
+      },
+      "UmengAnalytics/3.1.0": {
+        "compile": {
+          "lib/netcore451/UmengAnalyticsUniversal.dll": {}
+        },
+        "runtime": {
+          "lib/netcore451/UmengAnalyticsUniversal.dll": {}
         }
       },
       "Unity/3.5.1404": {
@@ -15474,6 +15530,24 @@
         "System.Xml.XmlSerializer.nuspec"
       ]
     },
+    "UmengAnalytics/3.1.0": {
+      "sha512": "zTkbAgLvGEobpAvSnEEuHc6RWX8stjB5GHdBQHA9O1ovcyxxuClL5/alcm1Og+RIEy+V4nvCfFerHXymGEf5Sw==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "content/_._",
+        "lib/netcore45/UmengAnalyticsWinRT.dll",
+        "lib/netcore451/UmengAnalyticsUniversal.dll",
+        "lib/sl3-wp/UmengAnalyticsWP7.dll",
+        "lib/sl4-wp71/UmengAnalyticsWP7.dll",
+        "lib/wp8/UmengAnalyticsWP8.dll",
+        "lib/wp81/UmengAnalyticsWP8.dll",
+        "lib/wpa81/UmengAnalyticsUniversal.dll",
+        "package/services/metadata/core-properties/9bf85c6dc2e1428999cae179b9ea0991.psmdcp",
+        "UmengAnalytics.nuspec"
+      ]
+    },
     "Unity/3.5.1404": {
       "sha512": "1wNboi2d9H0I14KevW7o7NTVN2IYsGC6L9m/gPztiQxhsXDTDxVJ3jddX0P03x3gd+goGB9zB2569HHaDA47SA==",
       "type": "Package",
@@ -15522,6 +15596,7 @@
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.0.0",
       "MvvmLightLibs >= 5.2.0",
       "Newtonsoft.Json >= 7.0.1",
+      "UmengAnalytics >= 3.1.0",
       "WeChatSDK >= 1.9.0"
     ],
     "UAP,Version=v10.0": []
