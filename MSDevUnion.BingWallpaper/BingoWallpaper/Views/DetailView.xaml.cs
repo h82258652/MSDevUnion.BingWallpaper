@@ -338,7 +338,7 @@ namespace BingoWallpaper.Views
             var scrollViewerWidth = this.ScrollViewer.ActualWidth;
             var wallpaperWidth = AppSetting.WallpaperSize.Width;
             var zoomFactor = scrollViewerWidth / wallpaperWidth;
-            this.ScrollViewer.ChangeView(null, null, (float)zoomFactor);
+            this.ScrollViewer.ChangeView(null, null, (float)zoomFactor, true);
         }
 
         private async Task WechatShare()
