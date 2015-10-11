@@ -195,8 +195,10 @@ namespace BingoWallpaper.Views
             DataTransferManager.GetForCurrentView().DataRequested += (DataTransferManager sender, DataRequestedEventArgs args) =>
             {
                 DataRequest request = args.Request;
+                var deferral = request.GetDeferral();
                 request.Data.Properties.Title = GetImageTitle();
                 request.Data.SetBitmap(RandomAccessStreamReference.CreateFromUri(new Uri(ViewModel.Wallpaper.GetCacheUrl(AppSetting.WallpaperSize))));
+                deferral.Complete();
             };
         }
 
