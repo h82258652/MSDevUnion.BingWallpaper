@@ -11,16 +11,16 @@
             <EdgeUIThemeTransition Edge="Right" />
         </TransitionCollection>
     </Page.Transitions>
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="#E3E3E3">
         <ScrollViewer HorizontalScrollBarVisibility="Disabled"
                       VerticalScrollBarVisibility="Hidden">
             <StackPanel HorizontalAlignment="Center"
                         VerticalAlignment="Center">
                 <Grid Margin="15">
                     <StackPanel>
-                        <Image Source="/Assets/share/wechat.png"
-                               Width="96"
-                               Height="96" />
+                        <Image Source="/Assets/logo.png"
+                               Width="128"
+                               Height="128" />
                         <TextBlock Margin="0,5,0,0"
                                    TextAlignment="Center"
                                    Foreground="#101010"
@@ -88,6 +88,16 @@
                                    TextAlignment="Center"
                                    Foreground="Gray"
                                    Text="纸币">
+                            <TextBlock.Transitions>
+                                <TransitionCollection>
+                                    <EntranceThemeTransition FromHorizontalOffset="0"
+                                                             FromVerticalOffset="100" />
+                                </TransitionCollection>
+                            </TextBlock.Transitions></TextBlock>
+                        <TextBlock FontSize="{ThemeResource TextStyleLargeFontSize}"
+                                   TextAlignment="Center"
+                                   Foreground="Gray"
+                                   Text="higan">
                             <TextBlock.Transitions>
                                 <TransitionCollection>
                                     <EntranceThemeTransition FromHorizontalOffset="0"

@@ -15,7 +15,7 @@
     <Page.Resources>
         <conv:SaveLocationConverter x:Key="SaveLocationConverter"></conv:SaveLocationConverter>
     </Page.Resources>
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="#E3E3E3">
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel Orientation="Vertical">
                 <!--#region 壁纸保存位置-->

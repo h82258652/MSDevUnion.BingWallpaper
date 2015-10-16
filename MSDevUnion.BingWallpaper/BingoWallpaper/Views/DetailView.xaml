@@ -143,7 +143,7 @@
             </Grid>
         </controls:FullWindowPopup>
     </controls:FullWindowPopup.AttachedPopup>
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="#E3E3E3">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />

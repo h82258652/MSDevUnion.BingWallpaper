@@ -13,7 +13,8 @@
                     VerticalAlignment="Bottom"
                     HorizontalAlignment="Center"
                     Margin="0,0,0,100">
-            <TextBlock Margin="0,5,0,0"
+            <TextBlock x:Uid="/SplashScreen/AppName"
+                       Margin="0,5,0,0"
                        TextAlignment="Center"
                        Foreground="#101010"
                        FontSize="{ThemeResource TextStyleExtraLargeFontSize}"
@@ -23,7 +24,8 @@
                           IsActive="True"
                           Width="40"
                           Height="40" />
-            <TextBlock TextAlignment="Center"
+            <TextBlock x:Uid="/SplashScreen/Launching"
+                       TextAlignment="Center"
                        Text="正在启动.." />
         </StackPanel>
     </Grid>
