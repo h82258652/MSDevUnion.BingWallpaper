@@ -4,7 +4,7 @@
   <mp:PhoneIdentity PhoneProductId="438d3698-6b14-4501-bbca-f28e30b8aac9" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>BingoWallpaper</DisplayName>
-    <PublisherDisplayName>h8225</PublisherDisplayName>
+    <PublisherDisplayName>MSDevUnion</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
