@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="438d3698-6b14-4501-bbca-f28e30b8aac9" Publisher="CN=h8225" Version="1.0.0.0" />
+  <Identity Name="18174h82258652.1989900E597FE" Publisher="CN=D8CBB42C-5DD4-4A02-8424-31AF9627DADA" Version="1.1.3.0" />
   <mp:PhoneIdentity PhoneProductId="438d3698-6b14-4501-bbca-f28e30b8aac9" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>BingoWallpaper</DisplayName>
-    <PublisherDisplayName>MSDevUnion</PublisherDisplayName>
+    <DisplayName>碧影壁纸</DisplayName>
+    <PublisherDisplayName>h82258652</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
