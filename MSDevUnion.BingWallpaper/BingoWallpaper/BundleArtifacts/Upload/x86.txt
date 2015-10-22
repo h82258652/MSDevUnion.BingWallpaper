@@ -1,2 +1,2 @@
-MainPackage=D:\Projects\MSDevUnion.BingWallpaper\MSDevUnion.BingWallpaper\BingoWallpaper\bin\x86\Release\Upload\BingoWallpaper_1.1.8.0_x86.appx
-SymbolPackage=D:\Projects\MSDevUnion.BingWallpaper\MSDevUnion.BingWallpaper\BingoWallpaper\AppPackages\BingoWallpaper_1.1.8.0\BingoWallpaper_1.1.8.0_x86.appxsym
+MainPackage=D:\Projects\MSDevUnion.BingWallpaper\MSDevUnion.BingWallpaper\BingoWallpaper\bin\x86\Release\Upload\BingoWallpaper_1.1.9.0_x86.appx
+SymbolPackage=D:\Projects\MSDevUnion.BingWallpaper\MSDevUnion.BingWallpaper\BingoWallpaper\AppPackages\BingoWallpaper_1.1.9.0\BingoWallpaper_1.1.9.0_x86.appxsym
