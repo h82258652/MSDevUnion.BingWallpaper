@@ -1,7 +1,7 @@
 ﻿using BingoWallpaper.Datas;
 using BingoWallpaper.Models;
 using BingoWallpaper.ViewModels;
-using MicroMsg.sdk;
+using MicroMsg;
 using SoftwareKobo.Social.Sina.Weibo;
 using SoftwareKobo.Social.Sina.Weibo.Models;
 using SoftwareKobo.UniversalToolkit.Extensions;
@@ -354,7 +354,7 @@ namespace BingoWallpaper.Views
                 SendMessageToWX.Req request = new SendMessageToWX.Req(message, SendMessageToWX.Req.WXSceneChooseByUser);
                 IWXAPI api = WXAPIFactory.CreateWXAPI(App.WechatAppID);
 
-                bool isSuccess = api.SendReq(request);
+                string isSuccess = await api.SendReq(request);
                 return;
             }
             catch

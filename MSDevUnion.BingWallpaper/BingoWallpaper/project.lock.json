@@ -11,6 +11,16 @@
           "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
         }
       },
+      "Google.ProtocolBuffersLite/2.4.1.555": {
+        "compile": {
+          "lib/portable-net40+sl4+sl5+wp7+wp8+win8/Google.ProtocolBuffersLite.dll": {},
+          "lib/portable-net40+sl4+sl5+wp7+wp8+win8/Google.ProtocolBuffersLite.Serialization.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net40+sl4+sl5+wp7+wp8+win8/Google.ProtocolBuffersLite.dll": {},
+          "lib/portable-net40+sl4+sl5+wp7+wp8+win8/Google.ProtocolBuffersLite.Serialization.dll": {}
+        }
+      },
       "Microsoft.Bcl/1.1.10": {
         "dependencies": {
           "Microsoft.Bcl.Build": "[1.0.14, )"
@@ -1613,16 +1623,6 @@
           "lib/win8/Microsoft.Practices.Unity.dll": {},
           "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
         }
-      },
-      "WeChatSDK/1.9.0": {
-        "compile": {
-          "lib/NetCore45/MicroMsgSDKForUapp.dll": {},
-          "lib/NetCore45/ProtoBufferDll4Uap.dll": {}
-        },
-        "runtime": {
-          "lib/NetCore45/MicroMsgSDKForUapp.dll": {},
-          "lib/NetCore45/ProtoBufferDll4Uap.dll": {}
-        }
       }
     },
     "UAP,Version=v10.0/win10-arm": {
@@ -1632,6 +1632,16 @@
         },
         "runtime": {
           "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
+        }
+      },
+      "Google.ProtocolBuffersLite/2.4.1.555": {
+        "compile": {
+          "lib/portable-net40+sl4+sl5+wp7+wp8+win8/Google.ProtocolBuffersLite.dll": {},
+          "lib/portable-net40+sl4+sl5+wp7+wp8+win8/Google.ProtocolBuffersLite.Serialization.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net40+sl4+sl5+wp7+wp8+win8/Google.ProtocolBuffersLite.dll": {},
+          "lib/portable-net40+sl4+sl5+wp7+wp8+win8/Google.ProtocolBuffersLite.Serialization.dll": {}
         }
       },
       "Microsoft.Bcl/1.1.10": {
@@ -3326,16 +3336,6 @@
           "lib/win8/Microsoft.Practices.Unity.dll": {},
           "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
         }
-      },
-      "WeChatSDK/1.9.0": {
-        "compile": {
-          "lib/NetCore45/MicroMsgSDKForUapp.dll": {},
-          "lib/NetCore45/ProtoBufferDll4Uap.dll": {}
-        },
-        "runtime": {
-          "lib/NetCore45/MicroMsgSDKForUapp.dll": {},
-          "lib/NetCore45/ProtoBufferDll4Uap.dll": {}
-        }
       }
     },
     "UAP,Version=v10.0/win10-arm-aot": {
@@ -3345,6 +3345,16 @@
         },
         "runtime": {
           "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
+        }
+      },
+      "Google.ProtocolBuffersLite/2.4.1.555": {
+        "compile": {
+          "lib/portable-net40+sl4+sl5+wp7+wp8+win8/Google.ProtocolBuffersLite.dll": {},
+          "lib/portable-net40+sl4+sl5+wp7+wp8+win8/Google.ProtocolBuffersLite.Serialization.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net40+sl4+sl5+wp7+wp8+win8/Google.ProtocolBuffersLite.dll": {},
+          "lib/portable-net40+sl4+sl5+wp7+wp8+win8/Google.ProtocolBuffersLite.Serialization.dll": {}
         }
       },
       "Microsoft.Bcl/1.1.10": {
@@ -5011,16 +5021,6 @@
           "lib/win8/Microsoft.Practices.Unity.dll": {},
           "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
         }
-      },
-      "WeChatSDK/1.9.0": {
-        "compile": {
-          "lib/NetCore45/MicroMsgSDKForUapp.dll": {},
-          "lib/NetCore45/ProtoBufferDll4Uap.dll": {}
-        },
-        "runtime": {
-          "lib/NetCore45/MicroMsgSDKForUapp.dll": {},
-          "lib/NetCore45/ProtoBufferDll4Uap.dll": {}
-        }
       }
     },
     "UAP,Version=v10.0/win10-x64": {
@@ -5030,6 +5030,16 @@
         },
         "runtime": {
           "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
+        }
+      },
+      "Google.ProtocolBuffersLite/2.4.1.555": {
+        "compile": {
+          "lib/portable-net40+sl4+sl5+wp7+wp8+win8/Google.ProtocolBuffersLite.dll": {},
+          "lib/portable-net40+sl4+sl5+wp7+wp8+win8/Google.ProtocolBuffersLite.Serialization.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net40+sl4+sl5+wp7+wp8+win8/Google.ProtocolBuffersLite.dll": {},
+          "lib/portable-net40+sl4+sl5+wp7+wp8+win8/Google.ProtocolBuffersLite.Serialization.dll": {}
         }
       },
       "Microsoft.Bcl/1.1.10": {
@@ -6729,16 +6739,6 @@
           "lib/win8/Microsoft.Practices.Unity.dll": {},
           "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
         }
-      },
-      "WeChatSDK/1.9.0": {
-        "compile": {
-          "lib/NetCore45/MicroMsgSDKForUapp.dll": {},
-          "lib/NetCore45/ProtoBufferDll4Uap.dll": {}
-        },
-        "runtime": {
-          "lib/NetCore45/MicroMsgSDKForUapp.dll": {},
-          "lib/NetCore45/ProtoBufferDll4Uap.dll": {}
-        }
       }
     },
     "UAP,Version=v10.0/win10-x64-aot": {
@@ -6748,6 +6748,16 @@
         },
         "runtime": {
           "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
+        }
+      },
+      "Google.ProtocolBuffersLite/2.4.1.555": {
+        "compile": {
+          "lib/portable-net40+sl4+sl5+wp7+wp8+win8/Google.ProtocolBuffersLite.dll": {},
+          "lib/portable-net40+sl4+sl5+wp7+wp8+win8/Google.ProtocolBuffersLite.Serialization.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net40+sl4+sl5+wp7+wp8+win8/Google.ProtocolBuffersLite.dll": {},
+          "lib/portable-net40+sl4+sl5+wp7+wp8+win8/Google.ProtocolBuffersLite.Serialization.dll": {}
         }
       },
       "Microsoft.Bcl/1.1.10": {
@@ -8414,16 +8424,6 @@
           "lib/win8/Microsoft.Practices.Unity.dll": {},
           "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
         }
-      },
-      "WeChatSDK/1.9.0": {
-        "compile": {
-          "lib/NetCore45/MicroMsgSDKForUapp.dll": {},
-          "lib/NetCore45/ProtoBufferDll4Uap.dll": {}
-        },
-        "runtime": {
-          "lib/NetCore45/MicroMsgSDKForUapp.dll": {},
-          "lib/NetCore45/ProtoBufferDll4Uap.dll": {}
-        }
       }
     },
     "UAP,Version=v10.0/win10-x86": {
@@ -8433,6 +8433,16 @@
         },
         "runtime": {
           "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
+        }
+      },
+      "Google.ProtocolBuffersLite/2.4.1.555": {
+        "compile": {
+          "lib/portable-net40+sl4+sl5+wp7+wp8+win8/Google.ProtocolBuffersLite.dll": {},
+          "lib/portable-net40+sl4+sl5+wp7+wp8+win8/Google.ProtocolBuffersLite.Serialization.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net40+sl4+sl5+wp7+wp8+win8/Google.ProtocolBuffersLite.dll": {},
+          "lib/portable-net40+sl4+sl5+wp7+wp8+win8/Google.ProtocolBuffersLite.Serialization.dll": {}
         }
       },
       "Microsoft.Bcl/1.1.10": {
@@ -10132,16 +10142,6 @@
           "lib/win8/Microsoft.Practices.Unity.dll": {},
           "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
         }
-      },
-      "WeChatSDK/1.9.0": {
-        "compile": {
-          "lib/NetCore45/MicroMsgSDKForUapp.dll": {},
-          "lib/NetCore45/ProtoBufferDll4Uap.dll": {}
-        },
-        "runtime": {
-          "lib/NetCore45/MicroMsgSDKForUapp.dll": {},
-          "lib/NetCore45/ProtoBufferDll4Uap.dll": {}
-        }
       }
     },
     "UAP,Version=v10.0/win10-x86-aot": {
@@ -10151,6 +10151,16 @@
         },
         "runtime": {
           "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
+        }
+      },
+      "Google.ProtocolBuffersLite/2.4.1.555": {
+        "compile": {
+          "lib/portable-net40+sl4+sl5+wp7+wp8+win8/Google.ProtocolBuffersLite.dll": {},
+          "lib/portable-net40+sl4+sl5+wp7+wp8+win8/Google.ProtocolBuffersLite.Serialization.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net40+sl4+sl5+wp7+wp8+win8/Google.ProtocolBuffersLite.dll": {},
+          "lib/portable-net40+sl4+sl5+wp7+wp8+win8/Google.ProtocolBuffersLite.Serialization.dll": {}
         }
       },
       "Microsoft.Bcl/1.1.10": {
@@ -11817,16 +11827,6 @@
           "lib/win8/Microsoft.Practices.Unity.dll": {},
           "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
         }
-      },
-      "WeChatSDK/1.9.0": {
-        "compile": {
-          "lib/NetCore45/MicroMsgSDKForUapp.dll": {},
-          "lib/NetCore45/ProtoBufferDll4Uap.dll": {}
-        },
-        "runtime": {
-          "lib/NetCore45/MicroMsgSDKForUapp.dll": {},
-          "lib/NetCore45/ProtoBufferDll4Uap.dll": {}
-        }
       }
     }
   },
@@ -11844,6 +11844,67 @@
         "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.XML",
         "package/services/metadata/core-properties/8a82b9e5a63a439481bfa8d4ec335002.psmdcp",
         "package/services/metadata/core-properties/99be0c88b2fd41c8b07c42071005ee47.psmdcp"
+      ]
+    },
+    "Google.ProtocolBuffersLite/2.4.1.555": {
+      "sha512": "25m/RFAFKSEf8iaJgObl7odr18Jp4dlaXEICVm1T+WVbuGfEIfdRi4kEa9KDTycYBjdk4k3D+7EhNGdN5Qoulw==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "Google.ProtocolBuffersLite.nuspec",
+        "lib/cf20/Google.ProtocolBuffersLite.dll",
+        "lib/cf20/Google.ProtocolBuffersLite.Serialization.dll",
+        "lib/cf20/Google.ProtocolBuffersLite.Serialization.xml",
+        "lib/cf20/Google.ProtocolBuffersLite.xml",
+        "lib/cf35/Google.ProtocolBuffersLite.dll",
+        "lib/cf35/Google.ProtocolBuffersLite.Serialization.dll",
+        "lib/cf35/Google.ProtocolBuffersLite.Serialization.xml",
+        "lib/cf35/Google.ProtocolBuffersLite.xml",
+        "lib/net20/Google.ProtocolBuffersLite.dll",
+        "lib/net20/Google.ProtocolBuffersLite.Serialization.dll",
+        "lib/net20/Google.ProtocolBuffersLite.Serialization.xml",
+        "lib/net20/Google.ProtocolBuffersLite.xml",
+        "lib/net35/Google.ProtocolBuffersLite.dll",
+        "lib/net35/Google.ProtocolBuffersLite.Serialization.dll",
+        "lib/net35/Google.ProtocolBuffersLite.Serialization.xml",
+        "lib/net35/Google.ProtocolBuffersLite.xml",
+        "lib/net40/Google.ProtocolBuffersLite.dll",
+        "lib/net40/Google.ProtocolBuffersLite.Serialization.dll",
+        "lib/net40/Google.ProtocolBuffersLite.Serialization.xml",
+        "lib/net40/Google.ProtocolBuffersLite.xml",
+        "lib/portable-net40+sl4+sl5+wp7+wp8+win8/Google.ProtocolBuffersLite.dll",
+        "lib/portable-net40+sl4+sl5+wp7+wp8+win8/Google.ProtocolBuffersLite.Serialization.dll",
+        "lib/portable-net40+sl4+sl5+wp7+wp8+win8/Google.ProtocolBuffersLite.Serialization.xml",
+        "lib/portable-net40+sl4+sl5+wp7+wp8+win8/Google.ProtocolBuffersLite.xml",
+        "lib/sl20/Google.ProtocolBuffersLite.dll",
+        "lib/sl20/Google.ProtocolBuffersLite.Serialization.dll",
+        "lib/sl20/Google.ProtocolBuffersLite.Serialization.xml",
+        "lib/sl20/Google.ProtocolBuffersLite.xml",
+        "lib/sl30/Google.ProtocolBuffersLite.dll",
+        "lib/sl30/Google.ProtocolBuffersLite.Serialization.dll",
+        "lib/sl30/Google.ProtocolBuffersLite.Serialization.xml",
+        "lib/sl30/Google.ProtocolBuffersLite.xml",
+        "lib/sl40/Google.ProtocolBuffersLite.dll",
+        "lib/sl40/Google.ProtocolBuffersLite.Serialization.dll",
+        "lib/sl40/Google.ProtocolBuffersLite.Serialization.xml",
+        "lib/sl40/Google.ProtocolBuffersLite.xml",
+        "package/services/metadata/core-properties/91a8d5af34bc466491bff8c2f909cb00.psmdcp",
+        "tools/CHANGES.txt",
+        "tools/Google.ProtocolBuffers.dll",
+        "tools/Google.ProtocolBuffers.Serialization.dll",
+        "tools/google/protobuf/compiler/plugin.proto",
+        "tools/google/protobuf/csharp_options.proto",
+        "tools/google/protobuf/descriptor.proto",
+        "tools/license.txt",
+        "tools/ProtoBench.exe",
+        "tools/protoc.exe",
+        "tools/protoc-license.txt",
+        "tools/ProtoDump.exe",
+        "tools/ProtoGen.exe",
+        "tools/ProtoGen.exe.config",
+        "tools/ProtoMunge.exe",
+        "tools/tutorial/addressbook.proto"
       ]
     },
     "Microsoft.Bcl/1.1.10": {
@@ -15575,29 +15636,14 @@
         "Unity.nuspec",
         "UnityConfiguration30.xsd"
       ]
-    },
-    "WeChatSDK/1.9.0": {
-      "sha512": "pLKqgcYFJ1fvdudQzmBSsWTsiP6A3bURbKrtuRxXUOPNFKM7N/FyFKVZ8Oo5ff/DJgTfeU5ZbjS9j8y0oh7hmw==",
-      "type": "Package",
-      "files": [
-        "[Content_Types].xml",
-        "_rels/.rels",
-        "lib/NetCore45/MicroMsgSDKForUapp.dll",
-        "lib/NetCore45/ProtoBufferDll4Uap.dll",
-        "lib/portable-net45+netcore45+win8+wpa81/MicroMsgSDKForUapp.dll",
-        "lib/portable-net45+netcore45+win8+wpa81/ProtoBufferDll4Uap.dll",
-        "package/services/metadata/core-properties/285c450608ec438d8b778a56003004a6.psmdcp",
-        "WeChatSDK.nuspec"
-      ]
     }
   },
   "projectFileDependencyGroups": {
     "": [
+      "Google.ProtocolBuffersLite >= 2.4.1.555",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.0.0",
       "MvvmLightLibs >= 5.2.0",
-      "Newtonsoft.Json >= 7.0.1",
-      "UmengAnalytics >= 3.1.0",
-      "WeChatSDK >= 1.9.0"
+      "UmengAnalytics >= 3.1.0"
     ],
     "UAP,Version=v10.0": []
   }

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{1283FA27-488E-453A-9C14-E9848027B4D1}</ProjectGuid>
+    <ProjectGuid>{EA7404E3-AE3B-4EEE-B026-075A4FEB21D2}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BingoWallpaper</RootNamespace>
@@ -21,7 +21,7 @@
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxBundle>Auto</AppxBundle>
     <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
-    <PackageCertificateThumbprint>E1A5D6F3F8D3772191E19FCEE4A5ED437F361C84</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>2D5C767A53FD7EBB1636C2992AED9D7D5C1DB6DF</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -44,7 +44,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
-    <UseDotNetNativeToolchain>false</UseDotNetNativeToolchain>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -67,7 +67,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
-    <UseDotNetNativeToolchain>false</UseDotNetNativeToolchain>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -75,7 +75,7 @@
     <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
-    <PlatformTarget>ARM</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
@@ -90,26 +90,26 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
-    <UseDotNetNativeToolchain>false</UseDotNetNativeToolchain>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <None Include="BingoWallpaper_StoreKey.pfx" />
     <None Include="project.json" />
-    <PRIResource Include="Strings\en-US\SplashScreen.resw" />
     <PRIResource Include="Strings\zh-CN\SplashScreen.resw" />
-    <PRIResource Include="Strings\en-US\About.resw" />
-    <PRIResource Include="Strings\zh-CN\About.resw" />
-    <PRIResource Include="Strings\en-US\Detail.resw" />
-    <PRIResource Include="Strings\zh-CN\Detail.resw" />
-    <PRIResource Include="Strings\en-US\Main.resw" />
-    <PRIResource Include="Strings\en-US\Setting.resw" />
-    <PRIResource Include="Strings\en-US\Area.resw" />
-    <PRIResource Include="Strings\zh-CN\Main.resw" />
-    <PRIResource Include="Strings\zh-CN\Area.resw" />
     <PRIResource Include="Strings\zh-CN\Setting.resw" />
-    <PRIResource Include="Strings\en-US\Resources.resw" />
     <PRIResource Include="Strings\zh-CN\Resources.resw" />
+    <PRIResource Include="Strings\zh-CN\Main.resw" />
+    <PRIResource Include="Strings\zh-CN\Detail.resw" />
+    <PRIResource Include="Strings\zh-CN\Area.resw" />
+    <PRIResource Include="Strings\zh-CN\About.resw" />
+    <PRIResource Include="Strings\en-US\SplashScreen.resw" />
+    <PRIResource Include="Strings\en-US\Setting.resw" />
+    <PRIResource Include="Strings\en-US\Resources.resw" />
+    <PRIResource Include="Strings\en-US\Main.resw" />
+    <PRIResource Include="Strings\en-US\Detail.resw" />
+    <PRIResource Include="Strings\en-US\Area.resw" />
+    <PRIResource Include="Strings\en-US\About.resw" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -181,9 +181,9 @@
     <Content Include="Assets\flags\Japan.png" />
     <Content Include="Assets\flags\United_Kingdom.png" />
     <Content Include="Assets\flags\United_States.png" />
-    <Content Include="Assets\logo.png" />
     <Content Include="Assets\lightbulb-online.png" />
     <Content Include="Assets\lightbulb-outline.png" />
+    <Content Include="Assets\logo.png" />
     <Content Include="Assets\share\more.png" />
     <Content Include="Assets\share\qzone.png" />
     <Content Include="Assets\share\SinaWeibo.png" />
@@ -198,6 +198,7 @@
     <Content Include="Assets\SplashScreen.scale-200.png" />
     <Content Include="Assets\Square150x150Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
@@ -206,34 +207,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Controls\ExtendedSplashScreen.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Thumbnail.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\ThumbnailPanel.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\AboutView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\DetailView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\MainView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\SettingView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BingoWallpaper.BackgroundTask\BingoWallpaper.BackgroundTask.csproj">
@@ -252,6 +225,10 @@
       <Project>{bc68b9a8-82aa-4002-84f0-75152d376562}</Project>
       <Name>BingoWallpaper.ThirdParty</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MicroMsg.sdk\MicroMsg.sdk.csproj">
+      <Project>{22f41adb-dd64-44d5-9c52-d2a31050503c}</Project>
+      <Name>MicroMsg.sdk</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SoftwareKobo.Social.Sina.Weibo\SoftwareKobo.Social.Sina.Weibo.csproj">
       <Project>{7076b845-958d-412c-bf79-c7a2e61a4bff}</Project>
       <Name>SoftwareKobo.Social.Sina.Weibo</Name>
@@ -260,6 +237,36 @@
       <Project>{db363430-f22a-441f-a043-fe3cdf7954ef}</Project>
       <Name>SoftwareKobo.UniversalToolkit</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Controls\ExtendedSplashScreen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Thumbnail.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ThumbnailPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AboutView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DetailView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MainView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SettingView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -272,7 +279,6 @@
       <Name>Windows Mobile Extensions for the UWP</Name>
     </SDKReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="..\BingoWallpaper.Shared\BingoWallpaper.Shared.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
@@ -285,4 +291,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <AppxSystemBinary Include="BingoWallpaper.dll" />
+  </ItemGroup>
 </Project>
