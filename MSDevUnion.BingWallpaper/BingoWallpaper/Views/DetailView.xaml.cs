@@ -30,9 +30,6 @@ using Windows.Web.Http;
 
 namespace BingoWallpaper.Views
 {
-    /// <summary>
-    /// 可用于自身或导航至 Frame 内部的空白页。
-    /// </summary>
     public sealed partial class DetailView : Page
     {
         private long? _listenAccentColorChangedToken;
@@ -54,18 +51,18 @@ namespace BingoWallpaper.Views
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            this.Frame.UnRegisterNavigateBack();
-
             base.OnNavigatedFrom(e);
+
+            this.Frame.UnregisterNavigateBack();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            base.OnNavigatedTo(e);
+
             this.Frame.RegisterNavigateBack();
 
             this.ViewModel.Wallpaper = e.Parameter as Wallpaper;
-
-            base.OnNavigatedTo(e);
         }
 
         private async void BtnSave_Click(object sender, RoutedEventArgs e)
@@ -357,12 +354,11 @@ namespace BingoWallpaper.Views
                 IWXAPI api = WXAPIFactory.CreateWXAPI(App.WechatAppID);
 
                 string isSuccess = await api.SendReq(request);
-                return;
             }
             catch
             {
+                await new MessageDialog(LocalizedStrings.ShareFailed).ShowAsyncEnqueue();
             }
-            await new MessageDialog(LocalizedStrings.ShareFailed).ShowAsyncEnqueue();
         }
 
         private void WechatShare_Loaded(object sender, RoutedEventArgs e)

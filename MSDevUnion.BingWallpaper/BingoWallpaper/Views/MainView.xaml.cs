@@ -5,9 +5,6 @@ using Windows.UI.Xaml.Navigation;
 
 namespace BingoWallpaper.Views
 {
-    /// <summary>
-    /// 可用于自身或导航至 Frame 内部的空白页。
-    /// </summary>
     public sealed partial class MainView : Page
     {
         private static string _lastViewArea;
@@ -27,13 +24,15 @@ namespace BingoWallpaper.Views
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            _lastViewArea = AppSetting.Area;
-
             base.OnNavigatedFrom(e);
+
+            _lastViewArea = AppSetting.Area;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            base.OnNavigatedTo(e);
+
             if (string.Equals(_lastViewArea, AppSetting.Area) == false)
             {
                 foreach (var wallpapers in this.ViewModel.AllWallpapers)
@@ -41,8 +40,6 @@ namespace BingoWallpaper.Views
                     wallpapers.Clear();
                 }
             }
-
-            base.OnNavigatedTo(e);
         }
 
         private void Wallpaper_Click(object sender, ItemClickEventArgs e)

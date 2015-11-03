@@ -3,12 +3,12 @@
   "version": 1,
   "targets": {
     "UAP,Version=v10.0": {
-      "CommonServiceLocator/1.2.0": {
+      "CommonServiceLocator/1.3.0": {
         "compile": {
-          "lib/portable-windows8+net40+sl5+windowsphone8/Microsoft.Practices.ServiceLocation.dll": {}
+          "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
         },
         "runtime": {
-          "lib/portable-windows8+net40+sl5+windowsphone8/Microsoft.Practices.ServiceLocation.dll": {}
+          "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
         }
       },
       "Microsoft.CSharp/4.0.0": {
@@ -215,6 +215,19 @@
         },
         "runtime": {
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+        }
+      },
+      "SoftwareKobo.UniversalToolkit/0.3.9": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )",
+          "Newtonsoft.Json": "[7.0.1, )",
+          "Win2d.uwp": "[1.7.0, )"
+        },
+        "compile": {
+          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -1552,27 +1565,24 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Unity/3.5.1404": {
-        "dependencies": {
-          "CommonServiceLocator": "[1.2.0, )"
-        },
+      "Win2d.uwp/1.7.0": {
         "compile": {
-          "lib/win8/Microsoft.Practices.Unity.dll": {},
-          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
+          "lib/uap10.0/Workaround1200257.dll": {}
         },
         "runtime": {
-          "lib/win8/Microsoft.Practices.Unity.dll": {},
-          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
+          "lib/uap10.0/Workaround1200257.dll": {}
         }
       }
     },
     "UAP,Version=v10.0/win10-arm": {
-      "CommonServiceLocator/1.2.0": {
+      "CommonServiceLocator/1.3.0": {
         "compile": {
-          "lib/portable-windows8+net40+sl5+windowsphone8/Microsoft.Practices.ServiceLocation.dll": {}
+          "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
         },
         "runtime": {
-          "lib/portable-windows8+net40+sl5+windowsphone8/Microsoft.Practices.ServiceLocation.dll": {}
+          "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
         }
       },
       "Microsoft.CSharp/4.0.0": {
@@ -1822,6 +1832,19 @@
         },
         "runtime": {
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+        }
+      },
+      "SoftwareKobo.UniversalToolkit/0.3.9": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )",
+          "Newtonsoft.Json": "[7.0.1, )",
+          "Win2d.uwp": "[1.7.0, )"
+        },
+        "compile": {
+          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -3206,27 +3229,27 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Unity/3.5.1404": {
-        "dependencies": {
-          "CommonServiceLocator": "[1.2.0, )"
-        },
+      "Win2d.uwp/1.7.0": {
         "compile": {
-          "lib/win8/Microsoft.Practices.Unity.dll": {},
-          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
+          "lib/uap10.0/Workaround1200257.dll": {}
         },
         "runtime": {
-          "lib/win8/Microsoft.Practices.Unity.dll": {},
-          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
+          "lib/uap10.0/Workaround1200257.dll": {}
+        },
+        "native": {
+          "runtimes/win10-arm/native/Microsoft.Graphics.Canvas.dll": {}
         }
       }
     },
     "UAP,Version=v10.0/win10-arm-aot": {
-      "CommonServiceLocator/1.2.0": {
+      "CommonServiceLocator/1.3.0": {
         "compile": {
-          "lib/portable-windows8+net40+sl5+windowsphone8/Microsoft.Practices.ServiceLocation.dll": {}
+          "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
         },
         "runtime": {
-          "lib/portable-windows8+net40+sl5+windowsphone8/Microsoft.Practices.ServiceLocation.dll": {}
+          "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
         }
       },
       "Microsoft.CSharp/4.0.0": {
@@ -3462,6 +3485,19 @@
         },
         "runtime": {
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+        }
+      },
+      "SoftwareKobo.UniversalToolkit/0.3.9": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )",
+          "Newtonsoft.Json": "[7.0.1, )",
+          "Win2d.uwp": "[1.7.0, )"
+        },
+        "compile": {
+          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -4832,27 +4868,27 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Unity/3.5.1404": {
-        "dependencies": {
-          "CommonServiceLocator": "[1.2.0, )"
-        },
+      "Win2d.uwp/1.7.0": {
         "compile": {
-          "lib/win8/Microsoft.Practices.Unity.dll": {},
-          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
+          "lib/uap10.0/Workaround1200257.dll": {}
         },
         "runtime": {
-          "lib/win8/Microsoft.Practices.Unity.dll": {},
-          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
+          "lib/uap10.0/Workaround1200257.dll": {}
+        },
+        "native": {
+          "runtimes/win10-arm/native/Microsoft.Graphics.Canvas.dll": {}
         }
       }
     },
     "UAP,Version=v10.0/win10-x64": {
-      "CommonServiceLocator/1.2.0": {
+      "CommonServiceLocator/1.3.0": {
         "compile": {
-          "lib/portable-windows8+net40+sl5+windowsphone8/Microsoft.Practices.ServiceLocation.dll": {}
+          "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
         },
         "runtime": {
-          "lib/portable-windows8+net40+sl5+windowsphone8/Microsoft.Practices.ServiceLocation.dll": {}
+          "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
         }
       },
       "Microsoft.CSharp/4.0.0": {
@@ -5109,6 +5145,19 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
+      "SoftwareKobo.UniversalToolkit/0.3.9": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )",
+          "Newtonsoft.Json": "[7.0.1, )",
+          "Win2d.uwp": "[1.7.0, )"
+        },
+        "compile": {
+          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+        }
+      },
       "System.AppContext/4.0.0": {
         "dependencies": {
           "System.Collections": "[4.0.0, )",
@@ -6491,27 +6540,27 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Unity/3.5.1404": {
-        "dependencies": {
-          "CommonServiceLocator": "[1.2.0, )"
-        },
+      "Win2d.uwp/1.7.0": {
         "compile": {
-          "lib/win8/Microsoft.Practices.Unity.dll": {},
-          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
+          "lib/uap10.0/Workaround1200257.dll": {}
         },
         "runtime": {
-          "lib/win8/Microsoft.Practices.Unity.dll": {},
-          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
+          "lib/uap10.0/Workaround1200257.dll": {}
+        },
+        "native": {
+          "runtimes/win10-x64/native/Microsoft.Graphics.Canvas.dll": {}
         }
       }
     },
     "UAP,Version=v10.0/win10-x64-aot": {
-      "CommonServiceLocator/1.2.0": {
+      "CommonServiceLocator/1.3.0": {
         "compile": {
-          "lib/portable-windows8+net40+sl5+windowsphone8/Microsoft.Practices.ServiceLocation.dll": {}
+          "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
         },
         "runtime": {
-          "lib/portable-windows8+net40+sl5+windowsphone8/Microsoft.Practices.ServiceLocation.dll": {}
+          "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
         }
       },
       "Microsoft.CSharp/4.0.0": {
@@ -6747,6 +6796,19 @@
         },
         "runtime": {
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+        }
+      },
+      "SoftwareKobo.UniversalToolkit/0.3.9": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )",
+          "Newtonsoft.Json": "[7.0.1, )",
+          "Win2d.uwp": "[1.7.0, )"
+        },
+        "compile": {
+          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -8117,27 +8179,27 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Unity/3.5.1404": {
-        "dependencies": {
-          "CommonServiceLocator": "[1.2.0, )"
-        },
+      "Win2d.uwp/1.7.0": {
         "compile": {
-          "lib/win8/Microsoft.Practices.Unity.dll": {},
-          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
+          "lib/uap10.0/Workaround1200257.dll": {}
         },
         "runtime": {
-          "lib/win8/Microsoft.Practices.Unity.dll": {},
-          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
+          "lib/uap10.0/Workaround1200257.dll": {}
+        },
+        "native": {
+          "runtimes/win10-x64/native/Microsoft.Graphics.Canvas.dll": {}
         }
       }
     },
     "UAP,Version=v10.0/win10-x86": {
-      "CommonServiceLocator/1.2.0": {
+      "CommonServiceLocator/1.3.0": {
         "compile": {
-          "lib/portable-windows8+net40+sl5+windowsphone8/Microsoft.Practices.ServiceLocation.dll": {}
+          "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
         },
         "runtime": {
-          "lib/portable-windows8+net40+sl5+windowsphone8/Microsoft.Practices.ServiceLocation.dll": {}
+          "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
         }
       },
       "Microsoft.CSharp/4.0.0": {
@@ -8394,6 +8456,19 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
+      "SoftwareKobo.UniversalToolkit/0.3.9": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )",
+          "Newtonsoft.Json": "[7.0.1, )",
+          "Win2d.uwp": "[1.7.0, )"
+        },
+        "compile": {
+          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+        }
+      },
       "System.AppContext/4.0.0": {
         "dependencies": {
           "System.Collections": "[4.0.0, )",
@@ -9776,27 +9851,27 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Unity/3.5.1404": {
-        "dependencies": {
-          "CommonServiceLocator": "[1.2.0, )"
-        },
+      "Win2d.uwp/1.7.0": {
         "compile": {
-          "lib/win8/Microsoft.Practices.Unity.dll": {},
-          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
+          "lib/uap10.0/Workaround1200257.dll": {}
         },
         "runtime": {
-          "lib/win8/Microsoft.Practices.Unity.dll": {},
-          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
+          "lib/uap10.0/Workaround1200257.dll": {}
+        },
+        "native": {
+          "runtimes/win10-x86/native/Microsoft.Graphics.Canvas.dll": {}
         }
       }
     },
     "UAP,Version=v10.0/win10-x86-aot": {
-      "CommonServiceLocator/1.2.0": {
+      "CommonServiceLocator/1.3.0": {
         "compile": {
-          "lib/portable-windows8+net40+sl5+windowsphone8/Microsoft.Practices.ServiceLocation.dll": {}
+          "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
         },
         "runtime": {
-          "lib/portable-windows8+net40+sl5+windowsphone8/Microsoft.Practices.ServiceLocation.dll": {}
+          "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
         }
       },
       "Microsoft.CSharp/4.0.0": {
@@ -10032,6 +10107,19 @@
         },
         "runtime": {
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+        }
+      },
+      "SoftwareKobo.UniversalToolkit/0.3.9": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )",
+          "Newtonsoft.Json": "[7.0.1, )",
+          "Win2d.uwp": "[1.7.0, )"
+        },
+        "compile": {
+          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -11402,32 +11490,34 @@
           "runtimes/win8-aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Unity/3.5.1404": {
-        "dependencies": {
-          "CommonServiceLocator": "[1.2.0, )"
-        },
+      "Win2d.uwp/1.7.0": {
         "compile": {
-          "lib/win8/Microsoft.Practices.Unity.dll": {},
-          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
+          "lib/uap10.0/Workaround1200257.dll": {}
         },
         "runtime": {
-          "lib/win8/Microsoft.Practices.Unity.dll": {},
-          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
+          "lib/uap10.0/Workaround1200257.dll": {}
+        },
+        "native": {
+          "runtimes/win10-x86/native/Microsoft.Graphics.Canvas.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "CommonServiceLocator/1.2.0": {
-      "sha512": "AIX32yb4Y1DMlFtpCfbwWpIN1ARr+xTcgu/0u1YkeFl/gBIz1cbxuj607FHwf6dh7ks8le5LP6zl7iucYWbkGw==",
+    "CommonServiceLocator/1.3.0": {
+      "sha512": "fbjO0SNwbOFPdwVfyqv+B7gIJ2CVBOFPKqn1mDDECK7KER8jFaOdcvroFYoAHa0ktPbxi5s+15qOLnA96f8GSA==",
       "type": "Package",
       "files": [
         "[Content_Types].xml",
+        "[Content_Types].xml",
         "_rels/.rels",
         "CommonServiceLocator.nuspec",
-        "lib/portable-windows8+net40+sl5+windowsphone8/Microsoft.Practices.ServiceLocation.dll",
-        "lib/portable-windows8+net40+sl5+windowsphone8/Microsoft.Practices.ServiceLocation.pdb",
-        "lib/portable-windows8+net40+sl5+windowsphone8/Microsoft.Practices.ServiceLocation.XML",
+        "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll",
+        "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.pdb",
+        "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.XML",
+        "package/services/metadata/core-properties/8a82b9e5a63a439481bfa8d4ec335002.psmdcp",
         "package/services/metadata/core-properties/99be0c88b2fd41c8b07c42071005ee47.psmdcp"
       ]
     },
@@ -12105,6 +12195,26 @@
         "Newtonsoft.Json.nuspec",
         "package/services/metadata/core-properties/49e907fc018c4c7ab632e6d4ad4766f8.psmdcp",
         "tools/install.ps1"
+      ]
+    },
+    "SoftwareKobo.UniversalToolkit/0.3.9": {
+      "sha512": "y5BZx5NPZhxQXk0EEnnTSk7AFNO6u42gB+hWqnEpHYN5Xucc5/+Sb6Ok6MaUaAr4lGcr/sfcY1MgNNcK4+e29w==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "content/LocalizedStrings.tt",
+        "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll",
+        "lib/uap10.0/SoftwareKobo.UniversalToolkit.pri",
+        "lib/uap10.0/SoftwareKobo.UniversalToolkit.XML",
+        "lib/uap10.0/SoftwareKobo.UniversalToolkit/Controls/ExtendedSplashScreen.xaml",
+        "lib/uap10.0/SoftwareKobo.UniversalToolkit/Controls/ExtendedSplashScreen.xbf",
+        "lib/uap10.0/SoftwareKobo.UniversalToolkit/Properties/SoftwareKobo.UniversalToolkit.rd.xml",
+        "lib/uap10.0/SoftwareKobo.UniversalToolkit/SoftwareKobo.UniversalToolkit.xr.xml",
+        "lib/uap10.0/SoftwareKobo.UniversalToolkit/Themes/Generic.xaml",
+        "lib/uap10.0/SoftwareKobo.UniversalToolkit/Themes/Generic.xbf",
+        "package/services/metadata/core-properties/c2fcbf3d5e0e47d8adc4768aab662b49.psmdcp",
+        "SoftwareKobo.UniversalToolkit.nuspec"
       ]
     },
     "System.AppContext/4.0.0": {
@@ -14802,39 +14912,33 @@
         "System.Xml.XmlSerializer.nuspec"
       ]
     },
-    "Unity/3.5.1404": {
-      "sha512": "1wNboi2d9H0I14KevW7o7NTVN2IYsGC6L9m/gPztiQxhsXDTDxVJ3jddX0P03x3gd+goGB9zB2569HHaDA47SA==",
+    "Win2d.uwp/1.7.0": {
+      "sha512": "q1/BSLPlwzAjh96AOLM0y+qELWn/+hHcUvELNqELf1fX6zFfSAp7eRFamOXuazTDvPKzr0YeQ8J5ErE8oYkRBA==",
       "type": "Package",
       "files": [
         "[Content_Types].xml",
         "_rels/.rels",
-        "lib/net45/Microsoft.Practices.Unity.Configuration.dll",
-        "lib/net45/Microsoft.Practices.Unity.Configuration.XML",
-        "lib/net45/Microsoft.Practices.Unity.dll",
-        "lib/net45/Microsoft.Practices.Unity.RegistrationByConvention.dll",
-        "lib/net45/Microsoft.Practices.Unity.RegistrationByConvention.XML",
-        "lib/net45/Microsoft.Practices.Unity.xml",
-        "lib/portable-net45+wp80+win8+MonoAndroid10+MonoTouch10/Microsoft.Practices.Unity.dll",
-        "lib/portable-net45+wp80+win8+MonoAndroid10+MonoTouch10/Microsoft.Practices.Unity.xml",
-        "lib/win8/Microsoft.Practices.Unity.dll",
-        "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll",
-        "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.pri",
-        "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.XML",
-        "lib/win8/Microsoft.Practices.Unity.xml",
-        "lib/wp80/Microsoft.Practices.Unity.dll",
-        "lib/wp80/Microsoft.Practices.Unity.RegistrationByConvention.dll",
-        "lib/wp80/Microsoft.Practices.Unity.RegistrationByConvention.XML",
-        "lib/wp80/Microsoft.Practices.Unity.xml",
-        "package/services/metadata/core-properties/e3a16be5fc4446da9ac9290e1d23e420.psmdcp",
-        "Unity.nuspec",
-        "UnityConfiguration30.xsd"
+        "build/native/Win2D.uwp.targets",
+        "include/Microsoft.Graphics.Canvas.h",
+        "include/Microsoft.Graphics.Canvas.native.h",
+        "lib/uap10.0/en/Microsoft.Graphics.Canvas.xml",
+        "lib/uap10.0/Microsoft.Graphics.Canvas.winmd",
+        "lib/uap10.0/Microsoft.Graphics.Canvas.xml",
+        "lib/uap10.0/Workaround1200257.dll",
+        "package/services/metadata/core-properties/804e31f876b743ed933710f3069c4090.psmdcp",
+        "runtimes/win10-arm/native/Microsoft.Graphics.Canvas.dll",
+        "runtimes/win10-x64/native/Microsoft.Graphics.Canvas.dll",
+        "runtimes/win10-x86/native/Microsoft.Graphics.Canvas.dll",
+        "Win2d.githash.txt",
+        "Win2D.uwp.nuspec"
       ]
     }
   },
   "projectFileDependencyGroups": {
     "": [
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.0.0",
-      "Newtonsoft.Json >= 7.0.1"
+      "Newtonsoft.Json >= 7.0.1",
+      "SoftwareKobo.UniversalToolkit >= 0.3.9"
     ],
     "UAP,Version=v10.0": []
   }

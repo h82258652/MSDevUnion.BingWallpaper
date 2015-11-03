@@ -1,7 +1,7 @@
 ﻿using BingoWallpaper.Datas;
 using BingoWallpaper.Models;
 using BingoWallpaper.Services;
-using GalaSoft.MvvmLight;
+using SoftwareKobo.UniversalToolkit.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +13,6 @@ namespace BingoWallpaper.ViewModels
     /// </summary>
     public sealed class SettingViewModel : ViewModelBase
     {
-        public SettingViewModel()
-        {
-        }
-
         public string Area
         {
             get

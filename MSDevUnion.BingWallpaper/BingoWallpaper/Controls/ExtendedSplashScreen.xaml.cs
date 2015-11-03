@@ -26,7 +26,6 @@ namespace BingoWallpaper.Controls
                 await this.InitSuitableWallpaperSize();
                 await this.RegisterBackgroundTask();
                 await this.UpdatePrimaryTile();
-                await Task.Delay(5000);
                 this.Finish();
             };
         }

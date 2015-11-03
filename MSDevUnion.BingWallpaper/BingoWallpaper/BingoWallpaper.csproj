@@ -232,10 +232,6 @@
       <Project>{7076b845-958d-412c-bf79-c7a2e61a4bff}</Project>
       <Name>SoftwareKobo.Social.Sina.Weibo</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SoftwareKobo.UniversalToolkit\SoftwareKobo.UniversalToolkit.csproj">
-      <Project>{db363430-f22a-441f-a043-fe3cdf7954ef}</Project>
-      <Name>SoftwareKobo.UniversalToolkit</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Controls\ExtendedSplashScreen.xaml">

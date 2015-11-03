@@ -1,7 +1,6 @@
 ﻿using BingoWallpaper.Datas;
 using BingoWallpaper.Models;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
+using SoftwareKobo.UniversalToolkit.Mvvm;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,14 +8,10 @@ namespace BingoWallpaper.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        private RelayCommand _refreshCommand;
+        private DelegateCommand _refreshCommand;
 
         private WallpaperCollection _viewingWallpaper;
-
-        public MainViewModel()
-        {
-        }
-
+        
         /// <summary>
         /// 所有壁纸信息。
         /// </summary>
@@ -31,11 +26,11 @@ namespace BingoWallpaper.ViewModels
         /// <summary>
         /// 刷新所有壁纸信息命令。
         /// </summary>
-        public RelayCommand RefreshCommand
+        public DelegateCommand RefreshCommand
         {
             get
             {
-                _refreshCommand = _refreshCommand ?? new RelayCommand(async () =>
+                _refreshCommand = _refreshCommand ?? new DelegateCommand(async () =>
                 {
                     var index = AllWallpapers.IndexOf(ViewingWallpaper);
                     var previous = AllWallpapers.ElementAtOrDefault(index - 1);

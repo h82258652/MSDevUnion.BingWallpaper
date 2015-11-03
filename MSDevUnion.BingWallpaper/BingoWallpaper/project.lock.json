@@ -268,6 +268,19 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
+      "SoftwareKobo.UniversalToolkit/0.3.9": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )",
+          "Newtonsoft.Json": "[7.0.1, )",
+          "Win2d.uwp": "[1.7.0, )"
+        },
+        "compile": {
+          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+        }
+      },
       "System.AppContext/4.0.0": {
         "dependencies": {
           "System.Collections": "[4.0.0, )",
@@ -1611,17 +1624,14 @@
           "lib/netcore451/UmengAnalyticsUniversal.dll": {}
         }
       },
-      "Unity/3.5.1404": {
-        "dependencies": {
-          "CommonServiceLocator": "[1.2.0, )"
-        },
+      "Win2d.uwp/1.7.0": {
         "compile": {
-          "lib/win8/Microsoft.Practices.Unity.dll": {},
-          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
+          "lib/uap10.0/Workaround1200257.dll": {}
         },
         "runtime": {
-          "lib/win8/Microsoft.Practices.Unity.dll": {},
-          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
+          "lib/uap10.0/Workaround1200257.dll": {}
         }
       }
     },
@@ -1932,6 +1942,19 @@
         },
         "runtime": {
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+        }
+      },
+      "SoftwareKobo.UniversalToolkit/0.3.9": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )",
+          "Newtonsoft.Json": "[7.0.1, )",
+          "Win2d.uwp": "[1.7.0, )"
+        },
+        "compile": {
+          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -3324,17 +3347,17 @@
           "lib/netcore451/UmengAnalyticsUniversal.dll": {}
         }
       },
-      "Unity/3.5.1404": {
-        "dependencies": {
-          "CommonServiceLocator": "[1.2.0, )"
-        },
+      "Win2d.uwp/1.7.0": {
         "compile": {
-          "lib/win8/Microsoft.Practices.Unity.dll": {},
-          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
+          "lib/uap10.0/Workaround1200257.dll": {}
         },
         "runtime": {
-          "lib/win8/Microsoft.Practices.Unity.dll": {},
-          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
+          "lib/uap10.0/Workaround1200257.dll": {}
+        },
+        "native": {
+          "runtimes/win10-arm/native/Microsoft.Graphics.Canvas.dll": {}
         }
       }
     },
@@ -3631,6 +3654,19 @@
         },
         "runtime": {
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+        }
+      },
+      "SoftwareKobo.UniversalToolkit/0.3.9": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )",
+          "Newtonsoft.Json": "[7.0.1, )",
+          "Win2d.uwp": "[1.7.0, )"
+        },
+        "compile": {
+          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -5009,17 +5045,17 @@
           "lib/netcore451/UmengAnalyticsUniversal.dll": {}
         }
       },
-      "Unity/3.5.1404": {
-        "dependencies": {
-          "CommonServiceLocator": "[1.2.0, )"
-        },
+      "Win2d.uwp/1.7.0": {
         "compile": {
-          "lib/win8/Microsoft.Practices.Unity.dll": {},
-          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
+          "lib/uap10.0/Workaround1200257.dll": {}
         },
         "runtime": {
-          "lib/win8/Microsoft.Practices.Unity.dll": {},
-          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
+          "lib/uap10.0/Workaround1200257.dll": {}
+        },
+        "native": {
+          "runtimes/win10-arm/native/Microsoft.Graphics.Canvas.dll": {}
         }
       }
     },
@@ -5337,6 +5373,19 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
+      "SoftwareKobo.UniversalToolkit/0.3.9": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )",
+          "Newtonsoft.Json": "[7.0.1, )",
+          "Win2d.uwp": "[1.7.0, )"
+        },
+        "compile": {
+          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+        }
+      },
       "System.AppContext/4.0.0": {
         "dependencies": {
           "System.Collections": "[4.0.0, )",
@@ -6727,17 +6776,17 @@
           "lib/netcore451/UmengAnalyticsUniversal.dll": {}
         }
       },
-      "Unity/3.5.1404": {
-        "dependencies": {
-          "CommonServiceLocator": "[1.2.0, )"
-        },
+      "Win2d.uwp/1.7.0": {
         "compile": {
-          "lib/win8/Microsoft.Practices.Unity.dll": {},
-          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
+          "lib/uap10.0/Workaround1200257.dll": {}
         },
         "runtime": {
-          "lib/win8/Microsoft.Practices.Unity.dll": {},
-          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
+          "lib/uap10.0/Workaround1200257.dll": {}
+        },
+        "native": {
+          "runtimes/win10-x64/native/Microsoft.Graphics.Canvas.dll": {}
         }
       }
     },
@@ -7034,6 +7083,19 @@
         },
         "runtime": {
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+        }
+      },
+      "SoftwareKobo.UniversalToolkit/0.3.9": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )",
+          "Newtonsoft.Json": "[7.0.1, )",
+          "Win2d.uwp": "[1.7.0, )"
+        },
+        "compile": {
+          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -8412,17 +8474,17 @@
           "lib/netcore451/UmengAnalyticsUniversal.dll": {}
         }
       },
-      "Unity/3.5.1404": {
-        "dependencies": {
-          "CommonServiceLocator": "[1.2.0, )"
-        },
+      "Win2d.uwp/1.7.0": {
         "compile": {
-          "lib/win8/Microsoft.Practices.Unity.dll": {},
-          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
+          "lib/uap10.0/Workaround1200257.dll": {}
         },
         "runtime": {
-          "lib/win8/Microsoft.Practices.Unity.dll": {},
-          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
+          "lib/uap10.0/Workaround1200257.dll": {}
+        },
+        "native": {
+          "runtimes/win10-x64/native/Microsoft.Graphics.Canvas.dll": {}
         }
       }
     },
@@ -8740,6 +8802,19 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
+      "SoftwareKobo.UniversalToolkit/0.3.9": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )",
+          "Newtonsoft.Json": "[7.0.1, )",
+          "Win2d.uwp": "[1.7.0, )"
+        },
+        "compile": {
+          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+        }
+      },
       "System.AppContext/4.0.0": {
         "dependencies": {
           "System.Collections": "[4.0.0, )",
@@ -10130,17 +10205,17 @@
           "lib/netcore451/UmengAnalyticsUniversal.dll": {}
         }
       },
-      "Unity/3.5.1404": {
-        "dependencies": {
-          "CommonServiceLocator": "[1.2.0, )"
-        },
+      "Win2d.uwp/1.7.0": {
         "compile": {
-          "lib/win8/Microsoft.Practices.Unity.dll": {},
-          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
+          "lib/uap10.0/Workaround1200257.dll": {}
         },
         "runtime": {
-          "lib/win8/Microsoft.Practices.Unity.dll": {},
-          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
+          "lib/uap10.0/Workaround1200257.dll": {}
+        },
+        "native": {
+          "runtimes/win10-x86/native/Microsoft.Graphics.Canvas.dll": {}
         }
       }
     },
@@ -10437,6 +10512,19 @@
         },
         "runtime": {
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
+        }
+      },
+      "SoftwareKobo.UniversalToolkit/0.3.9": {
+        "dependencies": {
+          "CommonServiceLocator": "[1.3.0, )",
+          "Newtonsoft.Json": "[7.0.1, )",
+          "Win2d.uwp": "[1.7.0, )"
+        },
+        "compile": {
+          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -11815,17 +11903,17 @@
           "lib/netcore451/UmengAnalyticsUniversal.dll": {}
         }
       },
-      "Unity/3.5.1404": {
-        "dependencies": {
-          "CommonServiceLocator": "[1.2.0, )"
-        },
+      "Win2d.uwp/1.7.0": {
         "compile": {
-          "lib/win8/Microsoft.Practices.Unity.dll": {},
-          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
+          "lib/uap10.0/Workaround1200257.dll": {}
         },
         "runtime": {
-          "lib/win8/Microsoft.Practices.Unity.dll": {},
-          "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
+          "lib/uap10.0/Workaround1200257.dll": {}
+        },
+        "native": {
+          "runtimes/win10-x86/native/Microsoft.Graphics.Canvas.dll": {}
         }
       }
     }
@@ -12894,6 +12982,26 @@
         "Newtonsoft.Json.nuspec",
         "package/services/metadata/core-properties/49e907fc018c4c7ab632e6d4ad4766f8.psmdcp",
         "tools/install.ps1"
+      ]
+    },
+    "SoftwareKobo.UniversalToolkit/0.3.9": {
+      "sha512": "y5BZx5NPZhxQXk0EEnnTSk7AFNO6u42gB+hWqnEpHYN5Xucc5/+Sb6Ok6MaUaAr4lGcr/sfcY1MgNNcK4+e29w==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "content/LocalizedStrings.tt",
+        "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll",
+        "lib/uap10.0/SoftwareKobo.UniversalToolkit.pri",
+        "lib/uap10.0/SoftwareKobo.UniversalToolkit.XML",
+        "lib/uap10.0/SoftwareKobo.UniversalToolkit/Controls/ExtendedSplashScreen.xaml",
+        "lib/uap10.0/SoftwareKobo.UniversalToolkit/Controls/ExtendedSplashScreen.xbf",
+        "lib/uap10.0/SoftwareKobo.UniversalToolkit/Properties/SoftwareKobo.UniversalToolkit.rd.xml",
+        "lib/uap10.0/SoftwareKobo.UniversalToolkit/SoftwareKobo.UniversalToolkit.xr.xml",
+        "lib/uap10.0/SoftwareKobo.UniversalToolkit/Themes/Generic.xaml",
+        "lib/uap10.0/SoftwareKobo.UniversalToolkit/Themes/Generic.xbf",
+        "package/services/metadata/core-properties/c2fcbf3d5e0e47d8adc4768aab662b49.psmdcp",
+        "SoftwareKobo.UniversalToolkit.nuspec"
       ]
     },
     "System.AppContext/4.0.0": {
@@ -15609,32 +15717,25 @@
         "UmengAnalytics.nuspec"
       ]
     },
-    "Unity/3.5.1404": {
-      "sha512": "1wNboi2d9H0I14KevW7o7NTVN2IYsGC6L9m/gPztiQxhsXDTDxVJ3jddX0P03x3gd+goGB9zB2569HHaDA47SA==",
+    "Win2d.uwp/1.7.0": {
+      "sha512": "q1/BSLPlwzAjh96AOLM0y+qELWn/+hHcUvELNqELf1fX6zFfSAp7eRFamOXuazTDvPKzr0YeQ8J5ErE8oYkRBA==",
       "type": "Package",
       "files": [
         "[Content_Types].xml",
         "_rels/.rels",
-        "lib/net45/Microsoft.Practices.Unity.Configuration.dll",
-        "lib/net45/Microsoft.Practices.Unity.Configuration.XML",
-        "lib/net45/Microsoft.Practices.Unity.dll",
-        "lib/net45/Microsoft.Practices.Unity.RegistrationByConvention.dll",
-        "lib/net45/Microsoft.Practices.Unity.RegistrationByConvention.XML",
-        "lib/net45/Microsoft.Practices.Unity.xml",
-        "lib/portable-net45+wp80+win8+MonoAndroid10+MonoTouch10/Microsoft.Practices.Unity.dll",
-        "lib/portable-net45+wp80+win8+MonoAndroid10+MonoTouch10/Microsoft.Practices.Unity.xml",
-        "lib/win8/Microsoft.Practices.Unity.dll",
-        "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll",
-        "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.pri",
-        "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.XML",
-        "lib/win8/Microsoft.Practices.Unity.xml",
-        "lib/wp80/Microsoft.Practices.Unity.dll",
-        "lib/wp80/Microsoft.Practices.Unity.RegistrationByConvention.dll",
-        "lib/wp80/Microsoft.Practices.Unity.RegistrationByConvention.XML",
-        "lib/wp80/Microsoft.Practices.Unity.xml",
-        "package/services/metadata/core-properties/e3a16be5fc4446da9ac9290e1d23e420.psmdcp",
-        "Unity.nuspec",
-        "UnityConfiguration30.xsd"
+        "build/native/Win2D.uwp.targets",
+        "include/Microsoft.Graphics.Canvas.h",
+        "include/Microsoft.Graphics.Canvas.native.h",
+        "lib/uap10.0/en/Microsoft.Graphics.Canvas.xml",
+        "lib/uap10.0/Microsoft.Graphics.Canvas.winmd",
+        "lib/uap10.0/Microsoft.Graphics.Canvas.xml",
+        "lib/uap10.0/Workaround1200257.dll",
+        "package/services/metadata/core-properties/804e31f876b743ed933710f3069c4090.psmdcp",
+        "runtimes/win10-arm/native/Microsoft.Graphics.Canvas.dll",
+        "runtimes/win10-x64/native/Microsoft.Graphics.Canvas.dll",
+        "runtimes/win10-x86/native/Microsoft.Graphics.Canvas.dll",
+        "Win2d.githash.txt",
+        "Win2D.uwp.nuspec"
       ]
     }
   },
@@ -15643,6 +15744,7 @@
       "Google.ProtocolBuffersLite >= 2.4.1.555",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.0.0",
       "MvvmLightLibs >= 5.2.0",
+      "SoftwareKobo.UniversalToolkit >= 0.3.9",
       "UmengAnalytics >= 3.1.0"
     ],
     "UAP,Version=v10.0": []

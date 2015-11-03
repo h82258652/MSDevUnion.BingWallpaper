@@ -1,12 +1,11 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
+﻿using SoftwareKobo.UniversalToolkit.Mvvm;
 using SoftwareKobo.UniversalToolkit.Services.LauncherServices;
 
 namespace BingoWallpaper.ViewModels
 {
     public class AboutViewModel : ViewModelBase
     {
-        private RelayCommand _reviewCommand;
+        private DelegateCommand _reviewCommand;
 
         public string DisplayName
         {
@@ -16,16 +15,19 @@ namespace BingoWallpaper.ViewModels
             }
         }
 
-        public RelayCommand ReviewCommand
+        public DelegateCommand ReviewCommand
         {
             get
             {
-                _reviewCommand = _reviewCommand ?? new RelayCommand(async () =>
+                if (this._reviewCommand == null)
                 {
-                    StoreService service = new StoreService();
-                    await service.OpenCurrentAppReviewPageAsync();
-                });
-                return _reviewCommand;
+                    this._reviewCommand = new DelegateCommand(async () =>
+                    {
+                        StoreService service = new StoreService();
+                        await service.OpenCurrentAppReviewPageAsync();
+                    });
+                }
+                return this._reviewCommand;
             }
         }
     }

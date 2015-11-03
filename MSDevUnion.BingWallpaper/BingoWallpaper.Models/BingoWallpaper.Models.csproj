@@ -122,12 +122,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Properties\BingoWallpaper.Models.rd.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SoftwareKobo.UniversalToolkit\SoftwareKobo.UniversalToolkit.csproj">
-      <Project>{db363430-f22a-441f-a043-fe3cdf7954ef}</Project>
-      <Name>SoftwareKobo.UniversalToolkit</Name>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

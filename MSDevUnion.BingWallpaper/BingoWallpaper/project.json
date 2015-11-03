@@ -3,6 +3,7 @@
     "Google.ProtocolBuffersLite": "2.4.1.555",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
     "MvvmLightLibs": "5.2.0",
+    "SoftwareKobo.UniversalToolkit": "0.3.9",
     "UmengAnalytics": "3.1.0"
   },
   "frameworks": {
