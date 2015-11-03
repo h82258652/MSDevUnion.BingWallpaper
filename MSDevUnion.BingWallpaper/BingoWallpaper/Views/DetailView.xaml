@@ -189,15 +189,7 @@
                             </ScrollViewer.Resources>
                             <Image Stretch="None"
                                    Source="{Binding Path=Wallpaper,Converter={StaticResource ResourceKey=WallpaperUrlConverter}}"
-                                   ImageOpened="Wallpaper_Opened">
-                                <interactivity:Interaction.Behaviors>
-                                    <core:EventTriggerBehavior EventName="ImageOpened">
-                                        <core:ChangePropertyAction TargetObject="{Binding ElementName=LoadingRing}"
-                                                                   PropertyName="IsActive"
-                                                                   Value="False" />
-                                    </core:EventTriggerBehavior>
-                                </interactivity:Interaction.Behaviors>
-                            </Image>
+                                   ImageOpened="Wallpaper_Opened" />
                         </ScrollViewer>
                         <ProgressRing x:Name="LoadingRing"
                                       IsActive="True"

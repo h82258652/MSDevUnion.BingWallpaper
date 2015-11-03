@@ -336,6 +336,8 @@ namespace BingoWallpaper.Views
 
         private void Wallpaper_Opened(object sender, RoutedEventArgs e)
         {
+            this.LoadingRing.IsActive = false;
+
             // 调整 scrollviewer 到最适合缩放。
             var scrollViewerWidth = this.ScrollViewer.ActualWidth;
             var wallpaperWidth = AppSetting.WallpaperSize.Width;
