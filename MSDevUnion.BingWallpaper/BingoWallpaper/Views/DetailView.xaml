@@ -215,9 +215,7 @@
                                         <TextBlock TextWrapping="Wrap"
                                                    Foreground="{ThemeResource ApplicationPageBackgroundThemeBrush}">
                                                 <Run FontSize="{ThemeResource TextStyleExtraLargeFontSize}"
-                                                     Text="{Binding Path=Description,Converter={StaticResource ResourceKey=FirstCharConverter}}" />
-                                                <Run Text="{Binding Path=Description,Converter={StaticResource ResourceKey=LastCharsConverter}}" />
-                                                <Hyperlink Click="HotspotClick">
+                                                     Text="{Binding Path=Description,Converter={StaticResource ResourceKey=FirstCharConverter}}" /><Run Text="{Binding Path=Description,Converter={StaticResource ResourceKey=LastCharsConverter}}" /><Hyperlink Click="HotspotClick">
                                                     <Run Text="{Binding Path=Query}"
                                                          Foreground="SkyBlue" />
                                                 </Hyperlink></TextBlock>
