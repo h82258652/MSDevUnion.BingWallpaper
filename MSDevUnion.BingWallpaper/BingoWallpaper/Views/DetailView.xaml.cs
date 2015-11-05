@@ -317,7 +317,10 @@ namespace BingoWallpaper.Views
                 if (shareResult.IsSuccess)
                 {
                     await new MessageDialog(LocalizedStrings.ShareSuccess).ShowAsyncEnqueue();
-                    return;
+                }
+                else
+                {
+                    await new MessageDialog("error:" + shareResult.Error + Environment.NewLine + "error code:" + shareResult.ErrorCode).ShowAsyncEnqueue();
                 }
             }
             catch
