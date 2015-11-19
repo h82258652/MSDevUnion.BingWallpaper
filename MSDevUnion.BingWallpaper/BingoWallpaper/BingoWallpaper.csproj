@@ -188,6 +188,7 @@
     <Content Include="Assets\share\qzone.png" />
     <Content Include="Assets\share\SinaWeibo.png" />
     <Content Include="Assets\share\wechat.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="LocalizedStrings.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>LocalizedStrings.cs</LastGenOutput>

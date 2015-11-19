@@ -112,6 +112,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\SoftwareKobo.UniversalToolkit3\SoftwareKobo.UniversalToolkit\SoftwareKobo.UniversalToolkit\SoftwareKobo.UniversalToolkit.csproj">
+      <Project>{2835cfd9-6d57-4b0e-a2f9-0e0fd12d3abd}</Project>
+      <Name>SoftwareKobo.UniversalToolkit</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BingoWallpaper.Models\BingoWallpaper.Models.csproj">
       <Project>{17729bc7-8098-462b-ab18-d2a034db658b}</Project>
       <Name>BingoWallpaper.Models</Name>

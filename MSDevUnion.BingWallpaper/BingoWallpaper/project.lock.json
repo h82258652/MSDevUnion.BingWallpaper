@@ -268,17 +268,13 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
-      "SoftwareKobo.UniversalToolkit/0.3.9": {
-        "dependencies": {
-          "CommonServiceLocator": "[1.3.0, )",
-          "Newtonsoft.Json": "[7.0.1, )",
-          "Win2d.uwp": "[1.7.0, )"
-        },
+      "NuGet.CommandLine/2.8.6": {},
+      "PlatformSpecific.Analyzer/1.0.5": {
         "compile": {
-          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+          "lib/uap/PlatformSpecific.dll": {}
         },
         "runtime": {
-          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+          "lib/uap/PlatformSpecific.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -1624,7 +1620,7 @@
           "lib/netcore451/UmengAnalyticsUniversal.dll": {}
         }
       },
-      "Win2d.uwp/1.7.0": {
+      "Win2D.uwp/1.7.0": {
         "compile": {
           "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
           "lib/uap10.0/Workaround1200257.dll": {}
@@ -1944,17 +1940,13 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
-      "SoftwareKobo.UniversalToolkit/0.3.9": {
-        "dependencies": {
-          "CommonServiceLocator": "[1.3.0, )",
-          "Newtonsoft.Json": "[7.0.1, )",
-          "Win2d.uwp": "[1.7.0, )"
-        },
+      "NuGet.CommandLine/2.8.6": {},
+      "PlatformSpecific.Analyzer/1.0.5": {
         "compile": {
-          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+          "lib/uap/PlatformSpecific.dll": {}
         },
         "runtime": {
-          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+          "lib/uap/PlatformSpecific.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -3347,7 +3339,7 @@
           "lib/netcore451/UmengAnalyticsUniversal.dll": {}
         }
       },
-      "Win2d.uwp/1.7.0": {
+      "Win2D.uwp/1.7.0": {
         "compile": {
           "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
           "lib/uap10.0/Workaround1200257.dll": {}
@@ -3656,17 +3648,13 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
-      "SoftwareKobo.UniversalToolkit/0.3.9": {
-        "dependencies": {
-          "CommonServiceLocator": "[1.3.0, )",
-          "Newtonsoft.Json": "[7.0.1, )",
-          "Win2d.uwp": "[1.7.0, )"
-        },
+      "NuGet.CommandLine/2.8.6": {},
+      "PlatformSpecific.Analyzer/1.0.5": {
         "compile": {
-          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+          "lib/uap/PlatformSpecific.dll": {}
         },
         "runtime": {
-          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+          "lib/uap/PlatformSpecific.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -5045,7 +5033,7 @@
           "lib/netcore451/UmengAnalyticsUniversal.dll": {}
         }
       },
-      "Win2d.uwp/1.7.0": {
+      "Win2D.uwp/1.7.0": {
         "compile": {
           "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
           "lib/uap10.0/Workaround1200257.dll": {}
@@ -5373,17 +5361,13 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
-      "SoftwareKobo.UniversalToolkit/0.3.9": {
-        "dependencies": {
-          "CommonServiceLocator": "[1.3.0, )",
-          "Newtonsoft.Json": "[7.0.1, )",
-          "Win2d.uwp": "[1.7.0, )"
-        },
+      "NuGet.CommandLine/2.8.6": {},
+      "PlatformSpecific.Analyzer/1.0.5": {
         "compile": {
-          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+          "lib/uap/PlatformSpecific.dll": {}
         },
         "runtime": {
-          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+          "lib/uap/PlatformSpecific.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -6776,7 +6760,7 @@
           "lib/netcore451/UmengAnalyticsUniversal.dll": {}
         }
       },
-      "Win2d.uwp/1.7.0": {
+      "Win2D.uwp/1.7.0": {
         "compile": {
           "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
           "lib/uap10.0/Workaround1200257.dll": {}
@@ -7085,17 +7069,13 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
-      "SoftwareKobo.UniversalToolkit/0.3.9": {
-        "dependencies": {
-          "CommonServiceLocator": "[1.3.0, )",
-          "Newtonsoft.Json": "[7.0.1, )",
-          "Win2d.uwp": "[1.7.0, )"
-        },
+      "NuGet.CommandLine/2.8.6": {},
+      "PlatformSpecific.Analyzer/1.0.5": {
         "compile": {
-          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+          "lib/uap/PlatformSpecific.dll": {}
         },
         "runtime": {
-          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+          "lib/uap/PlatformSpecific.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -8474,7 +8454,7 @@
           "lib/netcore451/UmengAnalyticsUniversal.dll": {}
         }
       },
-      "Win2d.uwp/1.7.0": {
+      "Win2D.uwp/1.7.0": {
         "compile": {
           "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
           "lib/uap10.0/Workaround1200257.dll": {}
@@ -8802,17 +8782,13 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
-      "SoftwareKobo.UniversalToolkit/0.3.9": {
-        "dependencies": {
-          "CommonServiceLocator": "[1.3.0, )",
-          "Newtonsoft.Json": "[7.0.1, )",
-          "Win2d.uwp": "[1.7.0, )"
-        },
+      "NuGet.CommandLine/2.8.6": {},
+      "PlatformSpecific.Analyzer/1.0.5": {
         "compile": {
-          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+          "lib/uap/PlatformSpecific.dll": {}
         },
         "runtime": {
-          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+          "lib/uap/PlatformSpecific.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -10205,7 +10181,7 @@
           "lib/netcore451/UmengAnalyticsUniversal.dll": {}
         }
       },
-      "Win2d.uwp/1.7.0": {
+      "Win2D.uwp/1.7.0": {
         "compile": {
           "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
           "lib/uap10.0/Workaround1200257.dll": {}
@@ -10514,17 +10490,13 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
-      "SoftwareKobo.UniversalToolkit/0.3.9": {
-        "dependencies": {
-          "CommonServiceLocator": "[1.3.0, )",
-          "Newtonsoft.Json": "[7.0.1, )",
-          "Win2d.uwp": "[1.7.0, )"
-        },
+      "NuGet.CommandLine/2.8.6": {},
+      "PlatformSpecific.Analyzer/1.0.5": {
         "compile": {
-          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+          "lib/uap/PlatformSpecific.dll": {}
         },
         "runtime": {
-          "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll": {}
+          "lib/uap/PlatformSpecific.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -11903,7 +11875,7 @@
           "lib/netcore451/UmengAnalyticsUniversal.dll": {}
         }
       },
-      "Win2d.uwp/1.7.0": {
+      "Win2D.uwp/1.7.0": {
         "compile": {
           "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
           "lib/uap10.0/Workaround1200257.dll": {}
@@ -12984,24 +12956,29 @@
         "tools/install.ps1"
       ]
     },
-    "SoftwareKobo.UniversalToolkit/0.3.9": {
-      "sha512": "y5BZx5NPZhxQXk0EEnnTSk7AFNO6u42gB+hWqnEpHYN5Xucc5/+Sb6Ok6MaUaAr4lGcr/sfcY1MgNNcK4+e29w==",
+    "NuGet.CommandLine/2.8.6": {
+      "sha512": "cFpAQ6XBJj9Cilj9MVQpfrQZxir/Q4BatWdF676TrviA/Zjjfw44I35StRz4CJALKkdij7m+vwKBU57MgqMl+g==",
       "type": "Package",
       "files": [
         "[Content_Types].xml",
         "_rels/.rels",
-        "content/LocalizedStrings.tt",
-        "lib/uap10.0/SoftwareKobo.UniversalToolkit.dll",
-        "lib/uap10.0/SoftwareKobo.UniversalToolkit.pri",
-        "lib/uap10.0/SoftwareKobo.UniversalToolkit.XML",
-        "lib/uap10.0/SoftwareKobo.UniversalToolkit/Controls/ExtendedSplashScreen.xaml",
-        "lib/uap10.0/SoftwareKobo.UniversalToolkit/Controls/ExtendedSplashScreen.xbf",
-        "lib/uap10.0/SoftwareKobo.UniversalToolkit/Properties/SoftwareKobo.UniversalToolkit.rd.xml",
-        "lib/uap10.0/SoftwareKobo.UniversalToolkit/SoftwareKobo.UniversalToolkit.xr.xml",
-        "lib/uap10.0/SoftwareKobo.UniversalToolkit/Themes/Generic.xaml",
-        "lib/uap10.0/SoftwareKobo.UniversalToolkit/Themes/Generic.xbf",
-        "package/services/metadata/core-properties/c2fcbf3d5e0e47d8adc4768aab662b49.psmdcp",
-        "SoftwareKobo.UniversalToolkit.nuspec"
+        "NuGet.CommandLine.nuspec",
+        "package/services/metadata/core-properties/0e4a340237bf4eedb236f5e1d792d111.psmdcp",
+        "tools/NuGet.exe"
+      ]
+    },
+    "PlatformSpecific.Analyzer/1.0.5": {
+      "sha512": "VFCcriB3nsWLklyFRgIihnDTL+BVV6NO+p5CpgSOEHvP5/nRWGI0t2dcTHmUMZtTKRByrpsoaROTjRLzS0VAXw==",
+      "type": "Package",
+      "files": [
+        "[Content_Types].xml",
+        "_rels/.rels",
+        "analyzers/dotnet/PlatformSpecific.Analyzer.dll",
+        "lib/uap/PlatformSpecific.dll",
+        "package/services/metadata/core-properties/d7495a1d727d41a385c8972bf1410165.psmdcp",
+        "PlatformSpecific.Analyzer.nuspec",
+        "tools/install.ps1",
+        "tools/uninstall.ps1"
       ]
     },
     "System.AppContext/4.0.0": {
@@ -15717,7 +15694,7 @@
         "UmengAnalytics.nuspec"
       ]
     },
-    "Win2d.uwp/1.7.0": {
+    "Win2D.uwp/1.7.0": {
       "sha512": "q1/BSLPlwzAjh96AOLM0y+qELWn/+hHcUvELNqELf1fX6zFfSAp7eRFamOXuazTDvPKzr0YeQ8J5ErE8oYkRBA==",
       "type": "Package",
       "files": [
