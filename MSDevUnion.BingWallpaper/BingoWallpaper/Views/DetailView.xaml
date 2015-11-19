@@ -152,7 +152,10 @@
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState x:Name="narrow">
-                    <VisualState.Setters></VisualState.Setters>
+                    <VisualState.Setters>
+                        <Setter Target="HotspotsView.OpenPaneLength"
+                                Value="250"></Setter>
+                    </VisualState.Setters>
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="0"></AdaptiveTrigger>
                     </VisualState.StateTriggers>
@@ -163,7 +166,7 @@
                                 Value="Visible"></Setter>
                     </VisualState.Setters>
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="500" />
+                        <AdaptiveTrigger MinWindowWidth="481" />
                     </VisualState.StateTriggers>
                 </VisualState>
             </VisualStateGroup>
