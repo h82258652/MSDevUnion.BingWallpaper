@@ -208,6 +208,10 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\SoftwareKobo.UniversalToolkit3\SoftwareKobo.UniversalToolkit\SoftwareKobo.UniversalToolkit\SoftwareKobo.UniversalToolkit.csproj">
+      <Project>{2835cfd9-6d57-4b0e-a2f9-0e0fd12d3abd}</Project>
+      <Name>SoftwareKobo.UniversalToolkit</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BingoWallpaper.BackgroundTask\BingoWallpaper.BackgroundTask.csproj">
       <Project>{f4fd2f70-f1aa-48d0-a1c8-5c70bea2b3a2}</Project>
       <Name>BingoWallpaper.BackgroundTask</Name>
