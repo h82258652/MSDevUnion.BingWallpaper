@@ -34,7 +34,8 @@
                           IsTextScaleFactorEnabled="False"
                           Label="保存"
                           ToolTipService.ToolTip="保存" />
-            <AppBarSeparator />
+            <AppBarSeparator x:Name="split"
+                             Visibility="Collapsed" />
             <AppBarButton Click="BtnSetWallpaper_Click"
                           x:Uid="/Detail/SetWallpaper"
                           IsTextScaleFactorEnabled="False"
@@ -148,6 +149,25 @@
         </controls:FullWindowPopup>
     </controls:FullWindowPopup.AttachedPopup>
     <Grid Background="#E3E3E3">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="narrow">
+                    <VisualState.Setters></VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"></AdaptiveTrigger>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="wide">
+                    <VisualState.Setters>
+                        <Setter Target="split.Visibility"
+                                Value="Visible"></Setter>
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="500" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
