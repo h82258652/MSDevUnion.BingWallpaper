@@ -31,7 +31,7 @@
                 </Grid>
                 <Grid Margin="10">
                     <StackPanel>
-                        <TextBlock FontSize="{ThemeResource TextStyleExtraLargeFontSize}"
+                        <TextBlock FontSize="23"
                                    TextAlignment="Center"
                                    Foreground="{ThemeResource SystemControlBackgroundAccentBrush}"
                                    x:Uid="/About/ServerDevelop"
@@ -50,7 +50,7 @@
                 </Grid>
                 <Grid Margin="10">
                     <StackPanel>
-                        <TextBlock FontSize="{ThemeResource TextStyleExtraLargeFontSize}"
+                        <TextBlock FontSize="23"
                                    TextAlignment="Center"
                                    Foreground="{ThemeResource SystemControlBackgroundAccentBrush}"
                                    x:Uid="/About/ClientDevelop"
@@ -79,7 +79,7 @@
                 </Grid>
                 <Grid Margin="10">
                     <StackPanel>
-                        <TextBlock FontSize="{ThemeResource TextStyleExtraLargeFontSize}"
+                        <TextBlock FontSize="23"
                                    TextAlignment="Center"
                                    Foreground="{ThemeResource SystemControlBackgroundAccentBrush}"
                                    x:Uid="/About/IconDesign"
@@ -108,7 +108,7 @@
                 </Grid>
                 <Grid Margin="10">
                     <HyperlinkButton HorizontalAlignment="Center"
-                                     FontSize="{ThemeResource HubHeaderThemeFontSize}"
+                                     FontSize="25"
                                      Command="{Binding Path=ReviewCommand}"
                                      x:Uid="/About/Review"
                                      Content="给个好评" />
