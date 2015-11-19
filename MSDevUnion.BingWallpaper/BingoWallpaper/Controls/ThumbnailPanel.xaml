@@ -50,9 +50,15 @@
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>
         </GridView>
-        <ProgressBar HorizontalAlignment="Stretch"
+        <ProgressRing HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      Width="100"
+                      Height="100"
+                      IsActive="{Binding Path=IsLoading}"
+                      Visibility="{Binding Path=IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" />
+        <!--<ProgressBar HorizontalAlignment="Stretch"
                      VerticalAlignment="Top"
                      IsIndeterminate="{Binding Path=IsLoading}"
-                     Visibility="{Binding Path=IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" />
+                     Visibility="{Binding Path=IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" />-->
     </Grid>
 </UserControl>
