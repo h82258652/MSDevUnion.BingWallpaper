@@ -95,6 +95,7 @@
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <None Include="BingoWallpaper_StoreKey.pfx" />
+    <None Include="BingoWallpaper_TemporaryKey.pfx" />
     <None Include="project.json" />
     <PRIResource Include="Strings\zh-CN\SplashScreen.resw" />
     <PRIResource Include="Strings\zh-CN\Setting.resw" />
@@ -168,7 +169,6 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="BingoWallpaper_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\flags\Australia.png" />
@@ -279,6 +279,9 @@
       <Name>Windows Mobile Extensions for the UWP</Name>
     </SDKReference>
   </ItemGroup>
+  <ItemGroup>
+    <AppxSystemBinary Include="BingoWallpaper.dll" />
+  </ItemGroup>
   <Import Project="..\BingoWallpaper.Shared\BingoWallpaper.Shared.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
@@ -291,7 +294,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ItemGroup>
-    <AppxSystemBinary Include="BingoWallpaper.dll" />
-  </ItemGroup>
 </Project>
