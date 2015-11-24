@@ -37,9 +37,14 @@ namespace BingoWallpaper
 
         protected override async Task OnPreStartAsync(IActivatedEventArgs args, AppStartInfo info)
         {
+            await UmengAnalytics.StartTrackAsync(UmengAppkey);
+
             await SetTitleBar();
 
-            await UmengAnalytics.StartTrackAsync(UmengAppkey);
+            if (RootFrame != null)
+            {
+                info.NavigatePage = null;
+            }
         }
 
         protected override async void OnResuming(object sender, object e)
