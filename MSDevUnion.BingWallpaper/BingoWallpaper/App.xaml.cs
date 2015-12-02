@@ -2,14 +2,10 @@
 using BingoWallpaper.Views;
 using SoftwareKobo.UniversalToolkit;
 using SoftwareKobo.UniversalToolkit.Extensions;
-using System;
 using System.Threading.Tasks;
 using UmengSDK;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.UI.Core;
-using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
 
 namespace BingoWallpaper
 {
@@ -39,8 +35,6 @@ namespace BingoWallpaper
         {
             await UmengAnalytics.StartTrackAsync(UmengAppkey);
 
-            await SetTitleBar();
-
             if (RootFrame != null)
             {
                 info.NavigatePage = null;
@@ -55,28 +49,6 @@ namespace BingoWallpaper
         protected override async Task OnSuspendingAsync(object sender, SuspendingEventArgs e)
         {
             await UmengAnalytics.EndTrackAsync();
-        }
-
-        public static async Task SetTitleBar()
-        {
-            await Window.Current.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-            {
-                UISettings uiSettings = new UISettings();
-                try
-                {
-                    ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
-                    titleBar.BackgroundColor = uiSettings.GetColorValue(UIColorType.Accent);
-                    titleBar.InactiveBackgroundColor = uiSettings.GetColorValue(UIColorType.AccentDark1);
-                    titleBar.ButtonBackgroundColor = uiSettings.GetColorValue(UIColorType.Accent);
-                    titleBar.ButtonInactiveBackgroundColor = uiSettings.GetColorValue(UIColorType.AccentDark1);
-                    titleBar.ButtonHoverBackgroundColor = uiSettings.GetColorValue(UIColorType.AccentLight1);
-                    titleBar.ButtonHoverForegroundColor = uiSettings.GetColorValue(UIColorType.Accent);
-                    titleBar.ButtonPressedBackgroundColor = uiSettings.GetColorValue(UIColorType.AccentLight3);
-                }
-                catch (InvalidCastException)
-                {
-                }
-            });
         }
     }
 }

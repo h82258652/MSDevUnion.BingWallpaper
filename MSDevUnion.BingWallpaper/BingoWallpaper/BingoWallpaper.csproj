@@ -209,7 +209,7 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\SoftwareKobo.UniversalToolkit3\SoftwareKobo.UniversalToolkit\SoftwareKobo.UniversalToolkit\SoftwareKobo.UniversalToolkit.csproj">
+    <ProjectReference Include="..\..\..\SoftwareKobo.UniversalToolkit\SoftwareKobo.UniversalToolkit\SoftwareKobo.UniversalToolkit\SoftwareKobo.UniversalToolkit.csproj">
       <Project>{2835cfd9-6d57-4b0e-a2f9-0e0fd12d3abd}</Project>
       <Name>SoftwareKobo.UniversalToolkit</Name>
     </ProjectReference>
@@ -228,10 +228,6 @@
     <ProjectReference Include="..\BingoWallpaper.ThirdParty\BingoWallpaper.ThirdParty.csproj">
       <Project>{bc68b9a8-82aa-4002-84f0-75152d376562}</Project>
       <Name>BingoWallpaper.ThirdParty</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MicroMsg.sdk\MicroMsg.sdk.csproj">
-      <Project>{22f41adb-dd64-44d5-9c52-d2a31050503c}</Project>
-      <Name>MicroMsg.sdk</Name>
     </ProjectReference>
     <ProjectReference Include="..\SoftwareKobo.Social.Sina.Weibo\SoftwareKobo.Social.Sina.Weibo.csproj">
       <Project>{7076b845-958d-412c-bf79-c7a2e61a4bff}</Project>
@@ -278,9 +274,6 @@
     <SDKReference Include="WindowsMobile, Version=10.0.10240.0">
       <Name>Windows Mobile Extensions for the UWP</Name>
     </SDKReference>
-  </ItemGroup>
-  <ItemGroup>
-    <AppxSystemBinary Include="BingoWallpaper.dll" />
   </ItemGroup>
   <Import Project="..\BingoWallpaper.Shared\BingoWallpaper.Shared.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

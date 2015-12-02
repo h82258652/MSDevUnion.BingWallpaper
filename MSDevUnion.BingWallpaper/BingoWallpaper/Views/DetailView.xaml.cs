@@ -2,6 +2,7 @@
 using BingoWallpaper.Models;
 using BingoWallpaper.ViewModels;
 using MicroMsg;
+using MicroMsg.sdk;
 using SoftwareKobo.Social.Sina.Weibo;
 using SoftwareKobo.Social.Sina.Weibo.Models;
 using SoftwareKobo.UniversalToolkit.Extensions;
@@ -32,12 +33,9 @@ namespace BingoWallpaper.Views
 {
     public sealed partial class DetailView : Page
     {
-        private long? _listenAccentColorChangedToken;
-
         public DetailView()
         {
             this.InitializeComponent();
-            this.ListenAccentColorChanged();
             this.InitSystemShare();
         }
 
@@ -199,28 +197,6 @@ namespace BingoWallpaper.Views
             };
         }
 
-        /// <summary>
-        /// 使用 hack 方法监听主题色发生变化。
-        /// </summary>
-        private void ListenAccentColorChanged()
-        {
-            SolidColorBrush appBarBackgroundBrush = this.AppBar.Background as SolidColorBrush;
-            if (appBarBackgroundBrush != null)
-            {
-                this.Loaded += (sender, e) =>
-                {
-                    _listenAccentColorChangedToken = appBarBackgroundBrush.RegisterPropertyChangedCallback(SolidColorBrush.ColorProperty, async (obj, property) => await App.SetTitleBar());
-                };
-                this.Unloaded += (sender, e) =>
-                {
-                    if (this._listenAccentColorChangedToken.HasValue)
-                    {
-                        appBarBackgroundBrush.UnregisterPropertyChangedCallback(SolidColorBrush.ColorProperty, _listenAccentColorChangedToken.Value);
-                    }
-                };
-            }
-        }
-
         private async Task SaveFile(StorageFile file)
         {
             string url = ViewModel.Wallpaper.GetCacheUrl(AppSetting.WallpaperSize);
@@ -349,14 +325,16 @@ namespace BingoWallpaper.Views
         {
             try
             {
-                WXImageMessage message = new WXImageMessage();
-                message.Title = this.GetImageTitle();
-                message.ImageData = await this.GetImageData();
-
-                SendMessageToWX.Req request = new SendMessageToWX.Req(message, SendMessageToWX.Req.WXSceneChooseByUser);
+                var scene = SendMessageToWX.Req.WXSceneTimeline;
+                var pic = await this.GetImageData();
+                var message = new WXImageMessage()
+                {
+                    Title = this.GetImageTitle(),
+                    ImageData = pic
+                };
+                SendMessageToWX.Req req = new SendMessageToWX.Req(message, scene);
                 IWXAPI api = WXAPIFactory.CreateWXAPI(App.WechatAppID);
-
-                string isSuccess = await api.SendReq(request);
+                var isValid = await api.SendReq(req);
             }
             catch
             {
