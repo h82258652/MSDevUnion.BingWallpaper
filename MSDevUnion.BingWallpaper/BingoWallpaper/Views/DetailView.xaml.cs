@@ -274,7 +274,7 @@ namespace BingoWallpaper.Views
             {
                 WeiboClient client = await WeiboClient.CreateAsync();
                 byte[] shareData = await GetImageData();
-                string shareText = GetImageTitle();
+                string shareText = GetImageTitle() + " " + ViewModel.Wallpaper.GetCacheUrl(AppSetting.WallpaperSize);
                 Weibo shareResult = await client.ShareImageAsync(shareData, shareText);
                 if (shareResult.ErrorCode == 21332)
                 {
@@ -325,7 +325,7 @@ namespace BingoWallpaper.Views
         {
             try
             {
-                var scene = SendMessageToWX.Req.WXSceneTimeline;
+                var scene = SendMessageToWX.Req.WXSceneChooseByUser;
                 var pic = await this.GetImageData();
                 var message = new WXImageMessage()
                 {
