@@ -2,10 +2,12 @@
 using BingoWallpaper.Views;
 using SoftwareKobo.UniversalToolkit;
 using SoftwareKobo.UniversalToolkit.Extensions;
+using System;
 using System.Threading.Tasks;
 using UmengSDK;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.System;
 
 namespace BingoWallpaper
 {

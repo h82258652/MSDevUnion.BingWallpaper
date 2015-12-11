@@ -1641,14 +1641,12 @@
           "lib/wpa81/MicroMsg.sdk.dll": {}
         }
       },
-      "Win2D.uwp/1.9.0": {
+      "Win2D.uwp/1.10.0": {
         "compile": {
-          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
-          "lib/uap10.0/Workaround1200257.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
         },
         "runtime": {
-          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
-          "lib/uap10.0/Workaround1200257.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
         }
       }
     },
@@ -3381,14 +3379,12 @@
           "lib/wpa81/MicroMsg.sdk.dll": {}
         }
       },
-      "Win2D.uwp/1.9.0": {
+      "Win2D.uwp/1.10.0": {
         "compile": {
-          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
-          "lib/uap10.0/Workaround1200257.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
         },
         "runtime": {
-          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
-          "lib/uap10.0/Workaround1200257.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
         },
         "native": {
           "runtimes/win10-arm/native/Microsoft.Graphics.Canvas.dll": {}
@@ -5096,14 +5092,12 @@
           "lib/wpa81/MicroMsg.sdk.dll": {}
         }
       },
-      "Win2D.uwp/1.9.0": {
+      "Win2D.uwp/1.10.0": {
         "compile": {
-          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
-          "lib/uap10.0/Workaround1200257.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
         },
         "runtime": {
-          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
-          "lib/uap10.0/Workaround1200257.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
         },
         "native": {
           "runtimes/win10-arm/native/Microsoft.Graphics.Canvas.dll": {}
@@ -6844,14 +6838,12 @@
           "lib/wpa81/MicroMsg.sdk.dll": {}
         }
       },
-      "Win2D.uwp/1.9.0": {
+      "Win2D.uwp/1.10.0": {
         "compile": {
-          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
-          "lib/uap10.0/Workaround1200257.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
         },
         "runtime": {
-          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
-          "lib/uap10.0/Workaround1200257.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
         },
         "native": {
           "runtimes/win10-x64/native/Microsoft.Graphics.Canvas.dll": {}
@@ -8559,14 +8551,12 @@
           "lib/wpa81/MicroMsg.sdk.dll": {}
         }
       },
-      "Win2D.uwp/1.9.0": {
+      "Win2D.uwp/1.10.0": {
         "compile": {
-          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
-          "lib/uap10.0/Workaround1200257.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
         },
         "runtime": {
-          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
-          "lib/uap10.0/Workaround1200257.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
         },
         "native": {
           "runtimes/win10-x64/native/Microsoft.Graphics.Canvas.dll": {}
@@ -10307,14 +10297,12 @@
           "lib/wpa81/MicroMsg.sdk.dll": {}
         }
       },
-      "Win2D.uwp/1.9.0": {
+      "Win2D.uwp/1.10.0": {
         "compile": {
-          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
-          "lib/uap10.0/Workaround1200257.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
         },
         "runtime": {
-          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
-          "lib/uap10.0/Workaround1200257.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
         },
         "native": {
           "runtimes/win10-x86/native/Microsoft.Graphics.Canvas.dll": {}
@@ -12022,14 +12010,12 @@
           "lib/wpa81/MicroMsg.sdk.dll": {}
         }
       },
-      "Win2D.uwp/1.9.0": {
+      "Win2D.uwp/1.10.0": {
         "compile": {
-          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
-          "lib/uap10.0/Workaround1200257.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
         },
         "runtime": {
-          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {},
-          "lib/uap10.0/Workaround1200257.dll": {}
+          "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
         },
         "native": {
           "runtimes/win10-x86/native/Microsoft.Graphics.Canvas.dll": {}
@@ -15874,8 +15860,8 @@
         "WeChatSDK.nuspec"
       ]
     },
-    "Win2D.uwp/1.9.0": {
-      "sha512": "9Ae1ul1Lq3U+vxCOAETY3sEHwKoIfpcfl5C39IlPAk/s+C6tSWAQs5mNKMZBzwvwW2mDEe5VRBToWE1RS9Y53A==",
+    "Win2D.uwp/1.10.0": {
+      "sha512": "2kbSCF7h5WY4MtfXFAk2hO+B4uYHnrXwfQcdoSFyjYJS9iiaSVED6lTjtx6wvJS0gEuESuT82wwGoT2V3ubPyA==",
       "type": "Package",
       "files": [
         "[Content_Types].xml",
@@ -15886,8 +15872,7 @@
         "lib/uap10.0/en/Microsoft.Graphics.Canvas.xml",
         "lib/uap10.0/Microsoft.Graphics.Canvas.winmd",
         "lib/uap10.0/Microsoft.Graphics.Canvas.xml",
-        "lib/uap10.0/Workaround1200257.dll",
-        "package/services/metadata/core-properties/d8d6650e5e4d4566b8815910d014778b.psmdcp",
+        "package/services/metadata/core-properties/5c27890017d847a49ec81f0a4dc257c6.psmdcp",
         "runtimes/win10-arm/native/Microsoft.Graphics.Canvas.dll",
         "runtimes/win10-x64/native/Microsoft.Graphics.Canvas.dll",
         "runtimes/win10-x86/native/Microsoft.Graphics.Canvas.dll",

@@ -124,14 +124,14 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <thirdParty:VirtualizingFlipView ItemsSource="{Binding Path=AllWallpapers}"
+        <FlipView ItemsSource="{Binding Path=AllWallpapers}"
                                          SelectedItem="{Binding Path=ViewingWallpaper,Mode=TwoWay}"
                                          SelectionChanged="FlipView_SelectionChanged">
-            <thirdParty:VirtualizingFlipView.ItemTemplate>
+            <FlipView.ItemTemplate>
                 <DataTemplate>
                     <controls:ThumbnailPanel ItemClick="Wallpaper_Click" />
                 </DataTemplate>
-            </thirdParty:VirtualizingFlipView.ItemTemplate>
-        </thirdParty:VirtualizingFlipView>
+            </FlipView.ItemTemplate>
+        </FlipView>
     </Grid>
 </Page>

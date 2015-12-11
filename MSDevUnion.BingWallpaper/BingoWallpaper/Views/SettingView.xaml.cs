@@ -15,14 +15,14 @@ namespace BingoWallpaper.Views
         {
             base.OnNavigatedFrom(e);
 
-            this.Frame.UnregisterNavigateBack();
+            NavigationHelper.Unregister(this.Frame);
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
-            this.Frame.RegisterNavigateBack();
+            NavigationHelper.Register(this.Frame);
         }
     }
 }
