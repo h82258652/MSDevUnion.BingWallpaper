@@ -85,7 +85,7 @@ namespace BingoWallpaper.Models
                     this.Add(wallpaper);
                 }
             }
-            catch (Exception ex)
+            catch
             {
             }
 
