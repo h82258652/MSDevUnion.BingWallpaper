@@ -1,1 +1,1 @@
-D:\Projects\MSDevUnion.BingWallpaper\MSDevUnion.BingWallpaper\BingoWallpaper\AppPackages\BingoWallpaper_1.1.32.0\BingoWallpaper_1.1.32.0_x86_x64_arm.appxbundle
+C:\MyProjects\MSDevUnion.BingWallpaper\MSDevUnion.BingWallpaper\BingoWallpaper\AppPackages\BingoWallpaper_1.1.36.0\BingoWallpaper_1.1.36.0_x86_x64_arm.appxbundle
