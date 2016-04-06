@@ -10,7 +10,8 @@
              mc:Ignorable="d"
              d:DesignHeight="300"
              d:DesignWidth="400"
-             d:DataContext="{d:DesignInstance Type=model:Wallpaper}">
+             d:DataContext="{d:DesignInstance Type=model:Wallpaper}"
+             Loaded="Thumbnail_Loaded">
     <Grid>
         <Grid.Resources>
             <conv:ThumbnailUrlConverter x:Key="ThumbnailUrlConverter" />

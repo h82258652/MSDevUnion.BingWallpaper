@@ -3,7 +3,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace BingoWallpaper.Controls
 {
-    public sealed partial class ThumbnailPanel : UserControl
+    public sealed partial class ThumbnailPanel
     {
         private VariableSizedWrapGrid _thumbnailGrid;
 
@@ -46,10 +46,7 @@ namespace BingoWallpaper.Controls
 
         private void Wallpaper_Click(object sender, ItemClickEventArgs e)
         {
-            if (ItemClick != null)
-            {
-                ItemClick(sender, e);
-            }
+            ItemClick?.Invoke(sender, e);
         }
     }
 }

@@ -171,8 +171,8 @@ namespace SoftwareKobo.Social.Sina.Weibo
 
             if (LocalAccessToken.Useable == false)
             {
-                string authorizeCode = await this.GetAuthorizeCodeAsync();
-                await this.Authorize(authorizeCode);
+                string authorizeCode = await GetAuthorizeCodeAsync();
+                await Authorize(authorizeCode);
             }
 
             Uri uri = new Uri("https://api.weibo.com/2/statuses/update.json");
@@ -230,8 +230,8 @@ namespace SoftwareKobo.Social.Sina.Weibo
 
             if (LocalAccessToken.Useable == false)
             {
-                string authorizeCode = await this.GetAuthorizeCodeAsync();
-                await this.Authorize(authorizeCode);
+                string authorizeCode = await GetAuthorizeCodeAsync();
+                await Authorize(authorizeCode);
             }
 
             Uri uri = new Uri("https://upload.api.weibo.com/2/statuses/upload.json");

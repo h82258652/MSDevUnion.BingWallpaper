@@ -3,7 +3,6 @@ using BingoWallpaper.Helpers;
 using BingoWallpaper.Models;
 using BingoWallpaper.Services;
 using Windows.ApplicationModel.Background;
-using System;
 
 namespace BingoWallpaper.BackgroundTask
 {

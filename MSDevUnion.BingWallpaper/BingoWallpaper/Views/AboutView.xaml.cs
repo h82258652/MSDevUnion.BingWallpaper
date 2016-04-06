@@ -1,28 +1,27 @@
 ﻿using SoftwareKobo.UniversalToolkit.Helpers;
-using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
 namespace BingoWallpaper.Views
 {
-    public sealed partial class AboutView : Page
+    public sealed partial class AboutView
     {
         public AboutView()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             base.OnNavigatedFrom(e);
 
-            NavigationHelper.Unregister(this.Frame);
+            NavigationHelper.Unregister(Frame);
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
-            NavigationHelper.Register(this.Frame);
+            NavigationHelper.Register(Frame);
         }
     }
 }

@@ -42,12 +42,12 @@ namespace BingoWallpaper.ViewModels
         {
             get
             {
-                return this._wallpaper;
+                return _wallpaper;
             }
             set
             {
-                this._wallpaper = value;
-                this.RaisePropertyChanged(() => this.Wallpaper);
+                _wallpaper = value;
+                RaisePropertyChanged(() => Wallpaper);
             }
         }
     }

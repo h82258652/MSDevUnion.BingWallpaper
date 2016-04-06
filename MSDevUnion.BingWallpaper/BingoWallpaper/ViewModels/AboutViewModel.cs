@@ -19,15 +19,12 @@ namespace BingoWallpaper.ViewModels
         {
             get
             {
-                if (this._reviewCommand == null)
+                _reviewCommand = _reviewCommand ?? new DelegateCommand(async () =>
                 {
-                    this._reviewCommand = new DelegateCommand(async () =>
-                    {
-                        StoreService service = new StoreService();
-                        await service.OpenCurrentAppReviewPageAsync();
-                    });
-                }
-                return this._reviewCommand;
+                    StoreService service = new StoreService();
+                    await service.OpenCurrentAppReviewPageAsync();
+                });
+                return _reviewCommand;
             }
         }
     }

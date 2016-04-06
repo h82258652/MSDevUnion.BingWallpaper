@@ -7,9 +7,9 @@ namespace SoftwareKobo.Social.Sina.Weibo
     {
         public WeiboAttribute(string appKey, string appSecret, string redirectUri)
         {
-            this.AppKey = appKey;
-            this.AppSecret = appSecret;
-            this.RedirectUri = redirectUri;
+            AppKey = appKey;
+            AppSecret = appSecret;
+            RedirectUri = redirectUri;
         }
 
         public string AppKey

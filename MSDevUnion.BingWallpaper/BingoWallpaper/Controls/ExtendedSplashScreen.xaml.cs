@@ -3,7 +3,6 @@ using BingoWallpaper.Helpers;
 using BingoWallpaper.Models;
 using BingoWallpaper.Services;
 using BingoWallpaper.Utils;
-using SoftwareKobo.UniversalToolkit.Controls;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,20 +12,17 @@ using Windows.UI.ViewManagement;
 
 namespace BingoWallpaper.Controls
 {
-    public sealed partial class ExtendedSplashScreen : ExtendedSplashScreenContent
+    public sealed partial class ExtendedSplashScreen
     {
         private const string UPDATE_TILE_TASK_NAME = @"UpdateTileTask";
 
         public ExtendedSplashScreen()
         {
-            this.InitializeComponent();
-            this.Loaded += async (sender, e) =>
+            InitializeComponent();
+            Loaded += async (sender, e) =>
             {
-                await this.HideStatusBar();
-                await this.InitSuitableWallpaperSize();
-                await this.RegisterBackgroundTask();
-                await this.UpdatePrimaryTile();
-                this.Finish();
+                await Task.WhenAll(HideStatusBar(), InitSuitableWallpaperSize(), RegisterBackgroundTask(), UpdatePrimaryTile());
+                Finish();
             };
         }
 
@@ -104,6 +100,7 @@ namespace BingoWallpaper.Controls
             }
             catch
             {
+                // ignored
             }
         }
     }

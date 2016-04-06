@@ -17,12 +17,12 @@ namespace BingoWallpaper.Models
 
         public IEnumerator<T> GetEnumerator()
         {
-            return this.Results.AsEnumerable().GetEnumerator();
+            return Results.AsEnumerable().GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return this.Results.GetEnumerator();
+            return Results.GetEnumerator();
         }
     }
 }

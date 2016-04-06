@@ -21,7 +21,7 @@ namespace SoftwareKobo.Social.Sina.Weibo
         {
             get
             {
-                return WebError.GetStatus(this.HResult);
+                return WebError.GetStatus(HResult);
             }
         }
     }

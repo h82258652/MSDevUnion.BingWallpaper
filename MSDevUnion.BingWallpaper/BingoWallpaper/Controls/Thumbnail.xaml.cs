@@ -6,25 +6,24 @@ using Windows.UI.Xaml.Controls;
 
 namespace BingoWallpaper.Controls
 {
-    public sealed partial class Thumbnail : UserControl
+    public sealed partial class Thumbnail
     {
         public Thumbnail()
         {
-            this.InitializeComponent();
-            this.Loaded += this.Thumbnail_Loaded;
+            InitializeComponent();
         }
 
         public Wallpaper Wallpaper
         {
             get
             {
-                return (Wallpaper)this.DataContext;
+                return (Wallpaper)DataContext;
             }
         }
 
         private void Thumbnail_Loaded(object sender, RoutedEventArgs e)
         {
-            if (this.Wallpaper != null && this.Wallpaper.IsLastInMonth)
+            if (Wallpaper != null && Wallpaper.IsLastInMonth)
             {
                 var item = this.GetAncestorsOfType<GridViewItem>().FirstOrDefault();
                 if (item != null)

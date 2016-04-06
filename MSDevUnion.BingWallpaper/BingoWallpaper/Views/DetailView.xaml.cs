@@ -1,7 +1,6 @@
 ﻿using BingoWallpaper.Datas;
 using BingoWallpaper.Models;
 using BingoWallpaper.ViewModels;
-using MicroMsg;
 using MicroMsg.sdk;
 using SoftwareKobo.Social.Sina.Weibo;
 using SoftwareKobo.Social.Sina.Weibo.Models;
@@ -31,19 +30,19 @@ using Windows.Web.Http;
 
 namespace BingoWallpaper.Views
 {
-    public sealed partial class DetailView : Page
+    public sealed partial class DetailView
     {
         public DetailView()
         {
-            this.InitializeComponent();
-            this.InitSystemShare();
+            InitializeComponent();
+            InitSystemShare();
         }
 
         public DetailViewModel ViewModel
         {
             get
             {
-                return (DetailViewModel)this.DataContext;
+                return (DetailViewModel)DataContext;
             }
         }
 
@@ -51,14 +50,14 @@ namespace BingoWallpaper.Views
         {
             base.OnNavigatedFrom(e);
 
-            NavigationHelper.Unregister(this.Frame);
+            NavigationHelper.Unregister(Frame);
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
-            NavigationHelper.Register(this.Frame, () =>
+            NavigationHelper.Register(Frame, () =>
             {
                 if (Frame.CanGoBack && PopupExecuting.IsOpen == false)
                 {
@@ -66,7 +65,7 @@ namespace BingoWallpaper.Views
                 }
             });
 
-            this.ViewModel.Wallpaper = e.Parameter as Wallpaper;
+            ViewModel.Wallpaper = e.Parameter as Wallpaper;
         }
 
         private async void BtnSave_Click(object sender, RoutedEventArgs e)
@@ -106,6 +105,7 @@ namespace BingoWallpaper.Views
                 }
                 catch
                 {
+                    // ignored
                 }
             }
 
@@ -128,6 +128,7 @@ namespace BingoWallpaper.Views
                 }
                 catch
                 {
+                    // ignored
                 }
             }
 
@@ -193,7 +194,7 @@ namespace BingoWallpaper.Views
 
         private void InitSystemShare()
         {
-            DataTransferManager.GetForCurrentView().DataRequested += (DataTransferManager sender, DataRequestedEventArgs args) =>
+            DataTransferManager.GetForCurrentView().DataRequested += (sender, args) =>
             {
                 DataRequest request = args.Request;
                 var deferral = request.GetDeferral();
@@ -318,13 +319,13 @@ namespace BingoWallpaper.Views
 
         private void Wallpaper_Opened(object sender, RoutedEventArgs e)
         {
-            this.LoadingRing.IsActive = false;
+            LoadingRing.IsActive = false;
 
             // 调整 scrollviewer 到最适合缩放。
-            var scrollViewerWidth = this.ScrollViewer.ActualWidth;
+            var scrollViewerWidth = ScrollViewer.ActualWidth;
             var wallpaperWidth = AppSetting.WallpaperSize.Width;
             var zoomFactor = scrollViewerWidth / wallpaperWidth;
-            this.ScrollViewer.ChangeView(null, null, (float)zoomFactor, true);
+            ScrollViewer.ChangeView(null, null, (float)zoomFactor, true);
         }
 
         private async Task WechatShare()
@@ -332,14 +333,14 @@ namespace BingoWallpaper.Views
             try
             {
                 var scene = SendMessageToWX.Req.WXSceneChooseByUser;
-                var pic = await this.GetImageData();
+                var pic = await GetImageData();
                 var message = new WXImageMessage()
                 {
-                    Title = this.GetImageTitle(),
+                    Title = GetImageTitle(),
                     ImageData = pic
                 };
                 SendMessageToWX.Req req = new SendMessageToWX.Req(message, scene);
-                IWXAPI api = WXAPIFactory.CreateWXAPI(App.WechatAppID);
+                IWXAPI api = WXAPIFactory.CreateWXAPI(App.WechatAppId);
                 var isValid = await api.SendReq(req);
             }
             catch
@@ -350,7 +351,7 @@ namespace BingoWallpaper.Views
 
         private void WechatShare_Loaded(object sender, RoutedEventArgs e)
         {
-            UIElement wechatShare = sender as UIElement;
+            UIElement wechatShare = (UIElement)sender;
             wechatShare.Visibility = DeviceFamilyHelper.IsDesktop ? Visibility.Collapsed : Visibility.Visible;
         }
 

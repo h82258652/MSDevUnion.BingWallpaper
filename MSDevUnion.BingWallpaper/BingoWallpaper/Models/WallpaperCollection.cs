@@ -1,6 +1,5 @@
 ﻿using BingoWallpaper.Datas;
 using BingoWallpaper.Services;
-using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Threading.Tasks;
@@ -10,20 +9,22 @@ namespace BingoWallpaper.Models
     public class WallpaperCollection : ObservableCollection<Wallpaper>
     {
         private bool _isLoading;
-        private int _month;
-        private int _year;
+
+        private readonly int _month;
+
+        private readonly int _year;
 
         public WallpaperCollection(int year, int month)
         {
-            this._year = year;
-            this._month = month;
+            _year = year;
+            _month = month;
         }
 
         public string Cover
         {
             get
             {
-                if (this.Count > 0)
+                if (Count > 0)
                 {
                     return this[0].GetCacheUrl(new WallpaperSize(1920, 1080));
                 }
@@ -35,12 +36,12 @@ namespace BingoWallpaper.Models
         {
             get
             {
-                return this._isLoading;
+                return _isLoading;
             }
             private set
             {
-                this._isLoading = value;
-                this.OnPropertyChanged(new PropertyChangedEventArgs(nameof(IsLoading)));
+                _isLoading = value;
+                OnPropertyChanged(new PropertyChangedEventArgs(nameof(IsLoading)));
             }
         }
 
@@ -65,33 +66,34 @@ namespace BingoWallpaper.Models
         /// </summary>
         public async Task ReLoad()
         {
-            if (this.IsLoading)
+            if (IsLoading)
             {
                 return;
             }
 
-            this.IsLoading = true;
+            IsLoading = true;
 
-            this.ClearItems();
+            ClearItems();
 
             try
             {
                 WallpaperService service = new WallpaperService();
-                var wallpapers = await service.GetWallpapersAsync(this._year, this._month, AppSetting.Area);// 加载指定年月，指定地区的壁纸信息。
+                var wallpapers = await service.GetWallpapersAsync(_year, _month, AppSetting.Area);// 加载指定年月，指定地区的壁纸信息。
 
-                this.ClearItems();
+                ClearItems();
                 foreach (var wallpaper in wallpapers)
                 {
-                    this.Add(wallpaper);
+                    Add(wallpaper);
                 }
             }
             catch
             {
+                // ignored
             }
 
-            this.OnPropertyChanged(new PropertyChangedEventArgs(nameof(Cover)));
+            OnPropertyChanged(new PropertyChangedEventArgs(nameof(Cover)));
 
-            this.IsLoading = false;
+            IsLoading = false;
         }
     }
 }

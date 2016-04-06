@@ -5,20 +5,20 @@ using Windows.UI.Xaml.Navigation;
 
 namespace BingoWallpaper.Views
 {
-    public sealed partial class MainView : Page
+    public sealed partial class MainView
     {
         private static string _lastViewArea;
 
         public MainView()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         public MainViewModel ViewModel
         {
             get
             {
-                return (MainViewModel)this.DataContext;
+                return (MainViewModel)DataContext;
             }
         }
 
@@ -35,7 +35,7 @@ namespace BingoWallpaper.Views
 
             if (string.Equals(_lastViewArea, AppSetting.Area) == false)
             {
-                foreach (var wallpapers in this.ViewModel.AllWallpapers)
+                foreach (var wallpapers in ViewModel.AllWallpapers)
                 {
                     wallpapers.Clear();
                 }
@@ -44,7 +44,7 @@ namespace BingoWallpaper.Views
 
         private void Wallpaper_Click(object sender, ItemClickEventArgs e)
         {
-            this.Frame.Navigate(typeof(DetailView), e.ClickedItem);
+            Frame.Navigate(typeof(DetailView), e.ClickedItem);
         }
 
         private async void FlipView_SelectionChanged(object sender, SelectionChangedEventArgs e)

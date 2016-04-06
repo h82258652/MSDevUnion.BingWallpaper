@@ -11,7 +11,7 @@ namespace BingoWallpaper.Datas
         /// </summary>
         private static readonly DateTimeOffset MIN_VIEW_MONTH = new DateTimeOffset(new DateTime(2015, 1, 1));
 
-        private static IList<WallpaperCollection> _allWallpapers;
+        private static readonly IList<WallpaperCollection> _allWallpapers;
 
         /// <summary>
         /// 所有壁纸信息。

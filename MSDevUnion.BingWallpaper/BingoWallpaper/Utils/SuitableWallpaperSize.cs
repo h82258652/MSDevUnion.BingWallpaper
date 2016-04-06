@@ -11,7 +11,7 @@ namespace BingoWallpaper.Utils
     /// </summary>
     public class SuitableWallpaperSize
     {
-        private static bool _hadInit = false;
+        private static bool _hadInit;
         private static int _height;
         private static int _width;
 
@@ -50,8 +50,8 @@ namespace BingoWallpaper.Utils
             if (DesignMode.DesignModeEnabled == false)
             {
                 WebView webView = new WebView(WebViewExecutionMode.SeparateThread);
-                int width = int.Parse(await webView.InvokeScriptAsync("eval", new string[] { "window.screen.width.toString()" }));
-                int height = int.Parse(await webView.InvokeScriptAsync("eval", new string[] { "window.screen.height.toString()" }));
+                int width = int.Parse(await webView.InvokeScriptAsync("eval", new[] { "window.screen.width.toString()" }));
+                int height = int.Parse(await webView.InvokeScriptAsync("eval", new[] { "window.screen.height.toString()" }));
                 double scale = DisplayInformation.GetForCurrentView().RawPixelsPerViewPixel;
                 _width = (int)Math.Ceiling(width * scale);
                 _height = (int)Math.Ceiling(height * scale);
